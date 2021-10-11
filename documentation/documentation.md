@@ -55,6 +55,7 @@ The source code for the application will be stored in Github with 2 main branche
 Once the application is at a point where all tests pass and the application is in a working state, then the code from the dev branch will be pulled into master.
 
 The Github project will also include automatic builds on all pull requests so, as long as we have good test coverage, we can see the effect of a pull request on the integrity of the code.
+The workflow used to do this can be found at `github/workflows`
 
 ## Task Assignment
 TODO
