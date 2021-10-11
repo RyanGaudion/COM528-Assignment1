@@ -22,13 +22,15 @@ As a `role` I want to `action` so that `reason`
 - As a **User** I want to be able to **be able to enter a cash amount for a transaction** so that **the correct amount is taken from my account**
 - As a **User** I want the app to be able to **show the status of a transaction** so that **I can confirm or deny whether the transaction has been successful**
 </br>
+
 - As an **Admin** I want **to be able to configure the device only once** so that **the device uses the same settings everytime** 
 - As an **Admin** when I configure the device **I want to be able to supply Identity Credentials** so that **the device is able to authenticate to the API**
 - As an **Admin** I want **A log of all transactions in a local log file** so that **I can which transactions were successful and unsuccessful**
 
 </br>
+
 ## Project Plan
-The plan for the project is to split the application into:
+The plan for the project is to split the development into the following tasks. This way each developer can focus on a smaller part of the application:
 
 - Webapp UI
 - API Connection
@@ -36,6 +38,7 @@ The plan for the project is to split the application into:
 - Device Configuration
 - Exception Handling & Logging
 </br>
+
 - Documentation (JavaDoc & Markdown)
 - Unit Testing
 - JavaDoc
