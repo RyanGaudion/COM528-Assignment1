@@ -5,6 +5,7 @@
  */
 package org.solent.oodd.Models;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,11 +62,15 @@ public class TransactionTests {
         SetTestTransaction();
         
         try{
-            SimpleDateFormat parser = new SimpleDateFormat("hh:mm yyyy-MM-dd");
+            String pattern = "hh:mm yyyy-MM-dd";
+            SimpleDateFormat parser = new SimpleDateFormat(pattern);
             Date date = parser.parse("08:35 2021-10-12");
             assertEquals(true, testTransaction.SetTransactionDate(date));
             //dow mon dd hh:mm:ss zzz yyyy
-            assertEquals("Tue Oct 12 08:35:00 BST 2021", testTransaction.GetTransactionDate().toString());
+            
+
+            DateFormat df = new SimpleDateFormat(pattern);
+            assertEquals("08:35 2021-10-12", df.format(testTransaction.GetTransactionDate()));
         }
         catch(ParseException ex){
             Assert.fail("string formatter failed");
