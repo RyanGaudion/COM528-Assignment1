@@ -2,35 +2,32 @@
 
 <ClassDiagram name="webpointofsaleDiagram">
   <ClassDiagramComponents>
-    <Class name="Transaction" package="" visibility="public" xPosition="869.0" yPosition="263.0">
+    <Class name="Transaction" package="" visibility="public" xPosition="844.0" yPosition="238.0">
       <Fields>
-        <Field name="fromAccount" type="Account" visibility="private"/>
-        <Field name="toAccount" type="Account" visibility="private"/>
-        <Field name="value" type="BigDecimal" visibility="private"/>
+        <Field name="fromCard" type="Card" visibility="private"/>
+        <Field name="toCard" type="Card" visibility="private"/>
+        <Field name="value" type="Double" visibility="private"/>
         <Field name="transactionType" type="TransactionType" visibility="private"/>
+        <Field name="transactionId" type="String" visibility="private"/>
+        <Field name="transactionDate" type="Date" visibility="private"/>
+        <Field name="statusMessage" type="String" visibility="private"/>
+        <Field name="status" type="TransactionStatus" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="Account" package="" visibility="public" xPosition="390.0" yPosition="244.0">
-      <Fields>
-        <Field name="card" type="Card" visibility="private"/>
-        <Field name="owner" type="User" visibility="private"/>
-      </Fields>
-      <Constructors/>
-      <Methods/>
-    </Class>
-    <Class name="Card" package="" visibility="public" xPosition="390.0" yPosition="526.0">
+    <Class name="Card" package="" visibility="public" xPosition="412.0" yPosition="225.0">
       <Fields>
         <Field name="cardnumber" type="String" visibility="private"/>
         <Field name="cvv" type="String" visibility="private"/>
         <Field name="expiryDate" type="DateTime" visibility="private"/>
         <Field name="expiryDateString" type="String" visibility="private"/>
+        <Field name="owner" type="User" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="User" package="" visibility="public" xPosition="78.0" yPosition="244.0">
+    <Class name="User" package="" visibility="public" xPosition="81.0" yPosition="225.0">
       <Fields>
         <Field name="firstName" type="String" visibility="private"/>
         <Field name="lastName" type="String" visibility="private"/>
@@ -38,28 +35,35 @@
       <Constructors/>
       <Methods/>
     </Class>
-    <Class name="POSDevice" package="" visibility="public" xPosition="611.0" yPosition="40.0">
+    <Class name="POSDevice" package="" visibility="public" xPosition="682.0" yPosition="40.0">
       <Fields>
-        <Field name="account" type="Account" visibility="private"/>
+        <Field name="deviceCard" type="Card" visibility="private"/>
         <Field name="transactions" type="ArrayList&lt;Transaction&gt;" visibility="private"/>
       </Fields>
       <Constructors/>
       <Methods/>
     </Class>
-    <Enum name="TransactionType" package="" visibility="public" xPosition="897.0" yPosition="560.0">
+    <Enum name="TransactionType" package="" visibility="public" xPosition="883.0" yPosition="514.0">
       <Literals>
-        <Literal name="Refund"/>
-        <Literal name="Payment"/>
+        <Literal name="PAYMENT"/>
+        <Literal name="REFUND"/>
+      </Literals>
+    </Enum>
+    <Enum name="TransactionStatus" package="" visibility="public" xPosition="1261.0" yPosition="278.0">
+      <Literals>
+        <Literal name="SUCCESS"/>
+        <Literal name="FAIL"/>
+        <Literal name="UNKOWN"/>
       </Literals>
     </Enum>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <HasRelation name="card" source="Account" target="Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="owner" source="Account" target="User" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="fromAccount" source="Transaction" target="Account" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="account" source="POSDevice" target="Account" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="toAccount" source="Transaction" target="Account" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="deviceCard" source="POSDevice" target="Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="owner" source="Card" target="User" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="toCard" source="Transaction" target="Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="fromCard" source="Transaction" target="Card" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
     <HasRelation name="transactions" source="POSDevice" target="Transaction" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
     <HasRelation name="transactionType" source="Transaction" target="TransactionType" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="status" source="Transaction" target="TransactionStatus" type="Default" sourceCardinality="0..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
