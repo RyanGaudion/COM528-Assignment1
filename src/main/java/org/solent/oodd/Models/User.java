@@ -13,6 +13,14 @@ public class User {
     private String firstName;
     private String lastName;
     
+    public User(){
+        
+    }
+    public User(String fn, String ln){
+        firstName = fn;
+        lastName = ln;
+    }
+    
     public String GetFirstName(){
         return firstName;
     }
@@ -21,16 +29,28 @@ public class User {
     }
     
     public String GetFullName(){
+        if(firstName == null){
+            return lastName.trim();
+        }
+        else if (lastName == null){
+            return firstName.trim();
+        }
         return firstName.trim() + " " + lastName.trim();
     }
     
-    public String SetFirstName(String firstname){
-        this.firstName = firstname;
-        return GetFirstName();
+    public Boolean SetFirstName(String firstname){
+        if(firstname != null){
+            firstName = firstname;
+            return true;
+        }
+        return false;
     }
     
-    public String SetLastName(String lastname){
-        this.lastName = lastname;
-        return GetLastName();
+    public Boolean SetLastName(String lastname){
+        if(lastname != null){
+            lastName = lastname;
+            return true;
+        }
+        return false;
     }
 }

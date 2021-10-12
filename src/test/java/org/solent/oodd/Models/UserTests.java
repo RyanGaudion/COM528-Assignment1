@@ -18,7 +18,7 @@ public class UserTests {
     public void setFirstNameTest()
     {
         User user = new User();
-        user.SetFirstName("Ryan");
+        assertEquals(true, user.SetFirstName("Ryan"));
         assertEquals("Ryan", user.GetFirstName());
     }
     
@@ -26,7 +26,7 @@ public class UserTests {
     public void setLastNameTest()
     {
         User user = new User();
-        user.SetLastName("Gaudion");
+        assertEquals(true, user.SetLastName("Gaudion"));
         assertEquals("Gaudion", user.GetLastName());
     }
     
@@ -34,8 +34,17 @@ public class UserTests {
     public void getFullNameTest()
     {
         User user = new User();
-        user.SetFirstName("Joe");
-        user.SetLastName("Bloggs");
+        assertEquals(true, user.SetFirstName("Joe"));
+        assertEquals(true, user.SetLastName("Bloggs"));
+        assertEquals("Joe Bloggs", user.GetFullName());
+    }
+        
+    @Test
+    public void constructorTest()
+    {
+        User user = new User("Joe", "Bloggs");
+        assertEquals("Joe", user.GetFirstName());
+        assertEquals("Bloggs", user.GetLastName());
         assertEquals("Joe Bloggs", user.GetFullName());
     }
 }
