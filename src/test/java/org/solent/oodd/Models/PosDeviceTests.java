@@ -1,9 +1,5 @@
 package org.solent.oodd.Models;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
