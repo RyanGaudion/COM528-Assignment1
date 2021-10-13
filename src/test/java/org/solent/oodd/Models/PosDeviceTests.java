@@ -18,7 +18,7 @@ public class PosDeviceTests {
         PosDevice pos = new PosDevice();
         assertEquals(true, pos.SetCard(card));
 
-        assertEquals("0000 0000 0000 0000", pos.GetCard().GetCardNumber());
+        assertEquals("0000000000000000", pos.GetCard().GetCardNumber());
         assertEquals("111", pos.GetCard().GetCVV());
     }
 
