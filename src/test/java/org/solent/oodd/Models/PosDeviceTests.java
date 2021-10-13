@@ -35,8 +35,8 @@ public class PosDeviceTests {
         Transaction t2 = new Transaction(fromCard, toCard, 5.00, TransactionType.REFUND);
 
         PosDevice pos = new PosDevice();
-        assert.assertEquals(true, pos.AddTransaction(t));
-        assert.assertEquals(true, pos.AddTransaction(t2));
+        assertEquals(true, pos.AddTransaction(t));
+        assertEquals(true, pos.AddTransaction(t2));
 
 
         assertEquals(2, pos.GetTransactions().size());
