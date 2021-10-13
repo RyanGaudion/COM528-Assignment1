@@ -16,3 +16,8 @@ nb-configuration.xml
 *.ear
 /target/
 /bin/target/
+
+# Extra Required #
+/.classpath
+/*.project
+/.settings
