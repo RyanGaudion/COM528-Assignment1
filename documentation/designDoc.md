@@ -1,6 +1,25 @@
 # Point of Sales - Design Doc & Project Plan
 
 ## Task Assignment
+During this project we have split the Software Development Lifecycle (SDLC) into 3 main parts - Design, Development and Testing.
+
+Each developer has responsibilities in each of these 3 areas.
+
+### Design
+| Task      | Description | Assigned To |
+| ----------- | ----------- | ----------- |
+| Use Cases      | Define the use cases for the application and also write up the uses cases in the form of user stories       | Steven Hawkins      |
+| Features Definement   | Match Use Cases and User Stories to feature implementations for developers to write code for        | Steven Hawkins       |
+| Page Design   | Create UI Wireframe mockup designs for each page in the application   | Kain Peacock    |
+| UML Diagrams  | Create class diagrams and define relationships between models in the form of UML Diagrams as well as create UML Robusteness Diagrams to visualise Business Logic  | Lewis Holmes    |
+| Git Strategy  | Research, Analyse and Define a standard git strategy including branching techniques, approval/review process as well as CI pipeline/ automated testing implementation  | Ryan Gaudion    |
+| Coding Standard  | Research and Select a Java specific coding standard to implement during the development of this project  | Ryan Gaudion    |
+| SDLC Methodology  | Analyse and define a software development lifecycle technique that we will use as a team.  | Ryan Gaudion    |
+
+### Development
+
+### Testing
+
 Just split up the tasks in the Project and assign them below - for documentation
 
 Also add development tasks that are unassigned.
@@ -26,6 +45,8 @@ Talk about everyone is responsbile for writing tests for their specfic coding wo
 ### UML Robustness Diagram
 
 ### UI Wireframes
+
+## Coding Standard - RG
 
 ## Git Strategy
 
