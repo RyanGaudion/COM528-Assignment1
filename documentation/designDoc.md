@@ -51,7 +51,31 @@ There are however additional testing Tasks that need to be complete outside of t
 | ToDo        | ToDo        | ToDo        |
 
 
-## Coding Standard - RG
+## Coding Standard
+Due to the fact there are 4 developers working on one project our code could look very different if we don't implement a standard for things like class naming conventions and variable naming conventions.
+
+We compared both the Oracle Java Naming Conventions here - https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html
+as well as teh Google Java Naming Conventions here - https://google.github.io/styleguide/javaguide.html#s5-naming
+
+and decided that due to simplicity, ease of understanding as well as the readibility it provides, we'll implement the Google Java Naming Conventions. A simplified wording of this Naming convention has been shown below which all developers have agreed to follow
+
+| Type        | Rule      | Examples    |
+| ----------- | ----------- | ----------- |
+| Packages        | Package names are all lowercase, with consecutive words simply concatenated together (no underscores)        | `com.example.deepspace` not `com.example.deepSpace` or `com.example.deep_space`        |
+| Class Names        | Class names are written in UpperCamelCase.       | `Character` or `ImmutableList`      |
+| Class Names        | Class names are typically nouns or noun phrases      | `Character` or `ImmutableList`      |
+| Test Classes        | Named starting with the name of the class they are testing, and ending with Test      | `HashTest` or `HashIntegrationTest`      |
+| Method Names        | Method names are written in lowerCamelCase.        | `sendMessage` or `stop`      |
+| Method Names        | Method names are typically verbs or verb phrases.       | `sendMessage` or `stop`      |
+| Constant Names        | Constant names use CONSTANT_CASE: all uppercase letters, with each word separated from the next by a single underscore        | `NAMES` or   `EMPTY_ARRAY`   |
+| Constants        | Constants are static final fields whose contents are deeply immutable (unchanging) and whose methods have no detectable side effects.        |  |
+| Non-constant field names        | Non-constant field names (static or otherwise) are written in lowerCamelCase.        | `computedValues ` or  `index`|
+| Non-constant field names        | These names are typically nouns or noun phrases.        | `computedValues ` or  `index`|
+| Parameter names        | Parameter names are written in lowerCamelCase.        |  |
+| Parameter names        |One-character parameter names in public methods should be avoided.       |  |
+| Constants        | Constants are static final fields whose contents are deeply immutable (unchanging) and whose methods have no detectable side effects.        |  |
+| Local variable names        | Local variable names are written in lowerCamelCase.        |  |
+| Local variable names        | Even when final and immutable (but Non-Static) , local variables are not considered to be constants, and should not be styled as constants.       |  |
 
 ## Git Strategy
 
