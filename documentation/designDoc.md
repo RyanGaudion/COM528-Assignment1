@@ -1,5 +1,26 @@
 # Point of Sales - Design Doc & Project Plan
 
+
+## Table of Content
+
+
+## Use Cases
+
+### User Stories
+
+## Project Diagrams
+
+### UML Class Diagrams
+
+### UML Robustness Diagram
+
+### UI Wireframes
+
+## List of Features
+
+### Deliverables
+
+
 ## Task Assignment
 During this project we have split the Software Development Lifecycle (SDLC) into 3 main parts - Design, Development and Testing.
 
@@ -17,34 +38,18 @@ Each developer has responsibilities in each of these 3 areas.
 | SDLC Methodology  | Analyse and define a software development lifecycle technique that we will use as a team.  | Ryan Gaudion    |
 
 ### Development
+| Task        | Description | Assigned To |
+| ----------- | ----------- | ----------- |
+| ToDo        | ToDo        | ToDo        |
 
 ### Testing
+Every developer is responsible for writing tests for the code they implement. For example, the developer who writes a Model class should write the unit tests required to test every Get and Set method as well as any business logic methods the class implements. By making sure that all classes have Unit tests we can ensure our code has a great code coverage. This is especially important and useful when implementing Continious Integration as it allows us to identify breaking changes before they are even pulled into our development branch.
 
-Just split up the tasks in the Project and assign them below - for documentation
+There are however additional testing Tasks that need to be complete outside of the iniital Unit tests per class which you can see below:
+| Task        | Description | Assigned To |
+| ----------- | ----------- | ----------- |
+| ToDo        | ToDo        | ToDo        |
 
-Also add development tasks that are unassigned.
-
-Talk about everyone is responsbile for writing tests for their specfic coding work
-
-
-
-## Use Cases
-
-### User Stories
-
-## List of Features
-
-### Deliverables
-
-
-
-## Project Diagrams
-
-### UML Class Diagrams
-
-### UML Robustness Diagram
-
-### UI Wireframes
 
 ## Coding Standard - RG
 
