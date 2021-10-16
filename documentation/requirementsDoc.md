@@ -3,10 +3,53 @@
 
 ## Table of Content
 
+## Software Requirements
+The following section outlines the requirements that this piece of software should meet.
 
-## Use Cases
-
+<---
 ### User Stories
+The use cases for this project have been written in the form of "User Stories" which take the form of: As a role I want to action so that reason
+
+    As a User I want to be able to enter a new transaction so that Money can be taken from my account
+    As a User I want to be able to reverse a transaction so that Money can be refunded to my account
+    As a User I want the app to be able to check my credit card Lunn Code so that I know I haven't accidently entered wrong details
+    As a User I want to be able to Enter my credit card details (Card Number, Name, Expiry Date, CVV Code so that the money is taken from the correct account and that I can be associated with the transaction
+    As a User I want to be able to be able to enter a cash amount for a transaction so that the correct amount is taken from my account
+    As a User I want the app to be able to show the status of a transaction so that I can confirm or deny whether the transaction has been successful
+
+
+    As an Admin I want to be able to configure the device only once so that the device uses the same settings everytime
+    As an Admin when I configure the device I want to be able to supply Identity Credentials so that the device is able to authenticate to the API
+    As an Admin I want A log of all transactions in a local log file so that I can which transactions were successful and unsuccessful
+
+--->
+
+### Use Cases
+The following requirements are written from the perspective of what different users need from the application:
+
+| Use case ID  	| Actor 	| Action | Software Reaction |
+| ----------- 	| ----------| ----------- | ----------- |
+| UC1			| User 		| User enters in the [web address](url) for the banking application. | A web page opens, providing an interface that allows the user to navigate around to the other parts of the app. |
+| UC2			| User 		| A verified user visits a page allowing them to reverse their previous transactions. | A web page opens allowing the user to see all of their previous transactions, and the gives them the option to reverse (refund) them. |
+| UC3			| User 		| User opens the [page](design/url?) allowing them to pay for their purchase.	|  The page provides an interface where the user can enter their: card number, name, expiry date, cvv code. |
+| UC4			| User 		| User fails to enter data into the form. | The web page shows the user which fields are missing data, and allows the user to try again. |
+| UC5			| User 		| User enters incorrect card data into the form. | The web page must tell the user that their input was invalid, and allows them to try again. |
+| UC5			| User 		| User enters in all of the credit card data. | The application verifies the validity of the credit card data by using the [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm). <br /> On failure to enter valid data, the app warns the user of invalid data. <br /> If the data is valid, the system proceeds with the transaction. |
+| UC6			| User 		| The user confirms a purchase transaction. | The application transfers money from the users credit card equal to the total amount required by the order. If there is not enough money in the account, the transaction does not complete and the users is shown an error message.  |
+| UC7			| User 		| The user confirms a purchase transaction. | The application stores the transaction in a log file. The CVV number must not be stored by the application. |
+| UC8			| Admin		| Admin tries to configure a device. | The application needs to verify the credentials of the admin, so that they can access and modify the configuration settings. |
+| UC9			| Admin		| Admin tries to view a log of all transactions. | All transactions undertaken by users must be stored locally in a logfile, this logfile should be accssible for admins. |
+
+#### Functional Requirements
+
+* The CVV number must not be stored.
+* Users must only be able to access data & transactions associated with their account.
+
+
+#### Non Functional Requirements
+
+* The web page must complete user submissions within 1 second.
+
 
 ## Project Diagrams
 
