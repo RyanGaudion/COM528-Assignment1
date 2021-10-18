@@ -69,7 +69,7 @@ and decided that due to simplicity, ease of understanding as well as the readibi
 | Method Names        | Method names are typically verbs or verb phrases.       | |
 | Constant Names        | Constant names use CONSTANT_CASE: all uppercase letters, with each word separated from the next by a single underscore        | `NAMES` or   `EMPTY_ARRAY`   |
 | Constants        | Constants are static final fields whose contents are deeply immutable (unchanging) and whose methods have no detectable side effects.        |  |
-| Non-constant field names        | Non-constant field names (static or otherwise) are written in lowerCamelCase.        | `computedValues ` or  `index`|
+| Non-constant field names        | Non-constant field names (static or otherwise) are written in lowerCamelCase.        | `computedValues` or  `index`|
 | Non-constant field names        | These names are typically nouns or noun phrases.        | |
 | Parameter names        | Parameter names are written in lowerCamelCase.        | `loader` or  `minNumber`|
 | Parameter names        |One-character parameter names in public methods should be avoided.       | not `x` or `a`  |
