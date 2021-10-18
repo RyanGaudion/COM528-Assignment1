@@ -22,20 +22,21 @@
 
 
 ## Task Assignment
-During this project we have split the Software Development Lifecycle (SDLC) into 3 main parts - Design, Development and Testing.
+During this project we have split the Software Development Lifecycle (SDLC) into 3 main sections - Design/Documentation, Development/Unit Testing and Testing/Documentation.
 
-Each developer has responsibilities in each of these 3 areas.
+Each developer has responsibilities in each of these 3 areas which can be seen below:
 
 ### Design
 | Task      | Description | Assigned To |
 | ----------- | ----------- | ----------- |
-| Use Cases      | Define the use cases for the application and also write up the uses cases in the form of user stories       | Steven Hawkins      |
-| Features Definement   | Match Use Cases and User Stories to feature implementations for developers to write code for        | Steven Hawkins       |
-| Page Design   | Create UI Wireframe mockup designs for each page in the application   | Kain Peacock    |
-| UML Diagrams  | Create class diagrams and define relationships between models in the form of UML Diagrams as well as create UML Robusteness Diagrams to visualise Business Logic  | Lewis Holmes    |
-| Git Strategy  | Research, Analyse and Define a standard git strategy including branching techniques, approval/review process as well as CI pipeline/ automated testing implementation  | Ryan Gaudion    |
-| Coding Standard  | Research and Select a Java specific coding standard to implement during the development of this project  | Ryan Gaudion    |
-| SDLC Methodology  | Analyse and define a software development lifecycle technique that we will use as a team.  | Ryan Gaudion    |
+| Use Cases      | Define the use cases for the application and also write up the uses cases in the form of user stories.       | Steven Hawkins      |
+| Features Definement   | Match Use Cases and User Stories to feature implementations for developers to write code for.        | Steven Hawkins       |
+| Page Design   | Create UI Wireframe mockup designs for each page in the application.   | Kain Peacock    |
+| UML Diagrams  | Create class diagrams and define relationships between models in the form of UML Diagrams.  | Lewis Holmes    |
+| UML Diagrams  | Create a UML Robusteness Diagram to visualise the Business Logic within the application.  | Lewis Holmes    |
+| Git Strategy  | Research, Analyse and Define a standard git strategy including branching techniques, approval/review process as well as CI pipeline/ automated build implementation.  | Ryan Gaudion    |
+| Coding Standard  | Research and Select a Java specific coding standard to implement during the development of this project.  | Ryan Gaudion    |
+| SDLC Methodology  | Analyse and Define a software development lifecycle technique that we will use as a team.  | Ryan Gaudion    |
 
 ### Development
 | Task        | Description | Assigned To |
@@ -43,7 +44,7 @@ Each developer has responsibilities in each of these 3 areas.
 | ToDo        | ToDo        | ToDo        |
 
 ### Testing
-Every developer is responsible for writing tests for the code they implement. For example, the developer who writes a Model class should write the unit tests required to test every Get and Set method as well as any business logic methods the class implements. By making sure that all classes have Unit tests we can ensure our code has a great code coverage. This is especially important and useful when implementing Continious Integration as it allows us to identify breaking changes before they are even pulled into our development branch.
+Every developer is responsible for writing tests for the code they implement. For example, the developer who writes a Model class should write the unit tests required to test every Get and Set method inside of that class; as well as any business logic methods the class implements. By making sure that all classes have Unit tests we can ensure our code has a great code coverage. This is especially important and useful when implementing Continous Integration as it allows us to identify breaking changes before they are even pulled into our development branch.
 
 There are however additional testing Tasks that need to be complete outside of the iniital Unit tests per class which you can see below:
 | Task        | Description | Assigned To |
@@ -52,12 +53,10 @@ There are however additional testing Tasks that need to be complete outside of t
 
 
 ## Coding Standard
-Due to the fact there are 4 developers working on one project our code could look very different if we don't implement a standard for things like class naming conventions and variable naming conventions.
+Due to the fact there are 4 developers working on one project our code could look very different if we don't implement a standard for elements of the code such as class naming conventions and variable naming conventions.
 
-We compared both the Oracle Java Naming Conventions here - https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html
-as well as teh Google Java Naming Conventions here - https://google.github.io/styleguide/javaguide.html#s5-naming
+We compared both the [Oracle Java Naming Conventions][1] and the [Google Java Naming Conventions here][2] and decided due to many reasons that we'd implement the Google conventions in our code. One of the first reasons was due to the fact that the [Oracle Conventions][1] are now for "Archive Purposes Only" and were last updated in April 1999. This is compared to Google's Java Naming Convention which was last updated May 2018 as seen by the `f9347e1` commit in their [styleguide][3] repository. The other reasons we decided upon the Google style guide was due to the ease of which each standard could be understood. You can see below a simplified wording of this naming convention which the team have agreed to follow.
 
-and decided that due to simplicity, ease of understanding as well as the readibility it provides, we'll implement the Google Java Naming Conventions. A simplified wording of this Naming convention has been shown below which all developers have agreed to follow
 
 | Type        | Rule      | Examples    |
 | ----------- | ----------- | ----------- |
@@ -79,15 +78,21 @@ and decided that due to simplicity, ease of understanding as well as the readibi
 
 ## Git Strategy
 
-Talk about Git-Flow was the de-facto default https://nvie.com/posts/a-successful-git-branching-model/ - why??
-However in March 2020 Vincent Driessen added a note of reflection that git-flow was for applications where mulitple versions had to be maintained - not for something like web applications that only 1 version is every in deployment.
+The purpose of a Git strategy is to make all Developers aware of the process that code changes should go through before they are commited to the `master` branch. When using a well defined Git Strategy, no code should be able to enter the `master` branch without first passing all tests and in some cases be manually reviewed. The purpose of the stategy is to ensure broken code is not in the master branch.  
 
-Vincient points to Github-Flow which he says is a much simplier workflow instead of trying to shoe-horn into Git-flow
+One of the first Git Strategies to be adopted by the Developer Community was Vincent Driessen's "Git Flow" which was described in "[A successful Git branching model][4]". Out of familiarity, the team would have used this strategy, however a recent addition to the blog post in March 2020 (10 years after it's original release) suggests that GitFlow is not the best solution for applications that don't need to be "explicitly versioned". He also specifically points out "Web Apps" as "not the class of software that I had in mind when I wrote the blog post" and instead suggests a "much simplier workflow".  
 
+The workflow that he suggests as an alternative is "[Github Flow][5]" which is a much simplier workflow to follow. [GitHub Flow][5] suggests that the `master` branch should always be deployable meaning it always builds and all tests pass. The strategy also suggests that branches should be branched off of master for any feature or fix. This is the point at which we would need to adapt the Github Flow branching model to meet our needs better. We instead would need a branch called Dev the is branched off of master which all our feature/fix branches branch from. This is due to the fact that the way we are splitting up development between our team means that 1 developer's code might be dependent on the code of another developer. In an ideal situation, each developer would work on a stand alone piece of the project. This may work in the future once the core of the project is built however, to begin with, there will be dependencies between developers. In order to resolve this our dev branch will be the equivilent to the master branch in "Github Flow" without the requirement that the "branch is always deployable".  
 
-"There's only one rule: anything in the main branch is always deployable."
+If this project was to be a Production application then we would use the dev branch for the initial development of the application however, once the initial application was built, we would then use true [Github Flow][5] for any future features or fixes.  
 
-Slight difference is we will be branching from dev instead of master as we each have tasks that rely on each other - that way dev doesn't have to be fully working however we will have approval to get into main.
+Our adapted GitHub Strategy workflow for features/fixes can be seen below:
+1. **Create a Branch** - Use a descriptive name for the branch - it should describe what the fix/feature does
+2. **Add Commits** - Work on your code in the branch - making sure to use descriptive commit messages
+3. **Open a Pull Request** - Make sure to describe the solution provided by the branch in the Pull Request description
+4. **Discuss and review your code** - For a branch to be commited we have decided that at least 1 other developer in the team has to review the code changes before merging.
+5. **Deploy** - We also have decided that 1 developer should be able to successfully build the code, run all tests successfully as well as test the feature/bug fix that has been implemented.
+6. **Merge** - Once steps 4 & 5 have been complete, the code is ready to be merged into dev. Once merged, the original issue (if created) can now also be closed.
 
 ### Branching/ Pull Request Rules/Approval
 
@@ -147,3 +152,10 @@ Want to get all features implemented by X - deadlines
 ### Task Board in Github
 
 To manage our sprints/task assignment - use a github project which allows us to define a backlog, active tasks and then also tasks to be reviewed ...
+
+
+[1]: "https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html"
+[2]: "https://google.github.io/styleguide/javaguide.html#s5-naming"
+[3]: "https://github.com/google/styleguide"
+[4]: "https://nvie.com/posts/a-successful-git-branching-model/"
+[5]: "https://guides.github.com/introduction/flow/"
