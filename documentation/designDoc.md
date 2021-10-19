@@ -115,41 +115,54 @@ From this paper, we can conclude that by using a CI pipeline in our code we can 
 - Faster time for code to get from feature/fix branches to our shared codebase
 
 
-## Methodology - Agile & Scrum - Weekly Standups
+## Agile Methodology
 
-Using a condensed version of Scrum without the different roles
-https://www.atlassian.com/agile/scrum
+Order to provide process to the development work we were doing, it was decided as a team that we should implement a software developement lifecycle (SDLC) in order to manage the develpment work that we were completing as a team. We decided that in order to improve collaboration and communication within the development team we would follow an Agile development lifecycle. The improved collaboration this provided would be critical due to the fact that as a team we would be completing development work individually at different times of the day/week.
 
-4 Parts of Scrum are:
+We decided upon Agile after reading a Whitepaper from "Alon Koch" (the Course Director of "Global Knowledge") named "[12 Advantages of Agile Software Development][7]". Within this paper the main benefits that would relate most to a project of this size were a "Productive Development Team", "Good Quality Software" as well as "On Time" delivery of software.
+
+According to whitepaper, these 3 benefits were to be achieved through:
+- Short iterations of development with a "milestone" at the end of each iteration
+- An improved "focus on testing" and practices such as "coding standards" and "peer reviews" 
+
+In order to gain these benefits within our developement process we have decided to implement a simplified version of a "full-time" Agile framework. The reason we have not implemented a full framework is due to the fact that we are working only a small part of our work week on this project meaning that we want to be able to maximise the development time spent on the project. If we tried to implement a full framework then the majority of our time spent on the project would be working on the Agile process rather than the actual work.  
+
+In order to get the best balance between our framework and our development we have decided to adapt a version of [Scrum][8]. As described by Atlassian, there are 6 events that take part in a scrum cycle. However, we are able to condense these into the following 4 stages:
+
 - Sprint Planning
 - Daily Scrum
 - Sprint Review
 - Sprint Retrospective
 
-We are adapting this "full time" methodology to work for a team that's working part-time.
+In order to meet each of these 4 stages we have setup the following:
 
-We will have a sprint length of a week starting on a Wedensday with our Sprint Planning meeting:
-- During our sprint planning - We organsise our backlog and assign tasks for the week
+- A sprint length of 1 week
+- Weekly Sprint meetings were we can have our planning, review and sprint retrospective.
+- A Github Projects board in order to keep track of our backlog and work todo
+- Teams channel for daily updates
 
-We then work Thursday-Tuesday on the tasks in our Sprint
-During this sprint we don't have the time for daily standups as we're only working on the project a couple of hours a day.
-Instead we'll use our group communication channel as a way to discuss anything that would have been used in daily standups.
+We will have a sprint length of 1 week starting on a Wednesday with out Sprint Planning meeting. During this meeting we will organise our backlog and assign tasks to all developers for that week. We will then work Wednesday-Tuesday on our assigned tasks. During this sprint we don't have time for daily standup meetings as we will only be working on the project for a couple of hours. Instead we'll use our group's communication channel as a way to discuss status updates and any blockers anyone might have.  
 
-Sprint Review - Usually in Scrum you review the work that has been done at the end of every sprint. This naturally works for us as pull requests should be ready to be closed at the end of each sprint - this is where we'll review the work together ... quality
+Usually in a Scrum you review the work that has been done at the end of every sprint as part of the "Sprint Review", however for us the review of pull requests counts as our sprint review. This is due to the fact that most pull requests should be ready to close at the end of each sprint anyway. During these pull request review we'll check the code of other developers together to check for standard adherance, code quality as well as the fact that the feature or fix does as it was intended to.
 
-Sprint Retrospective - this will be the start of our Weekly meeting where we look back on the previous sprint ... what could be dont better, improvements ...
+Finally, we come back to our Wednesday meetings where we will start with our Sprint Retrospective - a time where we can reflect on the previous sprint and find areas in our process that could be improved for the next sprint.
 
 ### Milestones & Deadlines
+
+In order to keep track of milestones and deadlines we 
+
+
+To manage our sprints/task assignment - use a github project which allows us to define a backlog, active tasks and then also tasks to be reviewed ...
+Weekly Standups
+Backlog board
 
 Talk about - only 5 sprints for the project ...
 
 Want to get all features implemented by X - deadlines 
 
-...
 
-### Task Board in Github
 
-To manage our sprints/task assignment - use a github project which allows us to define a backlog, active tasks and then also tasks to be reviewed ...
+
 
 
 [1]: "https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html"
@@ -158,3 +171,5 @@ To manage our sprints/task assignment - use a github project which allows us to 
 [4]: "https://nvie.com/posts/a-successful-git-branching-model/"
 [5]: "https://guides.github.com/introduction/flow/"
 [6]: "http://cope.eecs.oregonstate.edu/papers/OpenSourceCIUsage.pdf"
+[7]: "https://cs.anu.edu.au/courses/comp3120/public_docs/WP_PM_AdvantagesofAgile.pdf"
+[8]: "https://www.atlassian.com/agile/scrum"
