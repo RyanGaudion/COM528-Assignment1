@@ -147,20 +147,17 @@ Usually in a Scrum you review the work that has been done at the end of every sp
 
 Finally, we come back to our Wednesday meetings where we will start with our Sprint Retrospective - a time where we can reflect on the previous sprint and find areas in our process that could be improved for the next sprint.
 
-### Milestones & Deadlines
+### Task Tracking
 
-In order to keep track of milestones and deadlines we 
+In order to keep track of milestones and deadlines we have leveraged the "Project" tool that is provided by Github. It provides a kanban style board for use in your project in order to keep track of tasks and task states. For our project we have the following columns:
+- Backlog - All tasks start in the backlog, this is our "todo" list of all tasks that have not yet been started.
+- In Progress - These are tasks that have been assigned for the sprint that week.
+- Pending Review - These are tasks that the developer has completed but need to be reviewed by another member of the team.
+- Done - These are tasks that have been both completed by the developer as well as reviewed by another team member
 
+Each week during our planning meeting we will update the state of all tasks, add any additional tasks to the backlog and then assign tasks for the next sprint.
 
-To manage our sprints/task assignment - use a github project which allows us to define a backlog, active tasks and then also tasks to be reviewed ...
-Weekly Standups
-Backlog board
-
-Talk about - only 5 sprints for the project ...
-
-Want to get all features implemented by X - deadlines 
-
-
+Due to the fact that we have a short timeline for this project our task board is really important in visualising how much work is left to complete as well as the progress of work during a week. It will allow us to see our "burndown rate" - how much work we are going through per week and will also allow us to speed up development if we are falling behind our deadline.
 
 
 
