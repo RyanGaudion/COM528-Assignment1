@@ -86,36 +86,34 @@ The workflow that he suggests as an alternative is "[Github Flow][5]" which is a
 
 If this project was to be a Production application then we would use the dev branch for the initial development of the application however, once the initial application was built, we would then use true [Github Flow][5] for any future features or fixes.  
 
+### Branching, Pull Requests and Approvals
+
 Our adapted GitHub Strategy workflow for features/fixes can be seen below:
 1. **Create a Branch** - Use a descriptive name for the branch - it should describe what the fix/feature does
 2. **Add Commits** - Work on your code in the branch - making sure to use descriptive commit messages
 3. **Open a Pull Request** - Make sure to describe the solution provided by the branch in the Pull Request description
-4. **Discuss and review your code** - For a branch to be commited we have decided that at least 1 other developer in the team has to review the code changes before merging.
+4. **Discuss and review your code** - For a branch to be commited we have decided that at least 1 other developer in the team has to review the code changes before merging and all automated tests will have to pass.
 5. **Deploy** - We also have decided that 1 developer should be able to successfully build the code, run all tests successfully as well as test the feature/bug fix that has been implemented.
 6. **Merge** - Once steps 4 & 5 have been complete, the code is ready to be merged into dev. Once merged, the original issue (if created) can now also be closed.
-
-### Branching/ Pull Request Rules/Approval
-
-Work should never be don directly in the dev or master branch (unless done by automation - such as a versioning pipeline).
-Team members should create a branch from dev to do their work and create a pull request back into dev once done.
-We then have 3 steps of before approval can be complete.
-Step 1 - Automated Unit Tests have to all pass - Explain ...
-Step 2 - Manual Review of code changes for quality, comments/javadoc and test coverage
-Step 3 - Manual User Test of Code to check for desired Functionality
-
-If the output branch is master then --> must be reviewed by 2 developers to check all works as intended 
-
-
-Like most software projects there will be a review & approval stage on every pull Request
 
 
 ### Ci Pipeline
 
-Added a Github Workflow pipeline in order to automatically build and subseqently run our tests on all commits to all branches and pull requests to dev and master.
+In order to assist with the testing of new code an automated workflow has been setup using Github Actions in order to automatically build the code with Maven which in turn automatically runs all unit tests in from the codebase. This is why it is important for us in order to write tests as we write our code so we can identify any issues in the codebase as they arise before their associated pull request is even merged.  
 
-Benefits of this
+The workflow is setup in order to execute on code pushes to all branches as well as any pull requests to dev or master. The benefits of this CI (Continuous Integration) are:
+- All Code is validated that it can build before it is merged into our main working branch (dev) and our production branch (master). This means that no code with syntaxical errors should ever enter our working branch. This means that developers should never have to spend time debugging another developers code just so they can test their own code.
 
-Reference to benefits of CI 
+- All Tests are run on all code for all new pull requests to dev. Due to the fact that within this project code should only enter the dev branch through a pull request - we are able to only accept code where all tests pass. In addition to this we have stated that all developers are responsible for writing tests for their own code, meaning that all pull requests would automatically test every developers code. These automateed tests should catch a large majority of the cases where a new feature/fix accidently breaks another developers code.
+
+
+In a 2016 paper named "[Usage, Costs, and Benefits of Continuous Integration in Open-Source Projects][6]" where over 34,500 open source repositories and over 1,500,000 automated builds were studied, it was found that, within Open Source Projects, when a CI pipeline is used the rate of releases was "double the release rate" of a project not using CI pipelines. However, it was also found that projects with CI pipelines are 5% less likely to accept pull requests. The explanation given in the paper is due to the fact that with CI all pull requests provide build information, meaning code that doesn't pass all tests won't be merged; whereas in a project with no CI it is more likely for code that doesn't pass tests to still be merged. The paper also concludes that pull requests on projects that use CI are usually merged over 25% faster than those without CI pipelines.
+
+From this paper, we can conclude that by using a CI pipeline in our code we can expect:
+- A greater release rater of features and fixes
+- Quicker identification of bugs
+- Faster time for code to get from feature/fix branches to our shared codebase
+
 
 ## Methodology - Agile & Scrum - Weekly Standups
 
@@ -159,3 +157,4 @@ To manage our sprints/task assignment - use a github project which allows us to 
 [3]: "https://github.com/google/styleguide"
 [4]: "https://nvie.com/posts/a-successful-git-branching-model/"
 [5]: "https://guides.github.com/introduction/flow/"
+[6]: "http://cope.eecs.oregonstate.edu/papers/OpenSourceCIUsage.pdf"
