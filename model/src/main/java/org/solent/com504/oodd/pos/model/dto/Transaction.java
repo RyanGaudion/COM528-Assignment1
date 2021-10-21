@@ -5,31 +5,36 @@
  */
 package org.solent.com504.oodd.pos.model.dto;
 
-import java.util.Date;
-
 /**
  *
  * @author rgaud
  */
 public class Transaction {
-    private final Card fromCard;
-    private final Card toCard;
-    private final Double amount;
-
+    private TransactionRequest transactionRequest;
+    private TransactionResponse transactionResponse;
     
-    public Transaction(Card from, Card to, Double amount){
-        this.fromCard = from;
-        this.toCard = to;
-        this.amount = amount;
+    
+    public TransactionRequest getTransactionRequest(){
+        return transactionRequest;
     }
     
-    public Card GetFromCard(){
-        return fromCard;
+    public TransactionResponse getTransactionResponse(){
+        return transactionResponse;
     }
-    public Card GetToCard(){
-        return toCard;
+    
+    public boolean setTransactionRequest(TransactionRequest request){
+        if(request != null){
+            transactionRequest = request;
+            return true;
+        }
+        return false;
     }
-    public Double GetAmount(){
-        return amount;
+    
+    public boolean setTransactionResponse(TransactionResponse response){
+        if(response != null){
+            transactionResponse = response;
+            return true;
+        }
+        return false;
     }
 }
