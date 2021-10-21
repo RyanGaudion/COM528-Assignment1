@@ -17,9 +17,11 @@
 
         <!-- pinpad CSS -->
         <link rel="stylesheet" type="text/css" href="public/styles/jquery.ui.pinpad.css">
+        
+        <!-- index CSS -->
         <link rel="stylesheet" type="text/css" href="public/styles/index.css">
 
-        <!-- external libraries -->
+        <!-- external libraries for pinpad -->
         <script src="external/jquery/jquery.js"></script>
         <script src="external/jquery-ui/jquery-ui.js"></script>
     </head>

@@ -66,8 +66,8 @@
             },
 
             /**
-             * Specify whether the correct command of the pinpad widget must clear the input
-             * content. If set to true, the correct command clears the pin pad input content,
+             * Specify whether the undo command of the pinpad widget must clear the input
+             * content. If set to true, the undo command clears the pin pad input content,
              * otherwise only the last inserted character is removed.
              */
             clear: false,
@@ -83,7 +83,7 @@
                 },
                 {
                     position: 1,
-                    name: "correct",
+                    name: "undo",
                     options: { icon: "ui-icon-caret-1-w", iconPosition: "end" }
                 },
                 {
@@ -105,7 +105,7 @@
             display: {
                 decPoint: ".",
                 cancel: "Cancel",
-                correct: "Correct",
+                undo: "Undo",
                 confirm: "Confirm"
             },
 
@@ -445,12 +445,12 @@
                             return;
                         case $.ui.keyCode.BACKSPACE:
                             if ( !this.options.clear ) {
-                                this.ppDiv.find( ".ui-pinpad-command-correct" ).click();
+                                this.ppDiv.find( ".ui-pinpad-command-undo" ).click();
                             }
                             break;
                         case $.ui.keyCode.DELETE:
                             if ( this.options.clear ) {
-                                this.ppDiv.find( ".ui-pinpad-command-correct" ).click();
+                                this.ppDiv.find( ".ui-pinpad-command-undo" ).click();
                             }
                             break;
                         case $.ui.keyCode.ENTER:
@@ -502,7 +502,7 @@
         _bindCommandEvents: function( button ) {
             this._on( button, {
                 click: function( event ) {
-                    if ( button.is( ".ui-pinpad-command-correct" ) ) {
+                    if ( button.is( ".ui-pinpad-command-undo" ) ) {
                         if ( this.options.clear ) {
                             this._clear();
                         } else {
@@ -526,12 +526,12 @@
             switch ( keyCode ) {
                 case $.ui.keyCode.BACKSPACE:
                     if ( !this.options.clear ) {
-                        buttons = this.ppDiv.find( ".ui-pinpad-command-correct" );
+                        buttons = this.ppDiv.find( ".ui-pinpad-command-undo" );
                     }
                     break;
                 case $.ui.keyCode.DELETE:
                     if ( this.options.clear ) {
-                        buttons = this.ppDiv.find( ".ui-pinpad-command-correct" );
+                        buttons = this.ppDiv.find( ".ui-pinpad-command-undo" );
                     }
                     break;
                 case $.ui.keyCode.ENTER:
