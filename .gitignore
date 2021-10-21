@@ -19,6 +19,7 @@ target/
 /bin/target/
 
 # Extra Required #
-/.classpath
-/*.project
-/.settings
+.classpath
+.project
+.settings
+.factorypath
