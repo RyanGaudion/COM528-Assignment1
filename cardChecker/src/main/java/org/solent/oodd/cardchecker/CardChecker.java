@@ -19,7 +19,7 @@ public class CardChecker {
      * @return boolean where true = valid and false = invalid.
      */
     public static boolean isValid(final String cardIn) {
-        logger.trace("This is a log4j message from : "+ CardChecker.class);
+        logger.error("This is a log4j message from : "+ CardChecker.class);
         return false;
     }
 }
