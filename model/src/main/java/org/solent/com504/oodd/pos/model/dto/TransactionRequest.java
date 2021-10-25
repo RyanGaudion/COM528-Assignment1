@@ -5,22 +5,25 @@
  */
 package org.solent.com504.oodd.pos.model.dto;
 
-import java.util.Date;
-
 /**
  *
  * @author rgaud
  */
 public class TransactionRequest {
-    private final Card fromCard;
-    private final Card toCard;
-    private final Double amount;
+    private Card fromCard = null;
+    private Card toCard = null;
+    private Double amount = null;
 
     
     public TransactionRequest(Card from, Card to, Double amount){
-        this.fromCard = from;
-        this.toCard = to;
+        fromCard = from;
+        toCard = to;
         this.amount = amount;
+    }
+    
+    public Boolean SetFromCard(Card card){
+        fromCard = card;
+        return true;
     }
     
     public Card GetFromCard(){
