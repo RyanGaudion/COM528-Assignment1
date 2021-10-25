@@ -34,31 +34,7 @@ The following requirements are written from the perspective of what different us
 | UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile, this logfile should be accssible for admins. |
 | UC11			| User		| User requests the app to perform any action. | The program must be able to complete user requests within 1 second. |
 | UC12			| Admin 	| Admin configures the device. | The identify credentials of the device need to be stored securely in a properties file. |
-| ?-UC13-?			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
-
-<!--
-### User Stories
-The use cases for this project have been written in the form of "User Stories" which take the form of: As a role I want to action so that reason
-
-    As a User I want to be able to enter a new transaction so that Money can be taken from my account
-    As a User I want to be able to reverse a transaction so that Money can be refunded to my account
-    As a User I want the app to be able to check my credit card Lunn Code so that I know I haven't accidently entered wrong details
-    As a User I want to be able to Enter my credit card details (Card Number, Name, Expiry Date, CVV Code so that the money is taken from the correct account and that I can be associated with the transaction
-    As a User I want to be able to be able to enter a cash amount for a transaction so that the correct amount is taken from my account
-    As a User I want the app to be able to show the status of a transaction so that I can confirm or deny whether the transaction has been successful
-
-
-    As an Admin I want to be able to configure the device only once so that the device uses the same settings everytime
-    As an Admin when I configure the device I want to be able to supply Identity Credentials so that the device is able to authenticate to the API
-    As an Admin I want A log of all transactions in a local log file so that I can which transactions were successful and unsuccessful
-	
-#### Requirements
-
-* The CVV number must not be stored.
-* Users must only be able to access data & transactions associated with their account.
-* The web page must complete user submissions within 1 second.
-
--->
+| UC13			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
 
 ## Project Diagrams
 
