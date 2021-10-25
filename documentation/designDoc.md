@@ -22,10 +22,10 @@ The following requirements are written from the perspective of what different us
 
 | Use case ID  	| Actor 	| Action | Software Reaction |
 | ----------- 	| ----------| ----------- | ----------- |
-| UC1			| User 		| User enters in the [web address](url) for the banking application. | A web page opens, providing a numpad interface that allows the user to navigate the application. |
+| UC1			| User 		| User enters in the [insert web address](url) for the banking application. | A web page opens, providing a numpad interface that allows the user to navigate the application. |
 | UC2			| User 		| User selects the option allowing them to pay for their purchase.	|  The application requests the user's card number, name, expiry date, cvv code. <br /> Fields are to only allow input of the correct format, and should use input methods that enforce this. |
-| UC3			| User 		| User fails to enter data into the form. | The app displays a helpful error message informing the user of what went wrong, and allows the user to try again. |
-| UC4			| User 		| User enters incorrect card data into the form. | The web page must tell the user that their input was invalid, and allows them to try again. |
+| UC3			| User 		| User fails to enter data. | The app displays a helpful error message informing the user of what went wrong, and allows the user to try again. |
+| UC4			| User 		| User enters incorrect card data. | The web page must tell the user that their input was invalid, and allows them to try again. |
 | UC5			| User 		| User enters in all of the credit card data. | The application verifies the validity of the credit card data by using the [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm). <br /> If the data is valid, the system proceeds with the transaction. |
 | UC6			| User 		| The user confirms a purchase transaction. | The application transfers money from the users credit card equal to the total amount required by the order. If there is not enough money in the account, the transaction does not complete and the users is shown an error message.  |
 | UC7			| User 		| The user confirms a purchase transaction. | The application stores all transactions locally in a log file. The CVV number must not be stored by the application. |
@@ -34,31 +34,7 @@ The following requirements are written from the perspective of what different us
 | UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile, this logfile should be accssible for admins. |
 | UC11			| User		| User requests the app to perform any action. | The program must be able to complete user requests within 1 second. |
 | UC12			| Admin 	| Admin configures the device. | The identify credentials of the device need to be stored securely in a properties file. |
-| ?-UC13-?			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
-
-<!--
-### User Stories
-The use cases for this project have been written in the form of "User Stories" which take the form of: As a role I want to action so that reason
-
-    As a User I want to be able to enter a new transaction so that Money can be taken from my account
-    As a User I want to be able to reverse a transaction so that Money can be refunded to my account
-    As a User I want the app to be able to check my credit card Lunn Code so that I know I haven't accidently entered wrong details
-    As a User I want to be able to Enter my credit card details (Card Number, Name, Expiry Date, CVV Code so that the money is taken from the correct account and that I can be associated with the transaction
-    As a User I want to be able to be able to enter a cash amount for a transaction so that the correct amount is taken from my account
-    As a User I want the app to be able to show the status of a transaction so that I can confirm or deny whether the transaction has been successful
-
-
-    As an Admin I want to be able to configure the device only once so that the device uses the same settings everytime
-    As an Admin when I configure the device I want to be able to supply Identity Credentials so that the device is able to authenticate to the API
-    As an Admin I want A log of all transactions in a local log file so that I can which transactions were successful and unsuccessful
-	
-#### Requirements
-
-* The CVV number must not be stored.
-* Users must only be able to access data & transactions associated with their account.
-* The web page must complete user submissions within 1 second.
-
--->
+| UC13			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
 
 ## Project Diagrams
 
