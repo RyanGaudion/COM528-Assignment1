@@ -1,12 +1,40 @@
 # Point of Sales - Design Doc & Project Plan
 
 
-## Table of Content
+## Table of Contents
 
+## Requirements
+The following section outlines the requirements for the software to meet the [design brief](https://learn.solent.ac.uk/pluginfile.php/2938474/mod_resource/content/1/Assessment%20Brief%20-%20COM528-504%20-%20AE1%20-%20GROUP%20%282021-2022%29%201.0.pdf).
 
-## Use Cases
+### Software Design Requirements
+This application must be created using the following technologies:
+* A [RESTful](https://www.codecademy.com/articles/what-is-rest) web app.
+* The application must access the API located here: http://com528bank.ukwest.cloudapp.azure.com:8080/index.html
+* Uses Java technologies for the backend.
+* Javascript & css for the web interface.
+* Unit testing coverage for each module of the project.
+* Use a logging framework for debugging.
+* All classes need to be documented with Javadoc.
+* Error handling that provides meaningful messages for the user.
 
-### User Stories
+### Use Cases
+The following requirements are written from the perspective of what different users need from the application:
+
+| Use case ID  	| Actor 	| Action | Software Reaction |
+| ----------- 	| ----------| ----------- | ----------- |
+| UC1			| User 		| User enters in the [insert web address](url) for the banking application. | A web page opens, providing a numpad interface that allows the user to navigate the application. |
+| UC2			| User 		| User selects the option allowing them to pay for their purchase.	|  The application requests the user's card number, name, expiry date, cvv code. <br /> Fields are to only allow input of the correct format, and should use input methods that enforce this. |
+| UC3			| User 		| User fails to enter data. | The app displays a helpful error message informing the user of what went wrong, and allows the user to try again. |
+| UC4			| User 		| User enters incorrect card data. | The web page must tell the user that their input was invalid, and allows them to try again. |
+| UC5			| User 		| User enters in all of the credit card data. | The application verifies the validity of the credit card data by using the [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm). <br /> If the data is valid, the system proceeds with the transaction. |
+| UC6			| User 		| The user confirms a purchase transaction. | The application transfers money from the users credit card equal to the total amount required by the order. If there is not enough money in the account, the transaction does not complete and the users is shown an error message.  |
+| UC7			| User 		| The user confirms a purchase transaction. | The application stores all transactions locally in a log file. The CVV number must not be stored by the application. |
+| UC8			| User 		| A user visits a page allowing them to reverse their previous transactions. | The application displays their previous transactions, and the gives them the option to reverse (refund) it. |
+| UC9			| Admin		| Admin tries to configure a device. | The application needs to verify the credentials of the admin, so that they can access and modify the configuration settings. |
+| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile, this logfile should be accssible for admins. |
+| UC11			| User		| User requests the app to perform any action. | The program must be able to complete user requests within 1 second. |
+| UC12			| Admin 	| Admin configures the device. | The identify credentials of the device need to be stored securely in a properties file. |
+| UC13			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
 
 ## Project Diagrams
 
