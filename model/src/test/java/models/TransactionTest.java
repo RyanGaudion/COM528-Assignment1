@@ -58,9 +58,6 @@ public class TransactionTest {
         assertEquals("3334", req.GetToCard().GetCVV());        
         assertEquals("343", req.GetFromCard().GetCVV());
         assertEquals("0000000000000000", req.GetFromCard().GetCardNumber());        
-        assertEquals("0002000200020002", req.GetToCard().GetCardNumber());
-
-
-        
+        assertEquals("0002000200020002", req.GetToCard().GetCardNumber()); 
     }
 }
