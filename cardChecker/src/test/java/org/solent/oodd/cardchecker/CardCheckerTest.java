@@ -44,8 +44,9 @@ public class CardCheckerTest {
         System.out.println("isValid");
         String cardIn = "";
         boolean expResult = false;
-        boolean result = CardChecker.isValid(cardIn);
-        assertEquals(expResult, result);
+        CardValidationResult result = CardChecker.checkValidity(cardIn);
+        assertEquals(expResult, result.getIsValid());
+        
     }
     
 }
