@@ -9,7 +9,9 @@
     <groupId>org.solent.oodd</groupId>
     <artifactId>cardChecker</artifactId>
     <packaging>jar</packaging>
-    
+
+
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
         <dependency>
@@ -42,4 +44,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
 </project>
