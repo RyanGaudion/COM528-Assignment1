@@ -11,8 +11,7 @@ import org.solent.com504.oodd.pos.model.dto.*;
  *
  * @author rgaud
  */
-public interface IBankClient {
-    
+public interface IBankService {    
     //Returns Transactionresponse but merges this with request inside of the method
     public Transaction SendTransaction(TransactionRequest req);
 
