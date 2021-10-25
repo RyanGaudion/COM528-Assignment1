@@ -80,4 +80,5 @@ public class CardTest {
             Assert.fail("string formatter failed");
         }
     }
+    
 }

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.oodd.pos.model.dto;
+package org.solent.com504.oodd.pos.model.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.solent.com504.oodd.pos.model.dto.Card;
 
 /**
  *
