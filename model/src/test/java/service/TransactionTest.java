@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package service;
 
+import org.solent.com504.oodd.pos.model.service.Transaction;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.solent.com504.oodd.pos.model.dto.*;

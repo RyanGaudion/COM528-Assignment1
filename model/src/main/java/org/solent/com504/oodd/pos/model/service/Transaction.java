@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.com504.oodd.pos.model.dto;
+package org.solent.com504.oodd.pos.model.service;
+
+import org.solent.com504.oodd.pos.model.dto.TransactionRequest;
+import org.solent.com504.oodd.pos.model.dto.TransactionResponse;
 
 /**
  *

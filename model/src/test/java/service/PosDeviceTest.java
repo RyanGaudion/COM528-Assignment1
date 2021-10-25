@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package models;
+package service;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.solent.com504.oodd.pos.model.dto.Card;
-import org.solent.com504.oodd.pos.model.dto.PosDevice;
-import org.solent.com504.oodd.pos.model.dto.Transaction;
+import org.solent.com504.oodd.pos.model.service.PosDevice;
+import org.solent.com504.oodd.pos.model.service.Transaction;
 import org.solent.com504.oodd.pos.model.dto.TransactionRequest;
 import org.solent.com504.oodd.pos.model.dto.TransactionResponse;
 
