@@ -187,7 +187,9 @@ Each week during our planning meeting we will update the state of all tasks, add
 
 Due to the fact that we have a short timeline for this project our task board is really important in visualising how much work is left to complete as well as the progress of work during a week. It will allow us to see our "burndown rate" - how much work we are going through per week and will also allow us to speed up development if we are falling behind our deadline.
 
+### Class and Robustness Diagrams
 
+Robustness diagrams describe the system usage in the context of the object model. This allows for a clear and unambiguous explanation on how the model, its classes, and the operational processes work within the application. In order to create a robustness diagram, one must first identify the main classes, abstractions and objects, that will be used. Once identified and the use case is understood, the robustness diagram is created; Creating a technical overview and explanation on the use of the application.  
 
 
 [1]: "https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html"
