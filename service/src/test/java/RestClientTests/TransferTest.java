@@ -33,6 +33,9 @@ public class TransferTest {
     BankClient BC = new BankClient();
     DateFormat dateFormat = new SimpleDateFormat("MMyy");
     
+    /**
+     * Performs a transaction between an invalid from card and a valid to card, which should fail.
+     */
     @Test
     public void invalidFromCardTest(){
         Card fromCard = new Card();
@@ -58,7 +61,10 @@ public class TransferTest {
         assertEquals (response.TransactionStatus.toString(), "FAIL");
     }
     
-        
+    
+    /**
+     * Performs a transaction between a valid from card and an invalid to card, which should fail.
+     */
     @Test
     public void invalidToCardTest(){
         
@@ -84,8 +90,10 @@ public class TransferTest {
         
         assertEquals (response.TransactionStatus.toString(), "FAIL");
     }
-    
-        @Test
+    /**
+     * Performs a transaction between an valid from card and a valid to card, which should succeed.
+     */
+    @Test
     public void ValidTransactionTest(){
         
         Card fromCard = new Card();
@@ -117,34 +125,39 @@ public class TransferTest {
         assertEquals (response.TransactionStatus.toString(), "SUCCESS");
     }
     
-        public void InvalidTransactionAmountTest(){
-        
-        Card fromCard = new Card();
-        fromCard.SetName("Valid From Card");
-        fromCard.SetCVV("111");
-        fromCard.SetCardNumber("374245455400126");      
-        try{
-            Date expiryDate = dateFormat.parse("0523");
-            fromCard.SetExpiryDate(expiryDate);
-        }
-        catch (ParseException e){
-            e.printStackTrace();
-        }
-        
-        Card toCard = new Card();
-        toCard.SetName("Valid To Card");
-        toCard.SetCVV("222");
-        toCard.SetCardNumber("5425233430109903");      
-        try{
-            Date expiryDate = dateFormat.parse("0423");
-            fromCard.SetExpiryDate(expiryDate);
-        }
-        catch (ParseException e){
-            e.printStackTrace();
-        }
-       
-        TransactionResponse response =  BC.TransferMoney(fromCard, toCard, new Double(-50));
-        
-        assertEquals (response.TransactionStatus.toString(), "FAIL");
+    /**
+     * Performs a transaction between 2 valid credit cards of a sum of -50, which should fail.
+     */
+
+    @Test
+    public void InvalidTransactionAmountTest(){
+
+    Card fromCard = new Card();
+    fromCard.SetName("Valid From Card");
+    fromCard.SetCVV("111");
+    fromCard.SetCardNumber("374245455400126");      
+    try{
+        Date expiryDate = dateFormat.parse("0523");
+        fromCard.SetExpiryDate(expiryDate);
+    }
+    catch (ParseException e){
+        e.printStackTrace();
+    }
+
+    Card toCard = new Card();
+    toCard.SetName("Valid To Card");
+    toCard.SetCVV("222");
+    toCard.SetCardNumber("5425233430109903");      
+    try{
+        Date expiryDate = dateFormat.parse("0423");
+        fromCard.SetExpiryDate(expiryDate);
+    }
+    catch (ParseException e){
+        e.printStackTrace();
+    }
+
+    TransactionResponse response =  BC.TransferMoney(fromCard, toCard, new Double(-50));
+
+    assertEquals (response.TransactionStatus.toString(), "FAIL");
     }
 }
