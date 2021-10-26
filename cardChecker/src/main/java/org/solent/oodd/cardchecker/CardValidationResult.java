@@ -23,7 +23,5 @@ public class CardValidationResult {
     
     public Boolean getIsValid(){
         return this.isValid;
-    }
-    
-    
+    }     
 }
