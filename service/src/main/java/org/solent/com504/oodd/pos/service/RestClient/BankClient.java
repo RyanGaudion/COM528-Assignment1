@@ -36,8 +36,13 @@ public class BankClient {
         LOG.info("Commencing transaction of £"+transferAmount + " from " + fromCard.GetName() + " to " + toCard.GetName());
         
         // create new logging client for get request 
-        Client client = ClientBuilder.newClient((Configuration) new ClientConfig().register(
-                new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
+        Client client = ClientBuilder.newClient(new ClientConfig().register(
+                new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
+                        Level.INFO, LoggingFeature.Verbosity.PAYLOAD_ANY, 10000)));
+        
+        
+        
+        
         //decode the json response
         client.register(JacksonJsonProvider.class);
         //send get request
