@@ -25,8 +25,6 @@ public class CardChecker {
      * @return CardValidationResult informing on pass/fail of check.
      */
     public static CardValidationResult checkValidity(final String cardInput) {
-        logger.error("This is a log4j message from : " + CardChecker.class);
-
         /**
          * Null values should not be accepted.
          */
@@ -40,16 +38,21 @@ public class CardChecker {
          */
         String cardNumber = cardInput.replaceAll("[^0-9]+$", ""); // Remove all non-numerics.
         if (cardInput.length() < 13 || cardInput.length() > 19) {
-            logger.error(CardChecker.class + ": Bad card length.");
+            logger.error(CardChecker.class + ": Bad card length for " + cardInput);
             return new CardValidationResult(false, "Card length fell outside of appropriate range.");
         }
 
         if (!checkLuhn(cardNumber)) {
             return new CardValidationResult(false, cardNumber + ": Failed Luhn check");
         }
-
-        // TODO: Get card company.
-        return new CardValidationResult(true, "Card verified.");
+        
+        CardCompany cc = CardCompany.detect(cardNumber);
+        if (cc == CardCompany.UNKNOWN) {
+            logger.debug(CardChecker.class + " CC Check, No." + cardNumber + ", cc: " + cc );
+            return new CardValidationResult(false ,"Failed card company check.");
+        }
+        
+        return new CardValidationResult("Card verified.", cc);
     }
 
     private static int sumDigits(String cardNo, boolean ignoreLastDigit) {

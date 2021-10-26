@@ -22,16 +22,16 @@ public class CardValidationResultTest {
     
     public CardValidationResultTest() {
     }
-    
+
     /**
-     * Test of getError method, of class CardValidationResult.
+     * Test of getMessage method, of class CardValidationResult.
      */
     @Test
-    public void testGetError() {
+    public void testGetMessage() {
         logger.debug("getError");
         CardValidationResult instance = new CardValidationResult(false, "error msg");
         String expResult = "error msg";
-        String result = instance.getError();
+        String result = instance.getMessage();
         assertEquals(expResult, result);
     }
 
@@ -44,6 +44,18 @@ public class CardValidationResultTest {
         CardValidationResult instance = new CardValidationResult(false, "error msg");;
         Boolean expResult = false;
         Boolean result = instance.getIsValid();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getCardCompany method, of class CardValidationResult.
+     */
+    @Test
+    public void testGetCardCompany() {
+        logger.debug("getCardCompany");
+        CardValidationResult instance = new CardValidationResult("msg", CardCompany.JCB);;
+        CardCompany expResult = CardCompany.JCB;
+        CardCompany result = instance.getCardCompany();
         assertEquals(expResult, result);
     }
     

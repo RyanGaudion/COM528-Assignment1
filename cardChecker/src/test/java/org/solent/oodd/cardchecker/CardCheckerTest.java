@@ -4,6 +4,8 @@
  */
 package org.solent.oodd.cardchecker;
 
+import java.util.AbstractMap.SimpleEntry;
+import java.util.Map.Entry;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,13 +16,13 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 /**
- *
+ * Test numbers sourced from: https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm
  * @author Steven
  */
 public class CardCheckerTest {
 
     public static Logger logger = LogManager.getLogger(CardCheckerTest.class);
-    String[] validCards;
+    java.util.List<java.util.Map.Entry<CardCompany, String>> cards = new java.util.ArrayList<>();
     String[] invalidCards;
 
     public CardCheckerTest() {
@@ -28,11 +30,8 @@ public class CardCheckerTest {
 
     @BeforeAll
     public void setUpClass() {
-        logger.debug("Setup the test");
-        this.validCards = new String[]{"378282246310005", "371449635398431", "378734493671000",
-            "5610591081018250", "30569309025904", "38520000023237", "6011111111111117",
-            "6011000990139424", "3530111333300000", "3566002020360505", "5555555555554444",
-            "5105105105105100", "4111111111111111", "4012888888881881", "4222222222222"};
+        logger.debug(CardCheckerTest.class + " Setup the test");
+        cards = TestResources.getCardPairs();
         this.invalidCards = new String[]{"", "abcdefghijklmno", "11111111111111", "0", "55555555abc554444"};
     }
 
@@ -40,11 +39,11 @@ public class CardCheckerTest {
      * Test of isValid method, of class CardChecker.
      */
     @Test
-    public void testIsValid() {
-        logger.debug("testIsValid");
+    public void testCheckValidityBadInputs() {
+        logger.debug("testCheckValidityBadInputs");
         setUpClass();
-        for (String cardIn : validCards) {
-            boolean expResult = true;
+        for (String cardIn : invalidCards) {
+            boolean expResult = false;
             CardValidationResult result = CardChecker.checkValidity(cardIn);
             assertEquals(expResult, result.getIsValid());
         }
@@ -54,13 +53,14 @@ public class CardCheckerTest {
      * Test of isValid method, of class CardChecker.
      */
     @Test
-    public void testIsValidBadInputs() {
-        logger.debug("testIsValidBadInputs");
+    public void testCheckValidity() {
+        logger.debug("testCheckValidity");
         setUpClass();
-        for (String cardIn : invalidCards) {
-            boolean expResult = false;
-            CardValidationResult result = CardChecker.checkValidity(cardIn);
+        for (Entry<CardCompany, String> pair : cards) {
+            boolean expResult = true;
+            CardValidationResult result = CardChecker.checkValidity(pair.getValue());
             assertEquals(expResult, result.getIsValid());
+            assertEquals(pair.getKey(), result.getCardCompany());
         }
     }
 }

@@ -11,13 +11,25 @@ package org.solent.oodd.cardchecker;
 public class CardValidationResult {
     private String message;
     private Boolean isValid;
+    private CardCompany cardCompany;
     
-    public CardValidationResult(Boolean isValid, String error) {
-        this.message = error;
+    public CardValidationResult(Boolean isValid, String message) {
+        this.cardCompany = CardCompany.UNKNOWN;
+        this.message = message;
         this.isValid = isValid;
     }
     
-    public String getError() {
+    public CardValidationResult(String message, CardCompany cardCompany) {
+        this.isValid = true;
+        this.message = message;
+        this.cardCompany = cardCompany;
+    }
+    
+    public CardCompany getCardCompany() {
+        return this.cardCompany;
+    }
+    
+    public String getMessage() {
         return this.message;
     }
     
