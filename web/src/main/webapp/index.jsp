@@ -4,38 +4,52 @@
     Updated on : 21 Oct 2021, 12:07:00
     Authors     : rgaudion, rpriest
 --%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%
+    // retrieve the stored users list from the session
+    List<String> users = (List<String>) session.getAttribute("users");
+    //if (users == null) {
+    //    users = new ArrayList<String>();
+    //    session.setAttribute("users", users);
+    //}
 
+    String cardnum = request.getParameter("cardNum");
+    String cardcvv = request.getParameter("cardCVV");
+    String amount = request.getParameter("transactionAmount");
+    String menuitem = request.getParameter("menuItem");
+    String userresponse = request.getParameter("userResponse");
+
+    // button.ui-pinpad-command ui-button ui-corner-all ui-widget ui-pinpad-command-confirm
+    //if ("getResponse".equals(action)) {
+    //    users.remove(name);
+    //} else if ("addUser".equals(action)) {
+    //    users.add(name);
+    //}
 %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>POS Device</title>
-        <!-- jQuery UI theme -->
-        <link rel="stylesheet" type="text/css" href="external/jquery-ui/jquery-ui.css">
-
-        <!-- pinpad CSS -->
-        <link rel="stylesheet" type="text/css" href="public/styles/jquery.ui.pinpad.css">
         
         <!-- index CSS -->
         <link rel="stylesheet" type="text/css" href="public/styles/index.css">
-
-        <!-- external libraries for pinpad -->
-        <script src="external/jquery/jquery.js"></script>
-        <script src="external/jquery-ui/jquery-ui.js"></script>
+        
     </head>
     <body>
-        <div id="main">
-            <div id="pininput">
-                <p>
-                    <input id="pinpad" title="Input Here" maxlength="20">
-                </p>
+        <div id="div-container">
+            <div id="div-pininput"></div>
+            <div id="div-pinpad"></div>
             </div>
+        <div id="div-cmd">
+            <button id="btncancel" class="btn-style">Cancel</button>
+            <button id="btnundo" class="btn-style">Undo</button>
+            <button id="btnconfirm" class="btn-style">Confirm</button>
         </div>
-
-        <!-- pinpad widget -->
+        <!-- page script -->
         <script src="public/scripts/index.js"></script>
-        <script src="public/scripts/jquery.ui.pinpad.js"></script>
     </body>
 </html>
