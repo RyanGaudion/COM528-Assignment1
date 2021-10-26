@@ -43,7 +43,6 @@ The following requirements are written from the perspective of what different us
 A class diagram is used to describe classes and their relationships within the application. They corresspond with the classes in the source code. This allows for users and developers to quickly glance at a class, and it's relationships with other classes without having to look into the source code, which is often separated into many locations throughout the application.
 
 ![](/documentation/Images/pos.model.service_classDiagram.PNG)
-![](/documentation/Images/pos.model.pto_classDiagram.PNG)
 
 ### UML Robustness Diagram
 
