@@ -40,9 +40,37 @@ The following requirements are written from the perspective of what different us
 
 ### UML Class Diagrams
 
+A class diagram is used to describe classes and their relationships within the application. They corresspond with the classes in the source code. This allows for users and developers to quickly glance at a class, and it's relationships with other classes without having to look into the source code, which is often separated into many locations throughout the application.
+
+![](/documentation/Images/pos.model.service_classDiagram.PNG)
+
 ### UML Robustness Diagram
 
+Robustness diagrams describe the system usage in the context of the object model. This allows for a clear and unambiguous explanation on how the model, its classes, and the operational processes work within the application. In order to create a robustness diagram, one must first identify the main classes, abstractions and objects, that will be used. Once identified and the use case is understood, the robustness diagram is created; Creating a technical overview and explanation on the use of the application. 
+
+![](/documentation/Images/BankAccountRobustness.PNG)
+
 ### UI Wireframes
+
+UI Wireframes are incredibly useful during the design stage, as it allows for quick mockups of the proposed design that can quickly be reviewed and edited. Once the wireframes are finalised, the development team will use the designs as templates when creating the front-end UI. The first wireframes created were for a full bak service client, including pages for creating accounts, managing transactions and requesting refunds.
+
+![](/documentation/Images/Wireframes/Archive/Account_List.png)
+
+![](/documentation/Images/Wireframes/Archive/Account_Viewer.png)
+
+![](/documentation/Images/Wireframes/Archive/Transaction_Viewer.png)
+
+![](/documentation/Images/Wireframes/Archive/JSON_Viewer.png)
+
+![](/documentation/Images/Wireframes/Archive/New_Transaction.png)
+
+Sadly the assessment criteria was misunderstood, and these wireframes are not relevant to the solution. As the solution requires a pin-pad style UI, a new wireframe diagram had to be created.
+
+![](/documentation/Images/Wireframes/Pin_Pad.png)
+
+Menu system flow diagram:
+
+![](/documentation/Images/MenuSystemFlow.png)
 
 ## List of Features
 
@@ -186,8 +214,6 @@ In order to keep track of milestones and deadlines we have leveraged the "Projec
 Each week during our planning meeting we will update the state of all tasks, add any additional tasks to the backlog and then assign tasks for the next sprint.
 
 Due to the fact that we have a short timeline for this project our task board is really important in visualising how much work is left to complete as well as the progress of work during a week. It will allow us to see our "burndown rate" - how much work we are going through per week and will also allow us to speed up development if we are falling behind our deadline.
-
-
 
 
 [1]: "https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html"

@@ -1,0 +1,23 @@
+@startuml
+class java.text.DateFormat
+class java.text.SimpleDateFormat
+class java.util.ArrayList
+class java.util.Date
+class java.util.List
+class org.solent.com504.oodd.pos.model.dto.Card
+class org.solent.com504.oodd.pos.model.dto.TransactionRequest
+class org.solent.com504.oodd.pos.model.dto.TransactionResponse
+class org.solent.com504.oodd.pos.model.service.PosDevice
+class org.solent.com504.oodd.pos.model.service.Transaction
+enum org.solent.com504.oodd.pos.model.dto.TransactionStatus
+interface org.solent.com504.oodd.pos.model.service.IBankService
+org.solent.com504.oodd.pos.model.dto.Card ..> java.text.DateFormat
+org.solent.com504.oodd.pos.model.dto.Card ..> java.text.SimpleDateFormat
+org.solent.com504.oodd.pos.model.dto.Card ..> java.util.Date
+org.solent.com504.oodd.pos.model.dto.TransactionResponse ..> java.util.Date
+org.solent.com504.oodd.pos.model.service.PosDevice ..> java.util.ArrayList
+org.solent.com504.oodd.pos.model.service.PosDevice ..> java.util.List
+org.solent.com504.oodd.pos.model.service.PosDevice ..> org.solent.com504.oodd.pos.model.dto.Card
+org.solent.com504.oodd.pos.model.service.Transaction ..> org.solent.com504.oodd.pos.model.dto.TransactionRequest
+org.solent.com504.oodd.pos.model.service.Transaction ..> org.solent.com504.oodd.pos.model.dto.TransactionResponse
+@enduml
