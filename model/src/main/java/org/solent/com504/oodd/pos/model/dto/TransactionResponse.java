@@ -5,12 +5,14 @@
  */
 package org.solent.com504.oodd.pos.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 
 /**
  *
  * @author rgaud
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TransactionResponse {
     private int code;
     private String message;

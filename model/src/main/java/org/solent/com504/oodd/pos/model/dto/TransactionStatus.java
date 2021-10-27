@@ -5,10 +5,15 @@
  */
 package org.solent.com504.oodd.pos.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  *
  * @author rgaud
  */
 public enum TransactionStatus{
-    SUCCESS, FAIL
+    @JsonProperty("SUCCESS")
+    SUCCESS, 
+    @JsonProperty("FAIL")
+    FAIL
 }
