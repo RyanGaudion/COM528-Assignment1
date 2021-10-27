@@ -21,6 +21,21 @@ public class TransactionRequest {
         this.amount = amount;
     }
     
+    public boolean SetFromCard(Card card){
+        this.fromCard = card;
+        return true;
+    }
+    
+    public boolean SetToCard(Card card){
+        this.toCard = card;
+        return true;
+    }
+    
+    public boolean SetAmount(double amount){
+        this.amount = amount;
+        return true;
+    }
+    
     public Card GetFromCard(){
         return fromCard;
     }

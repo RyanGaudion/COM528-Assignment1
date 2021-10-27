@@ -7,10 +7,11 @@ package org.solent.com504.oodd.pos.service.restClient;
 
 
 import java.util.logging.Level;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
@@ -25,16 +26,18 @@ import org.solent.com504.oodd.pos.model.dto.*;
  * @author rgaud
  */
 public class BankClient {
-    final Logger logger;
-    final String urlStr;
-    
-    public BankClient(String bankURL){
-        urlStr = bankURL;
-        logger = Logger.getLogger(BankClient.class.getName());
+
+    static final Logger logger = LogManager.getLogger(BankClient.class.getName());
+
+    String urlStr;
+
+    public BankClient(String urlStr) {
+        this.urlStr = urlStr;
     }
-    
-    
-    public TransactionResponse TransferMoney(TransactionRequest request){
+
+    public TransactionResponse TransferMoney(Card fromCard, Card toCard, Double amount) {
+        logger.info("transfer hit");
+
         // sets up logging for the client       
         Client client = ClientBuilder.newClient(new ClientConfig().register(
                 new LoggingFeature(java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME),
@@ -44,15 +47,17 @@ public class BankClient {
         client.register(JacksonJsonProvider.class);
 
         WebTarget webTarget = client.target(urlStr).path("/transactionRequest");
-        logger.log(Level.INFO, webTarget.getUri().toString());
+
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 
-        Response response = invocationBuilder.post(request);
+        TransactionRequest transactionRequest = new TransactionRequest(fromCard, toCard, amount);
+        Response response = invocationBuilder.post(Entity.entity(transactionRequest, MediaType.APPLICATION_JSON));
 
-        TransactionResponse replyMessage = response.readEntity(TransactionResponse.class);
-        //LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + replyMessage);
+        TransactionResponse transactionResponse = response.readEntity(TransactionResponse.class);
 
-        //return replyMessage.getCardValidationResult().isValid();
-        return replyMessage;
+        logger.info("Response: " + response.getStatus() + " TransactionResponse: " + transactionResponse);
+
+        return transactionResponse;
+
     }
 }
