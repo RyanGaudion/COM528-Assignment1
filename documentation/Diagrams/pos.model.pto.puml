@@ -1,0 +1,13 @@
+@startuml
+class java.text.DateFormat
+class java.text.SimpleDateFormat
+class java.util.Date
+class org.solent.com504.oodd.pos.model.dto.Card
+class org.solent.com504.oodd.pos.model.dto.TransactionRequest
+class org.solent.com504.oodd.pos.model.dto.TransactionResponse
+enum org.solent.com504.oodd.pos.model.dto.TransactionStatus
+org.solent.com504.oodd.pos.model.dto.Card ..> java.text.DateFormat
+org.solent.com504.oodd.pos.model.dto.Card ..> java.text.SimpleDateFormat
+org.solent.com504.oodd.pos.model.dto.Card ..> java.util.Date
+org.solent.com504.oodd.pos.model.dto.TransactionResponse ..> java.util.Date
+@enduml
