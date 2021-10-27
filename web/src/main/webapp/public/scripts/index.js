@@ -66,27 +66,21 @@ document.onclick = function(event) {
     var el = event.target;
     if (el.className === "div-num" && el.nodeName === "DIV") {
         let divbutton = document.getElementById(el.id);
-        let divpininput = document.getElementById("div-pininput");
+        let txtpininput = document.getElementById("txtpininput");
         userentry += divbutton.title;
-        divpininput.innerHTML = `${userentry}`;
+        txtpininput.value = `${userentry}`;
     };
 };
 
 document.getElementById("btncancel").addEventListener("click", e=>{
-    let divpininput = document.getElementById("div-pininput");
-    userentry = ""
-    divpininput.innerHTML = userentry;
+    let txtpininput = document.getElementById("txtpininput");
+    userentry = "";
+    txtpininput.value = userentry;
 });
 
 document.getElementById("btnundo").addEventListener("click", e=>{
-    let divpininput = document.getElementById("div-pininput");
-    let currentstring = divpininput.innerHTML;
+    let txtpininput = document.getElementById("txtpininput");
+    let currentstring = txtpininput.value;
     userentry = currentstring.slice(0, currentstring.length-1);
-    divpininput.innerHTML = userentry;
+    txtpininput.value = userentry;
 });
-
-// document.getElementById("btnconfirm").addEventListener("click", e=>{
-//    let divpininput = document.getElementById("div-pininput");
-//    userentry = "confirmed"
-//    divpininput.innerHTML = userentry;
-//});

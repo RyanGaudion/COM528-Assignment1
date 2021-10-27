@@ -9,19 +9,18 @@
 <%@ page import="java.util.ArrayList" %>
 <%
     // retrieve the stored users list from the session
-    List<String> users = (List<String>) session.getAttribute("users");
+    // List<String> users = (List<String>) session.getAttribute("users");
     //if (users == null) {
     //    users = new ArrayList<String>();
     //    session.setAttribute("users", users);
     //}
 
-    String cardnum = request.getParameter("cardNum");
-    String cardcvv = request.getParameter("cardCVV");
-    String amount = request.getParameter("transactionAmount");
-    String menuitem = request.getParameter("menuItem");
+    // String cardnum = request.getParameter("cardNum");
+    // String cardcvv = request.getParameter("cardCVV");
+    // String amount = request.getParameter("transactionAmount");
+    // String menuitem = request.getParameter("menuItem");
     String userresponse = request.getParameter("userResponse");
 
-    // button.ui-pinpad-command ui-button ui-corner-all ui-widget ui-pinpad-command-confirm
     //if ("getResponse".equals(action)) {
     //    users.remove(name);
     //} else if ("addUser".equals(action)) {
@@ -42,21 +41,34 @@
     <body>
         <script>
             function checkVal() {
-                var boxObj = document.getElementById("div-pininput");
-                if (boxObj.innerHTML) {
-                    alert(boxObj.innerHTML);
+                var txtpininput = document.getElementById("txtpininput");
+                // check if user has entered any data
+                if (txtpininput.value) {
+                    alert(txtpininput.value);
+                    // userResponse.value = divuserInput.innerHTML;
+                    txtpininput.value = "";
+                } else {
+                    txtpininput.value = "Please enter a value";
                 }
             }
         </script>
-        <div id="div-container">
-            <div id="div-pininput"></div>
-            <div id="div-pinpad"></div>
+        <p>user response: <%= userresponse %></p>
+        <form action="./index.jsp" method="get">
+            <div id="div-container">
+                <div id="div-pininput">
+                    <div id="div-userfeedback"></div>
+                    <input id="txtpininput" type="text" name="userResponse" value="">
+                </div>
+                <div id="div-pinpad">
+                    
+                </div>
+                </div>
+            <div id="div-cmd">
+                <div id="btncancel" class="btn-style">Cancel</div>
+                <div id="btnundo" class="btn-style">Undo</div>
+                <button id="btnconfirm" class="btn-style" type="submit">Confirm</button>
             </div>
-        <div id="div-cmd">
-            <button id="btncancel" class="btn-style">Cancel</button>
-            <button id="btnundo" class="btn-style">Undo</button>
-            <button id="btnconfirm" class="btn-style" onclick="checkVal();">Confirm</button>
-        </div>
+        </form>
         <!-- page script -->
         <script src="public/scripts/index.js"></script>
     </body>
