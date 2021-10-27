@@ -68,6 +68,10 @@ Sadly the assessment criteria was misunderstood, and these wireframes are not re
 
 ![](/documentation/Images/Wireframes/Pin_Pad.png)
 
+Menu system flow diagram:
+
+![](/documentation/Images/MenuSystemFlow.png)
+
 ## List of Features
 
 ### Deliverables

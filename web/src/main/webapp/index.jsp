@@ -19,13 +19,20 @@
     // String cardcvv = request.getParameter("cardCVV");
     // String amount = request.getParameter("transactionAmount");
     // String menuitem = request.getParameter("menuItem");
+    
+    // holds user's response
     String userresponse = request.getParameter("userResponse");
-
-    //if ("getResponse".equals(action)) {
-    //    users.remove(name);
-    //} else if ("addUser".equals(action)) {
-    //    users.add(name);
-    //}
+    // find what action to perform on the page
+    String action = request.getParameter("action");
+    
+    if ("submitResponse".equals(action)) {
+        // do menu stuff
+        if (userresponse != null) {
+            
+        } else {
+            
+        }
+    }
 %>
 
 <!DOCTYPE html>
@@ -39,19 +46,6 @@
         
     </head>
     <body>
-        <script>
-            function checkVal() {
-                var txtpininput = document.getElementById("txtpininput");
-                // check if user has entered any data
-                if (txtpininput.value) {
-                    alert(txtpininput.value);
-                    // userResponse.value = divuserInput.innerHTML;
-                    txtpininput.value = "";
-                } else {
-                    txtpininput.value = "Please enter a value";
-                }
-            }
-        </script>
         <p>user response: <%= userresponse %></p>
         <form action="./index.jsp" method="get">
             <div id="div-container">
@@ -66,6 +60,7 @@
             <div id="div-cmd">
                 <div id="btncancel" class="btn-style">Cancel</div>
                 <div id="btnundo" class="btn-style">Undo</div>
+                <input type="hidden" name="action" value="submitResponse">
                 <button id="btnconfirm" class="btn-style" type="submit">Confirm</button>
             </div>
         </form>
