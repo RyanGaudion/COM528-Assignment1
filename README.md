@@ -13,14 +13,12 @@ The developers involved in this project where:
 - [Richard Priest](https://github.com/RPriestUK)
 - [Lewis Holmes](https://github.com/lewis-holmes-98)
 
+## Using the app
 
+### How to configure Properties
 
-## Running the App
+## Building/Testing the App
+Running the following command in the project root folder will build the project with Maven and will also run all the tests for the Project Solution:
 
-- How to run
-
-### How to configure Admin
-
-
-## Building the App
+`mvn clean install`
 
