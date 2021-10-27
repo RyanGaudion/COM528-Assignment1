@@ -34,7 +34,7 @@ function createPinPad() {
         let divnum = document.createElement("div");
         divnum.setAttribute("class","div-num");
         // creates blank 'filler' divs for formatting
-        if (i === 10){
+        if (i === 10 || i === 12){
             // blank filler
             divnum.setAttribute("title","");
             divnum.setAttribute("id",`div-button-blank1`);
@@ -48,12 +48,6 @@ function createPinPad() {
             // builds the divs to the dynamic sizing
             divnum.style.height = buttonheight + "px";
             divnum.style.width = buttonwidth + "px";
-        } else if (i === 12) { 
-            // blank filler
-            divnum.setAttribute("title","");
-            divnum.setAttribute("id",`div-button-blank2`);
-            divnum.setAttribute("class","div-num-blank");
-            divnum.innerHTML = "";
         } else {
             divnum.setAttribute("title",i);
             divnum.setAttribute("id",`div-button-${i}`);
@@ -91,8 +85,8 @@ document.getElementById("btnundo").addEventListener("click", e=>{
     divpininput.innerHTML = userentry;
 });
 
-document.getElementById("btnconfirm").addEventListener("click", e=>{
-    let divpininput = document.getElementById("div-pininput");
-    userentry = "confirmed"
-    divpininput.innerHTML = userentry;
-});
+// document.getElementById("btnconfirm").addEventListener("click", e=>{
+//    let divpininput = document.getElementById("div-pininput");
+//    userentry = "confirmed"
+//    divpininput.innerHTML = userentry;
+//});
