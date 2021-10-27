@@ -40,6 +40,14 @@
         
     </head>
     <body>
+        <script>
+            function checkVal() {
+                var boxObj = document.getElementById("div-pininput");
+                if (boxObj.innerHTML) {
+                    alert(boxObj.innerHTML);
+                }
+            }
+        </script>
         <div id="div-container">
             <div id="div-pininput"></div>
             <div id="div-pinpad"></div>
@@ -47,7 +55,7 @@
         <div id="div-cmd">
             <button id="btncancel" class="btn-style">Cancel</button>
             <button id="btnundo" class="btn-style">Undo</button>
-            <button id="btnconfirm" class="btn-style">Confirm</button>
+            <button id="btnconfirm" class="btn-style" onclick="checkVal();">Confirm</button>
         </div>
         <!-- page script -->
         <script src="public/scripts/index.js"></script>
