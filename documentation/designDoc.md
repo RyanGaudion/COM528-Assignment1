@@ -52,6 +52,22 @@ Robustness diagrams describe the system usage in the context of the object model
 
 ### UI Wireframes
 
+UI Wireframes are incredibly useful during the design stage, as it allows for quick mockups of the proposed design that can quickly be reviewed and edited. Once the wireframes are finalised, the development team will use the designs as templates when creating the front-end UI. The first wireframes created were for a full bak service client, including pages for creating accounts, managing transactions and requesting refunds.
+
+![](/documentation/Images/Wireframes/Archive/Account_List.png)
+
+![](/documentation/Images/Wireframes/Archive/Account_Viewer.png)
+
+![](/documentation/Images/Wireframes/Archive/Transaction_Viewer.png)
+
+![](/documentation/Images/Wireframes/Archive/JSON_Viewer.png)
+
+![](/documentation/Images/Wireframes/Archive/New_Transaction.png)
+
+Sadly the assessment criteria was misunderstood, and these wireframes are not relevant to the solution. As the solution requires a pin-pad style UI, a new wireframe diagram had to be created.
+
+![](/documentation/Images/Wireframes/Pin_Pad.png)
+
 ## List of Features
 
 ### Deliverables
