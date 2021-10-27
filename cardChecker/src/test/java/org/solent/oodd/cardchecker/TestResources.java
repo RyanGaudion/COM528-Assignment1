@@ -1,6 +1,17 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Copyright 2021 Steven Hawkins <5hawks48@solent.ac.uk>.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.solent.oodd.cardchecker;
 
@@ -9,7 +20,7 @@ import java.util.Map;
 
 /**
  * Class containing test data for the cardChecker project. 
- * @author Steven
+ * @author Steven Hawkins <5hawks48@solent.ac.uk>
  */
 public class TestResources {
 
@@ -19,7 +30,7 @@ public class TestResources {
      */
     public static java.util.List<java.util.Map.Entry<CardCompany, String>> getCardPairs() {
         java.util.List<java.util.Map.Entry<CardCompany, String>> cards = new java.util.ArrayList<>();
-        Map.Entry<CardCompany, String> pair1 = new AbstractMap.SimpleEntry<>(CardCompany.AMERICAN_EXPRESS, "378282246310005");
+        Map.Entry<CardCompany, String> pair1 = new AbstractMap.SimpleEntry<>(CardCompany.AMERICAN_EXPRESS, "3782 8224 6310 005");
         cards.add(pair1);
         Map.Entry<CardCompany, String> pair2 = new AbstractMap.SimpleEntry<>(CardCompany.AMERICAN_EXPRESS, "371449635398431");
         cards.add(pair2);
@@ -48,6 +59,14 @@ public class TestResources {
         Map.Entry<CardCompany, String> pair13 = new AbstractMap.SimpleEntry<>(CardCompany.VISA, "4222222222222");
         cards.add(pair13);
         return cards;
+    }
+    
+    /**
+     * Get a string array of invalid card numbers.
+     * @return String[]
+     */
+    public static String[] getInvalidCards() {
+        return new String[]{"", "abcdefghijklmno", "11111111111111", "0", "55555555abc554444", "123456 abc 124"};
     }
 
 }

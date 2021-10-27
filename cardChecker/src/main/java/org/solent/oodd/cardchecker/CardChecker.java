@@ -1,6 +1,17 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Copyright 2021 Steven Hawkins <5hawks48@solent.ac.uk>.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.solent.oodd.cardchecker;
 
@@ -12,17 +23,18 @@ import org.apache.logging.log4j.LogManager;
  * https://en.wikipedia.org/wiki/Luhn_algorithm - PAN number
  * https://en.wikipedia.org/wiki/Payment_card_number
  *
- * @author 5hawks48@solent.ac.uk
+ * @author Steven Hawkins <5hawks48@solent.ac.uk>
  */
 public class CardChecker {
 
     public static Logger logger = LogManager.getLogger(CardChecker.class);
 
     /**
-     * Checks the validity of a given card number.
+     * Removes non-numeric characters from the input, and 
+     * checks the validity of the given card number.
      *
      * @param cardInput
-     * @return CardValidationResult informing on pass/fail of check.
+     * @return CardValidationResult informing on pass/fail of check as well as card company name.
      */
     public static CardValidationResult checkValidity(final String cardInput) {
         /**
@@ -36,7 +48,7 @@ public class CardChecker {
         /**
          * Cards are only valid between 13 & 19 digits.
          */
-        String cardNumber = cardInput.replaceAll("[^0-9]+$", ""); // Remove all non-numerics.
+        String cardNumber = cardInput.replaceAll("[^\\d]", ""); //("[^0-9]+$", ""); // Remove all non-numerics.
         if (cardInput.length() < 13 || cardInput.length() > 19) {
             logger.error(CardChecker.class + ": Bad card length for " + cardInput);
             return new CardValidationResult(false, "Card length fell outside of appropriate range.");
@@ -55,6 +67,13 @@ public class CardChecker {
         return new CardValidationResult("Card verified.", cc);
     }
 
+    /**
+     * Performs only the sum part of the Luhn calculation.
+     * Can choose to ignore the last digit or take whole number.
+     * @param cardNo
+     * @param ignoreLastDigit
+     * @return Int sum according the Luhn algorithm.
+     */
     private static int sumDigits(String cardNo, boolean ignoreLastDigit) {
         int offset = 1; // To use the full number.
         if (ignoreLastDigit == true) {
@@ -79,7 +98,8 @@ public class CardChecker {
     }
 
     /**
-     *
+     * Performs the MOD10 portion of the Luhn calculation to
+     * validate the check sum and check digit.
      * @param cardNo
      * @return
      */
@@ -91,16 +111,19 @@ public class CardChecker {
             logger.error(CardChecker.class + ": Non-numeric card entered.");
             return false;
         }
-        int sum = sumDigits(cardNo, false);
+        int sum = sumDigits(cardNo, false); // Take in whole card.
         // Don't perform mod10 when sum = 0.
         boolean sumCheck = (sum == 0) ? false : (sum % 10 == 0);
-        // Compare calculated digit with input card check digit.
-        String digit = (10 - sumDigits(cardNo, true) % 10) + "";
+
+        // Ignore last digit of number when checking check digit.
+        String digit = (10 - sumDigits(cardNo, true) % 10) + ""; 
+        
         String checkDigit = digit.substring(digit.length() - 1);
         logger.debug("Card: " + cardNo
                 + ", Sum: " + sum
                 + ", Input:" + cardNo.substring(cardNo.length() - 1)
                 + ", Calc:" + checkDigit);
+        // Compare calculated digit with input card check digit.
         boolean digitCheck = cardNo.substring(cardNo.length() - 1).equals(checkDigit);
         return sumCheck && digitCheck;
     }

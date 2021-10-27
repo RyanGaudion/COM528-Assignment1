@@ -1,14 +1,28 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Copyright 2021 Steven Hawkins <5hawks48@solent.ac.uk>.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.solent.oodd.cardchecker;
 
 import java.util.regex.Pattern;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
+ * Represents the different card companies that can be detected.
  * Sourced from: https://stackoverflow.com/a/23814692
- * @author Steven
+ * @author Steven Hawkins <5hawks48@solent.ac.uk>
  */
 public enum CardCompany {
 
@@ -21,6 +35,7 @@ public enum CardCompany {
     JCB("^(?:2131|1800|35\\d{3})\\d{11}$"),
     CHINA_UNION_PAY("^62[0-9]{14,17}$");
 
+    public static Logger logger = LogManager.getLogger(CardCompany.class);
     private Pattern pattern;
 
     CardCompany() {
@@ -31,7 +46,18 @@ public enum CardCompany {
         this.pattern = Pattern.compile(pattern);
     }
 
+    /**
+     * Detects which card company issued the card number.
+     * @param cardNumber
+     * @return CardCompany associated with the input number. Returns CardComapny.UNKNOWN for non-matches.
+     */
     public static CardCompany detect(String cardNumber) {
+        if (cardNumber == null) {
+            logger.error(CardCompany.class + ": Null card entered.");
+            return CardCompany.UNKNOWN;
+        }
+        cardNumber = cardNumber.replaceAll("[^\\d]", ""); //("[^0-9]+$", ""); // Remove all non-numerics.
+        
         for (CardCompany cardType : CardCompany.values()) {
             if (null == cardType.pattern) {
                 continue;
