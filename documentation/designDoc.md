@@ -97,7 +97,16 @@ Each developer has responsibilities in each of these 3 areas which can be seen b
 ### Development
 | Task        | Description | Assigned To |
 | ----------- | ----------- | ----------- |
-| ToDo        | ToDo        | ToDo        |
+| Models & Interfaces | Create the DTO (Data Transfer Objects) as wel as the Service Objects and interfaces | Ryan Gaudion |
+| Service & Client Factory | Create the Factory class and implement the Singleton Pattern for both the Banking Service and the REST Client | Ryan Gaudion |
+| Banking Service | Create an abstraction upon the client as well as the Luhn Algorithm code in order to access all funcitonality through a single banking service class | Ryan Gaudion |
+| Build REST Client    | Code the REST Client and make it use our DTO models | Kain Peacock & Ryan Gaudion |
+| Properties File Reading | Setup the DAO (Data Access Object) to be able to read and write data from the Properties File| Lewis Holmes |
+| Transaction Logging | Develop code that allows all transactions to be logged to their own file | Lewis Holmes |
+| Luhn Algorithm | Develop the Luhn Algorithm validation class in order to verify the legitimacy of Card | Steven Hawkins |
+| Pinpad UI | Develop a PinPad UI that displays the entered numbers on the screen | Richard Priest |
+| UI Menu | Develop a menu system to allow all required functionality to be able to be edited via the PinPad | Richard Priest |
+| UI to backend communication | Write code on the JSP frontend that allows each menu action to be processed via the Java JSP backend  | Richard Priest |
 
 ### Testing
 Every developer is responsible for writing tests for the code they implement. For example, the developer who writes a Model class should write the unit tests required to test every Get and Set method inside of that class; as well as any business logic methods the class implements. By making sure that all classes have Unit tests we can ensure our code has a great code coverage. This is especially important and useful when implementing Continous Integration as it allows us to identify breaking changes before they are even pulled into our development branch.
