@@ -21,7 +21,7 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider;
 import org.glassfish.jersey.logging.LoggingFeature;
-import org.solent.com504.oodd.bank.model.client.IBankRestClient;
+import org.solent.com504.oodd.pos.model.service.IBankRestClient;
 import org.solent.com504.oodd.pos.model.dto.*;
 
 /**
@@ -39,7 +39,7 @@ public class BankRestClient implements IBankRestClient {
     }
 
     @Override
-    public TransactionResponse transferMoney(Card fromCard, Card toCard, Double amount) {
+    public TransactionResponse transferMoney(TransactionRequest request) {
         LOG.debug("transferMoney called: ");
 
         // sets up logging for the client       
@@ -54,9 +54,7 @@ public class BankRestClient implements IBankRestClient {
 
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 
-        TransactionRequest transactionRequestMessage = new TransactionRequest(fromCard, toCard, amount);
-
-        Response response = invocationBuilder.post(Entity.entity(transactionRequestMessage, MediaType.APPLICATION_JSON));
+        Response response = invocationBuilder.post(Entity.entity(request, MediaType.APPLICATION_JSON));
 
         TransactionResponse transactionReplyMessage = response.readEntity(TransactionResponse.class);
 
@@ -67,7 +65,7 @@ public class BankRestClient implements IBankRestClient {
     }
 
     @Override
-    public TransactionResponse transferMoney(Card fromCard, Card toCard, Double amount, String userName, String password) {
+    public TransactionResponse transferMoney(TransactionRequest request, String userName, String password) {
         LOG.debug("transferMoney called: ");
 
         // sets up logging for the client       
@@ -86,9 +84,7 @@ public class BankRestClient implements IBankRestClient {
 
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 
-        TransactionRequest transactionRequestMessage = new TransactionRequest(fromCard, toCard, amount);
-
-        Response response = invocationBuilder.post(Entity.entity(transactionRequestMessage, MediaType.APPLICATION_JSON));
+        Response response = invocationBuilder.post(Entity.entity(request, MediaType.APPLICATION_JSON));
 
         TransactionResponse transactionReplyMessage = response.readEntity(TransactionResponse.class);
 

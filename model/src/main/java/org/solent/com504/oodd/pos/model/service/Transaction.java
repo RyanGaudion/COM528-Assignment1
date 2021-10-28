@@ -16,6 +16,14 @@ public class Transaction {
     private TransactionRequest transactionRequest;
     private TransactionResponse transactionResponse;
     
+    public Transaction(){
+        
+    }
+    
+    public Transaction(TransactionRequest req, TransactionResponse response){
+        this.transactionRequest = req;
+        this.transactionResponse = response;
+    }
     
     public TransactionRequest getTransactionRequest(){
         return transactionRequest;

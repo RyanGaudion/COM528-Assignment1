@@ -18,6 +18,11 @@
             <artifactId>pointOfSalesDevice-model</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>solent.ac.uk.ood.examples</groupId>
+            <artifactId>bank-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

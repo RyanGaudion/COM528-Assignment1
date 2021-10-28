@@ -5,18 +5,21 @@
  */
 package org.solent.com504.oodd.pos.model.service;
 
+import java.util.List;
 import org.solent.com504.oodd.pos.model.dto.*;
 
 /**
  *
  * @author rgaud
  */
-public interface IBankService {    
+public interface IBankingService {    
     //Returns Transactionresponse but merges this with request inside of the method
-    public Transaction SendTransaction(TransactionRequest req);
+    public Transaction SendTransaction(Card fromCard, Card toCard, Double amount);
 
     //Automatically creates a request with the negative number of the transaction.getresponse.getamount
     //Also checks to see if the transaction to refund was successful in the first place before trying to refund it
     public Transaction RefundTransaction(Transaction transaction);
+    
+    List<Transaction> GetLatestTransactions();
 
 }

@@ -55,7 +55,8 @@ public class BankClientTest {
 
         Double amount = 0.0;
 
-        TransactionResponse response = client.transferMoney(fromCard, toCard, amount);
+        TransactionRequest req = new TransactionRequest(fromCard, toCard, amount);
+        TransactionResponse response = client.transferMoney(req);
         LOG.debug("transaction reply:" + response);
 
         assertEquals(TransactionStatus.SUCCESS, response.getStatus());
@@ -74,7 +75,8 @@ public class BankClientTest {
 
         // testing with auth
  
-        TransactionResponse response = client.transferMoney(fromCard, toCard, amount, toUsername, toPassword);
+        TransactionRequest req = new TransactionRequest(fromCard, toCard, amount);
+        TransactionResponse response = client.transferMoney(req, toUsername, toPassword);
         LOG.debug("transaction with auth reply:" + response);
         
         assertEquals(TransactionStatus.SUCCESS, response.getStatus());
@@ -93,8 +95,9 @@ public class BankClientTest {
         invalidFromCard.SetExpiryDate("23/43");
 
         BankRestClient client = new BankRestClient(bankUrl);
+        TransactionRequest req = new TransactionRequest(invalidFromCard, toCard, 50.0);
         
-        TransactionResponse response =  client.transferMoney(invalidFromCard, toCard, 50.0);
+        TransactionResponse response =  client.transferMoney(req);
 
         assertEquals (response.getStatus().toString(), "FAIL");
     }
@@ -111,8 +114,9 @@ public class BankClientTest {
         invalidToCard.SetExpiryDate("11/22");
         
         BankRestClient client = new BankRestClient(bankUrl);
-
-        TransactionResponse response =  client.transferMoney(fromCard, invalidToCard, 50.0);
+        TransactionRequest req = new TransactionRequest(fromCard, invalidToCard, 50.0);
+        
+        TransactionResponse response =  client.transferMoney(req);
 
         assertEquals (response.getStatus().toString(), "FAIL");
     }
@@ -123,8 +127,9 @@ public class BankClientTest {
     @Test
     public void InvalidTransactionAmountTest(){
         BankRestClient client = new BankRestClient(bankUrl);
-
-        TransactionResponse response =  client.transferMoney(fromCard, toCard, -50.0);
+        
+        TransactionRequest req = new TransactionRequest(fromCard, toCard, -50.0);
+        TransactionResponse response =  client.transferMoney(req);
 
         assertEquals (response.getStatus().toString(), "FAIL");
     }
