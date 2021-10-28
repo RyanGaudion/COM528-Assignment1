@@ -15,10 +15,11 @@ import java.time.DateTimeException;
  * @author rgaud
  */
 public class Card {
-    private String cardNumber;
-    private String cvv;
-    private String expiryDate;
-    private String name;
+    private String cardNumber = "";
+    private String cvv = "";
+    private String expiryDate = "";
+    private String name = "";
+    private String issueNumber = "";
     
     
     //Get Methods
@@ -83,5 +84,19 @@ public class Card {
         catch(DateTimeException ex){
             return false;
         }
+    }
+    
+    public String getIssueNumber() {
+        return issueNumber;
+    }
+
+    public boolean setIssueNumber(String issueNumber) {
+        this.issueNumber = issueNumber;
+        return true;
+    }
+    
+    @Override
+    public String toString() {
+        return "Card{" + "name=" + name + ", expiryDate=" + expiryDate + ", cardNumber=" + cardNumber + ", cvv=NOT PRINTED" + '}';
     }
 }

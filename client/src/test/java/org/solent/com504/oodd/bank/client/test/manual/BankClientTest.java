@@ -10,8 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.solent.com504.oodd.bank.client.impl.BankRestClientImpl;
-import org.solent.com504.oodd.bank.model.client.BankRestClient;
+import org.solent.com504.oodd.bank.client.impl.BankRestClient;
 import org.solent.com504.oodd.pos.model.dto.*;
 /**
  *
@@ -46,10 +45,13 @@ public class BankClientTest {
         toPassword = "defaulttestpass";
     }
 
+    /**
+     * Performs a valid transaction without authentication
+     */
     @Test
     public void testClient() {
 
-        BankRestClient client = new BankRestClientImpl(bankUrl);
+        BankRestClient client = new BankRestClient(bankUrl);
 
         Double amount = 0.0;
 
@@ -60,10 +62,13 @@ public class BankClientTest {
 
     }
 
+    /**
+     * Performs a valid transaction using authentication of username and password
+     */
     @Test
     public void testClientAuth() {
 
-        BankRestClient client = new BankRestClientImpl(bankUrl);
+        BankRestClient client = new BankRestClient(bankUrl);
 
         Double amount = 0.0;
 
@@ -75,4 +80,53 @@ public class BankClientTest {
         assertEquals(TransactionStatus.SUCCESS, response.getStatus());
 
     }
+    
+    /**
+     * Performs a transaction between an invalid from card and a valid to card, which should fail.
+     */
+    @Test
+    public void invalidFromCardTest(){
+        Card invalidFromCard = new Card();
+        invalidFromCard.SetName("Invalid From Card");
+        invalidFromCard.SetCVV("989");
+        invalidFromCard.SetCardNumber("invalid");
+        invalidFromCard.SetExpiryDate("23/43");
+
+        BankRestClient client = new BankRestClient(bankUrl);
+        
+        TransactionResponse response =  client.transferMoney(invalidFromCard, toCard, 50.0);
+
+        assertEquals (response.getStatus().toString(), "FAIL");
+    }
+    
+    /**
+     * Performs a transaction between a valid from card and an invalid to card, which should fail.
+     */
+    @Test
+    public void invalidToCardTest(){
+        Card invalidToCard = new Card();
+        invalidToCard.SetName("Invalid To Card");
+        invalidToCard.SetCVV("989");
+        invalidToCard.SetCardNumber("invalid");
+        invalidToCard.SetExpiryDate("11/22");
+        
+        BankRestClient client = new BankRestClient(bankUrl);
+
+        TransactionResponse response =  client.transferMoney(fromCard, invalidToCard, 50.0);
+
+        assertEquals (response.getStatus().toString(), "FAIL");
+    }
+    
+    /**
+     * Performs a transaction between 2 valid credit cards of an invalid amount (-50.0) , which should fail.
+     */
+    @Test
+    public void InvalidTransactionAmountTest(){
+        BankRestClient client = new BankRestClient(bankUrl);
+
+        TransactionResponse response =  client.transferMoney(fromCard, toCard, -50.0);
+
+        assertEquals (response.getStatus().toString(), "FAIL");
+    }
+
 }

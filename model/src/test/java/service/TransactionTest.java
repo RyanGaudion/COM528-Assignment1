@@ -38,6 +38,6 @@ public class TransactionTest {
         assertEquals(true, transaction.setTransactionResponse(response));  
         
         assertEquals(300, transaction.getTransactionResponse().getCode());
-        assertEquals("0002000200020002", transaction.getTransactionRequest().GetToCard().GetCardNumber());
+        assertEquals("0002000200020002", transaction.getTransactionRequest().getToCard().GetCardNumber());
     }
 }

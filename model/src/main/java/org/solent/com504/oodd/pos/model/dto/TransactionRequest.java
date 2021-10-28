@@ -10,10 +10,13 @@ package org.solent.com504.oodd.pos.model.dto;
  * @author rgaud
  */
 public class TransactionRequest {
-    private Card fromCard = null;
-    private Card toCard = null;
-    private Double amount = null;
+    private Card fromCard;
+    private Card toCard;
+    private Double amount;
 
+    public TransactionRequest(){
+        
+    }
     
     public TransactionRequest(Card from, Card to, Double amount){
         fromCard = from;
@@ -21,28 +24,32 @@ public class TransactionRequest {
         this.amount = amount;
     }
     
-    public boolean SetFromCard(Card card){
+    public boolean setFromCard(Card card){
         this.fromCard = card;
         return true;
     }
     
-    public boolean SetToCard(Card card){
+    public boolean setToCard(Card card){
         this.toCard = card;
         return true;
     }
     
-    public boolean SetAmount(double amount){
+    public boolean setAmount(double amount){
         this.amount = amount;
         return true;
     }
     
-    public Card GetFromCard(){
+    public Card getFromCard(){
         return fromCard;
     }
-    public Card GetToCard(){
+    public Card getToCard(){
         return toCard;
     }
-    public Double GetAmount(){
+    public Double getAmount(){
         return amount;
+    }
+    @Override
+    public String toString() {
+        return "TransactionRequest{" + "fromCard=" + fromCard + ", toCard=" + toCard + ", amount=" + amount + '}';
     }
 }

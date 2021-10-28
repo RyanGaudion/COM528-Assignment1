@@ -6,7 +6,6 @@
 package org.solent.com504.oodd.bank.client.impl;
 
 import java.util.logging.Level;
-import org.solent.com504.oodd.bank.model.client.BankRestClient;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -22,19 +21,20 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider;
 import org.glassfish.jersey.logging.LoggingFeature;
+import org.solent.com504.oodd.bank.model.client.IBankRestClient;
 import org.solent.com504.oodd.pos.model.dto.*;
 
 /**
  *
  * @author cgallen
  */
-public class BankRestClientImpl implements BankRestClient {
+public class BankRestClient implements IBankRestClient {
 
-    final static Logger LOG = LogManager.getLogger(BankRestClientImpl.class);
+    final static Logger LOG = LogManager.getLogger(BankRestClient.class);
 
     String urlStr;
 
-    public BankRestClientImpl(String urlStr) {
+    public BankRestClient(String urlStr) {
         this.urlStr = urlStr;
     }
 

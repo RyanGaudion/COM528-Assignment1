@@ -26,13 +26,13 @@ public class TransactionRequestTest {
         assertEquals(true, card2.SetCVV("3334"));
         TransactionRequest req = new TransactionRequest(card, card2, 100.00);
         
-        assertEquals(100.00, req.GetAmount(), 0.0);
-        assertEquals(card2, req.GetToCard());        
-        assertEquals(card, req.GetFromCard());
-        assertEquals("3334", req.GetToCard().GetCVV());        
-        assertEquals("343", req.GetFromCard().GetCVV());
-        assertEquals("0000000000000000", req.GetFromCard().GetCardNumber());        
-        assertEquals("0002000200020002", req.GetToCard().GetCardNumber()); 
+        assertEquals(100.00, req.getAmount(), 0.0);
+        assertEquals(card2, req.getToCard());        
+        assertEquals(card, req.getFromCard());
+        assertEquals("3334", req.getToCard().GetCVV());        
+        assertEquals("343", req.getFromCard().GetCVV());
+        assertEquals("0000000000000000", req.getFromCard().GetCardNumber());        
+        assertEquals("0002000200020002", req.getToCard().GetCardNumber()); 
     }
     
     @Test
@@ -42,8 +42,8 @@ public class TransactionRequestTest {
         assertEquals(true, card.SetCVV("343"));
         
         TransactionRequest req = new TransactionRequest(card, new Card(), 0.0);
-        assertEquals("0000000000000000", req.GetFromCard().GetCardNumber());
-        assertEquals("343", req.GetFromCard().GetCVV());
+        assertEquals("0000000000000000", req.getFromCard().GetCardNumber());
+        assertEquals("343", req.getFromCard().GetCVV());
     }
     
     @Test
@@ -53,13 +53,13 @@ public class TransactionRequestTest {
         assertEquals(true, card.SetCVV("2243"));
         
         TransactionRequest req = new TransactionRequest(new Card(), card, 0.0);
-        assertEquals("0002002000020020", req.GetToCard().GetCardNumber());        
-        assertEquals("2243", req.GetToCard().GetCVV());
+        assertEquals("0002002000020020", req.getToCard().GetCardNumber());        
+        assertEquals("2243", req.getToCard().GetCVV());
     }
     
     @Test
     public void AmountTest(){
         TransactionRequest req = new TransactionRequest(new Card(), new Card(), 100.0);
-        assertEquals(100.0, req.GetAmount(), 0.0);
+        assertEquals(100.0, req.getAmount(), 0.0);
     }
 }

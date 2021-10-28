@@ -5,11 +5,6 @@
  */
 package models;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.junit.Assert;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.solent.com504.oodd.pos.model.dto.Card;
@@ -40,7 +35,7 @@ public class CardTest {
     {
         Card card = new Card();
         assertEquals(false, card.SetCardNumber("000000000000000"));
-        assertEquals(null, card.GetCardNumber());
+        assertEquals("", card.GetCardNumber());
     }
     
     @Test
@@ -49,6 +44,14 @@ public class CardTest {
         Card card = new Card();
         assertEquals(true, card.SetCVV("846"));
         assertEquals("846", card.GetCVV());
+    }
+    
+    @Test
+    public void setIssueNumberTest()
+    {
+        Card card = new Card();
+        assertEquals(true, card.setIssueNumber("02"));
+        assertEquals("02", card.getIssueNumber());
     }
     
     @Test
@@ -64,7 +67,7 @@ public class CardTest {
     {
         Card card = new Card();
         assertEquals(false, card.SetCVV("84615"));
-        assertEquals(null, card.GetCVV());
+        assertEquals("", card.GetCVV());
     }
     
     @Test

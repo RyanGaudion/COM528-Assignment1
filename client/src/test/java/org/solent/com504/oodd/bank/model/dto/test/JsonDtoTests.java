@@ -34,20 +34,24 @@ public class JsonDtoTests {
     }
 
     @Test
-    public void testJsonMessages() throws JsonProcessingException {
-
+    public void testJsonMessages() throws JsonProcessingException {        
+        
         Card fromCard = new Card();
+        //trequest.setFromCard(fromCard);
         Card toCard = new Card();
+        //trequest.setToCard(toCard);
+
         Double amount = 100.01;
+        
         TransactionRequest trequest = new TransactionRequest(fromCard, toCard, amount);
         
-       
+        //trequest.setAmount(amount);
 
-        String transactionRequestString = objectMapper.writeValueAsString(trequest);
+        String tRequestString = objectMapper.writeValueAsString(trequest);
 
-        LOG.debug("Json transactionRequest output:\n" + transactionRequestString);
+        LOG.debug("Json transactionRequest output:\n" + tRequestString);
 
-        TransactionRequest receivedTransactionRequest = objectMapper.readValue(transactionRequestString, TransactionRequest.class);
+        TransactionRequest receivedTransactionRequest = objectMapper.readValue(tRequestString, TransactionRequest.class);
         
         assertTrue(trequest.toString().equals(receivedTransactionRequest.toString()));
     }
