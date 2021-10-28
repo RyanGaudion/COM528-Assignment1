@@ -33,17 +33,17 @@ import org.apache.logging.log4j.LogManager;
 public class CardCheckerTest {
 
     public static Logger logger = LogManager.getLogger(CardCheckerTest.class);
-    java.util.List<java.util.Map.Entry<CardCompany, String>> cards = new java.util.ArrayList<>();
-    String[] invalidCards;
+    static java.util.List<java.util.Map.Entry<CardCompany, String>> cards = new java.util.ArrayList<>();
+    static String[] invalidCards;
 
     public CardCheckerTest() {
     }
 
     @BeforeAll
-    public void setUpClass() {
+    public static void setUpClass() {
         logger.debug(CardCheckerTest.class + " Setup the test");
         cards = TestResources.getCardPairs();
-        this.invalidCards = TestResources.getInvalidCards();
+        invalidCards = TestResources.getInvalidCards();
     }
 
     /**
@@ -52,7 +52,6 @@ public class CardCheckerTest {
     @Test
     public void testCheckValidityBadInputs() {
         logger.debug("testCheckValidityBadInputs");
-        setUpClass();
         for (String cardIn : invalidCards) {
             boolean expResult = false;
             CardValidationResult result = CardChecker.checkValidity(cardIn);
@@ -66,7 +65,6 @@ public class CardCheckerTest {
     @Test
     public void testCheckValidity() {
         logger.debug("testCheckValidity");
-        setUpClass();
         for (Entry<CardCompany, String> pair : cards) {
             boolean expResult = true;
             CardValidationResult result = CardChecker.checkValidity(pair.getValue());
