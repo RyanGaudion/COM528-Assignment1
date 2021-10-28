@@ -7,6 +7,7 @@ package org.solent.com504.oodd.pos.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.solent.com504.oodd.factory.ClientObjectFactory;
 import org.solent.com504.oodd.pos.model.dto.Card;
 import org.solent.com504.oodd.pos.model.dto.TransactionRequest;
 import org.solent.com504.oodd.pos.model.dto.TransactionResponse;
@@ -34,7 +35,7 @@ public class BankingService implements IBankingService{
     
     @Override
     public Transaction SendTransaction(Card fromCard, Card toCard, Double amount) {
-        IBankRestClient client = ServiceObjectFactory.getBankClient();
+        IBankRestClient client = ClientObjectFactory.getBankClient();
                
         TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);
         
@@ -47,7 +48,7 @@ public class BankingService implements IBankingService{
 
     @Override
     public Transaction RefundTransaction(Transaction transaction) {
-        IBankRestClient client = ServiceObjectFactory.getBankClient();
+        IBankRestClient client = ClientObjectFactory.getBankClient();
         
         Card fromCard = transaction.getTransactionRequest().getToCard();        
         Card toCard = transaction.getTransactionRequest().getFromCard();

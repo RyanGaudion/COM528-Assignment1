@@ -5,9 +5,7 @@
  */
 package org.solent.com504.oodd.pos.service;
 
-import org.solent.com504.oodd.bank.client.impl.BankRestClient;
-import org.solent.com504.oodd.pos.model.service.IBankRestClient;
-
+import org.solent.com504.oodd.pos.model.service.IBankingService;
 
 /**
  *
@@ -15,24 +13,20 @@ import org.solent.com504.oodd.pos.model.service.IBankRestClient;
  */
 public class ServiceObjectFactory {
     
-    private static IBankRestClient bankClient;
+    private static IBankingService bankingService;
     
     private ServiceObjectFactory(){
         
     }
     
-    public static IBankRestClient getBankClient(){
-        
-        if (bankClient == null) {
+    public static IBankingService getBankingService(){
+        if(bankingService == null){
             synchronized (ServiceObjectFactory.class) {
-                if (bankClient == null) {
-                    // creates a single instance of the dao
-                    bankClient = new BankRestClient("url");
+                if(bankingService == null){
+                    bankingService = new BankingService();
                 }
             }
         }
-        return bankClient;
-    }
-
-    
+        return bankingService;
+    }        
 }
