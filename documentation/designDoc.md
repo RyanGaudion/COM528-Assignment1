@@ -1,12 +1,56 @@
 # Point of Sales - Design Doc & Project Plan
 
 
-## Table of Contents
+<details open="open">
+    <summary> <h2>Table of Contents</h2> </summary>
+    <ol>
+        <li>
+            <a href="#requirements">Requirements</a>
+            <ul>
+                <li><a href="#software-design">Software Design</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#project-diagrams">Project Diagrams</a>
+            <ul>
+                <li><a href="#uml-class-diagrams">UML Class Diagrams</a></li>
+                <li><a href="#uml-robustness-diagram">UML Robustness Diagram</a></li>
+                <li><a href="#ui-wireframes">UI Wireframes</a></li>
+                <li><a href="#menu-system-flow">Menu System Flow</a></li>
+            </ul>
+        </li>
+        <li><a href="#list-of-features">List of Features</a></li>
+        <li>
+            <a href="#task-assignment">Task Assignment</a>
+            <ul>
+                <li><a href="#design">Design</a></li>
+                <li><a href="#development">Development</a></li>
+                <li><a href="#testing">Testing</a></li>
+            </ul>
+        </li>
+        <li><a href="#coding-standard">Coding Standard</a></li>
+        <li>
+            <a href="#git-strategy">Git Strategy</a>
+            <ul>
+                <li><a href="#branching-pull-requests-and-approvals">Branching, Pull Requests and Approvals</a></li>
+                <li><a href="#ci-pipeline">Ci Pipeline</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#agile-methodology">Agile Methodology</a>
+            <ul>
+                <li><a href="#task-tracking">Task Tracking</a></li>
+            </ul>
+        </li>
+    </ol>
+</details>
+
 
 ## Requirements
 The following section outlines the requirements for the software to meet the [design brief](https://learn.solent.ac.uk/pluginfile.php/2938474/mod_resource/content/1/Assessment%20Brief%20-%20COM528-504%20-%20AE1%20-%20GROUP%20%282021-2022%29%201.0.pdf).
 
-### Software Design Requirements
+### Software Design
 This application must be created using the following technologies:
 * A [RESTful](https://www.codecademy.com/articles/what-is-rest) web app.
 * The application must access the API located here: http://com528bank.ukwest.cloudapp.azure.com:8080/index.html
@@ -68,13 +112,12 @@ Sadly the assessment criteria was misunderstood, and these wireframes are not re
 
 ![](/documentation/Images/Wireframes/Pin_Pad.png)
 
+#### Menu System Flow
 Menu system flow diagram:
 
 ![](/documentation/Images/MenuSystemFlow.png)
 
 ## List of Features
-
-### Deliverables
 
 
 ## Task Assignment
