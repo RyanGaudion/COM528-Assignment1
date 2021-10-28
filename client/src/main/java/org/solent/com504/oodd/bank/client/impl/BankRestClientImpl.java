@@ -7,7 +7,6 @@ package org.solent.com504.oodd.bank.client.impl;
 
 import java.util.logging.Level;
 import org.solent.com504.oodd.bank.model.client.BankRestClient;
-import org.solent.com504.oodd.bank.model.dto.CreditCard;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -23,8 +22,7 @@ import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.jackson.internal.jackson.jaxrs.json.JacksonJsonProvider;
 import org.glassfish.jersey.logging.LoggingFeature;
-import org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage;
-import org.solent.com504.oodd.bank.model.dto.TransactionRequestMessage;
+import org.solent.com504.oodd.pos.model.dto.*;
 
 /**
  *
@@ -41,7 +39,7 @@ public class BankRestClientImpl implements BankRestClient {
     }
 
     @Override
-    public TransactionReplyMessage transferMoney(CreditCard fromCard, CreditCard toCard, Double amount) {
+    public TransactionResponse transferMoney(Card fromCard, Card toCard, Double amount) {
         LOG.debug("transferMoney called: ");
 
         // sets up logging for the client       
@@ -56,14 +54,11 @@ public class BankRestClientImpl implements BankRestClient {
 
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 
-        TransactionRequestMessage transactionRequestMessage = new TransactionRequestMessage();
-        transactionRequestMessage.setAmount(amount);
-        transactionRequestMessage.setFromCard(fromCard);
-        transactionRequestMessage.setToCard(toCard);
+        TransactionRequest transactionRequestMessage = new TransactionRequest(fromCard, toCard, amount);
 
         Response response = invocationBuilder.post(Entity.entity(transactionRequestMessage, MediaType.APPLICATION_JSON));
 
-        TransactionReplyMessage transactionReplyMessage = response.readEntity(TransactionReplyMessage.class);
+        TransactionResponse transactionReplyMessage = response.readEntity(TransactionResponse.class);
 
         LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
 
@@ -72,7 +67,7 @@ public class BankRestClientImpl implements BankRestClient {
     }
 
     @Override
-    public TransactionReplyMessage transferMoney(CreditCard fromCard, CreditCard toCard, Double amount, String userName, String password) {
+    public TransactionResponse transferMoney(Card fromCard, Card toCard, Double amount, String userName, String password) {
         LOG.debug("transferMoney called: ");
 
         // sets up logging for the client       
@@ -91,14 +86,11 @@ public class BankRestClientImpl implements BankRestClient {
 
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 
-        TransactionRequestMessage transactionRequestMessage = new TransactionRequestMessage();
-        transactionRequestMessage.setAmount(amount);
-        transactionRequestMessage.setFromCard(fromCard);
-        transactionRequestMessage.setToCard(toCard);
+        TransactionRequest transactionRequestMessage = new TransactionRequest(fromCard, toCard, amount);
 
         Response response = invocationBuilder.post(Entity.entity(transactionRequestMessage, MediaType.APPLICATION_JSON));
 
-        TransactionReplyMessage transactionReplyMessage = response.readEntity(TransactionReplyMessage.class);
+        TransactionResponse transactionReplyMessage = response.readEntity(TransactionResponse.class);
 
         LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
 

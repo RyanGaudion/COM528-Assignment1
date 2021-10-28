@@ -5,9 +5,10 @@
  */
 package org.solent.com504.oodd.pos.model.dto;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.ParseException;
+import java.time.YearMonth;  
+import java.time.format.DateTimeFormatter;  
+import java.time.DateTimeException;
 
 /**
  *
@@ -16,7 +17,7 @@ import java.util.Date;
 public class Card {
     private String cardNumber;
     private String cvv;
-    private Date expiryDate;
+    private String expiryDate;
     private String name;
     
     
@@ -33,13 +34,7 @@ public class Card {
     }
     
     public String GetExpiryDateString(){
-        if(expiryDate == null){
-            return "";
-        }
-        else{
-            DateFormat df = new SimpleDateFormat("MM/yy");
-            return df.format(expiryDate);
-        }
+        return expiryDate;
     }
     
     //Set Methods
@@ -67,11 +62,26 @@ public class Card {
         }
         return false;
     }
-    public Boolean SetExpiryDate(Date endDate){
-        if(endDate != null){
+    
+    //MM/yy
+    public Boolean SetExpiryDate(String endDate){        
+        try{
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yy");
+            YearMonth date = YearMonth.parse(endDate, formatter);
+            
+            if(date.getYear() < 1000){
+                throw new ParseException("invalid date string", 0);
+            }
+            //If Parse was successful
             this.expiryDate = endDate;
             return true;
+            
         }
-        return false;
+        catch(ParseException ex){
+            return false;
+        }
+        catch(DateTimeException ex){
+            return false;
+        }
     }
 }

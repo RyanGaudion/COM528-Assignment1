@@ -12,10 +12,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.solent.com504.oodd.bank.client.impl.BankRestClientImpl;
 import org.solent.com504.oodd.bank.model.client.BankRestClient;
-import org.solent.com504.oodd.bank.model.dto.BankTransactionStatus;
-import org.solent.com504.oodd.bank.model.dto.CreditCard;
-import org.solent.com504.oodd.bank.model.dto.TransactionReplyMessage;
-
+import org.solent.com504.oodd.pos.model.dto.*;
 /**
  *
  * @author cgallen
@@ -25,27 +22,25 @@ public class BankClientTest {
     final static Logger LOG = LogManager.getLogger(BankClientTest.class);
 
     String bankUrl = "http://localhost:8080/bank/rest";
-    CreditCard fromCard = null;
-    CreditCard toCard = null;
+    Card fromCard = null;
+    Card toCard = null;
     
     String toUsername=null;
     String toPassword=null;
 
     @Before
     public void before() {
-        fromCard = new CreditCard();
-        fromCard.setCardnumber("5133880000000012");
-        fromCard.setCvv("123");
-        fromCard.setEndDate("11/21");
-        fromCard.setIssueNumber("01"); 
-        fromCard.setName("test user1");
+        fromCard = new Card();
+        fromCard.SetCardNumber("5133880000000012");
+        fromCard.SetCVV("123");
+        fromCard.SetExpiryDate("11/21");
+        fromCard.SetName("test user1");
 
-        toCard = new CreditCard();
-        toCard.setCardnumber("4285860000000021");
-        toCard.setCvv("123");
-        toCard.setEndDate("11/21");
-        toCard.setIssueNumber("01");
-        toCard.setName("test user2");
+        toCard = new Card();
+        toCard.SetCardNumber("4285860000000021");
+        toCard.SetCVV("123");
+        toCard.SetExpiryDate("11/21");
+        toCard.SetName("test user2");
         
         toUsername = "testuser2";
         toPassword = "defaulttestpass";
@@ -58,10 +53,10 @@ public class BankClientTest {
 
         Double amount = 0.0;
 
-        TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount);
-        LOG.debug("transaction reply:" + reply);
+        TransactionResponse response = client.transferMoney(fromCard, toCard, amount);
+        LOG.debug("transaction reply:" + response);
 
-        assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
+        assertEquals(TransactionStatus.SUCCESS, response.getStatus());
 
     }
 
@@ -74,10 +69,10 @@ public class BankClientTest {
 
         // testing with auth
  
-        TransactionReplyMessage reply = client.transferMoney(fromCard, toCard, amount, toUsername, toPassword);
-        LOG.debug("transaction with auth reply:" + reply);
+        TransactionResponse response = client.transferMoney(fromCard, toCard, amount, toUsername, toPassword);
+        LOG.debug("transaction with auth reply:" + response);
         
-        assertEquals(BankTransactionStatus.SUCCESS, reply.getStatus());
+        assertEquals(TransactionStatus.SUCCESS, response.getStatus());
 
     }
 }

@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -69,16 +70,18 @@ public class CardTest {
     @Test
     public void setExpiryDateTest()
     {
-        try{
-            SimpleDateFormat parser = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = parser.parse("2021-05-24");
-            Card card = new Card();
-            assertEquals(true, card.SetExpiryDate(date));
-            assertEquals("05/21", card.GetExpiryDateString());
-        }
-        catch(ParseException ex){
-            Assert.fail("string formatter failed");
-        }
+        Card card = new Card();
+        assertEquals(true, card.SetExpiryDate("05/21"));
+        assertEquals("05/21", card.GetExpiryDateString());
+    }
+    
+    @Test
+    public void setInvalidExpiryDate(){
+        Card card = new Card();
+        assertEquals(false, card.SetExpiryDate("abcde123"));        
+        assertEquals(false, card.SetExpiryDate("14/-0"));        
+        assertEquals(false, card.SetExpiryDate("14/24"));        
+        assertEquals(true, card.SetExpiryDate("11/24"));
     }
     
 }
