@@ -62,7 +62,7 @@ public class Card {
      * Get's the card Expiry Date as a String in the format MM/yy 
      * @return expiryDate
      */
-    public String getExpiryDateString(){
+    public String getExpiryDate(){
         return expiryDate;
     }
     

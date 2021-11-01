@@ -109,7 +109,7 @@ public class CardTest {
     {
         Card card = new Card();
         assertEquals(true, card.setExpiryDate("05/21"));
-        assertEquals("05/21", card.getExpiryDateString());
+        assertEquals("05/21", card.getExpiryDate());
     }
     
     /**
