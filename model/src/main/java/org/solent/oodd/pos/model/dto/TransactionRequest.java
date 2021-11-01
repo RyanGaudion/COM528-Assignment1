@@ -16,7 +16,7 @@
 package org.solent.oodd.pos.model.dto;
 
 /**
- *
+ * A Data Transfer Object used to send a transaction request to the Bank API 
  * @author rgaud
  */
 public class TransactionRequest {
@@ -24,40 +24,82 @@ public class TransactionRequest {
     private Card toCard;
     private Double amount;
 
+    /**
+     * Empty constructor - required for serialising and de-serialising
+     */
     public TransactionRequest(){
         
     }
     
+    /**
+     * Quick Constructor which sets or neccessary properties
+     * @param from fromCard for the transaction
+     * @param to toCard for the transaction
+     * @param amount amount for the transaction as a double
+     */
     public TransactionRequest(Card from, Card to, Double amount){
         fromCard = from;
         toCard = to;
         this.amount = amount;
     }
     
+    /**
+     * Sets the from Card
+     * @param card Card that the transaction should be made from
+     * @return returns True as long as there were no errors in setting the proeprty
+     */
     public boolean setFromCard(Card card){
         this.fromCard = card;
         return true;
     }
     
+    /**
+     * Sets the to Card
+     * @param card Card that the transaction amount should be sent to
+     * @return returns True as long as there were no errors in setting the proeprty
+     */
     public boolean setToCard(Card card){
         this.toCard = card;
         return true;
     }
     
+    /**
+     * Sets how much money should be transfered for the transaction
+     * @param amount the amount to transfer (as a Double)
+     * @return returns True as long as there were no errors in setting the proeprty
+     */
     public boolean setAmount(double amount){
         this.amount = amount;
         return true;
     }
     
+    /**
+     * Simply gets the from Card for the transactionRequest
+     * @return Card that the Transaction amount will be taken from
+     */
     public Card getFromCard(){
         return fromCard;
     }
+
+    /**
+     * Simply gets the to Card for the transactionRequest
+     * @return Card that the Transaction amount will be sent to
+     */
     public Card getToCard(){
         return toCard;
     }
+
+    /**
+     * Simply gets the amount set for the transactionRequest
+     * @return Double representation of the amount that will be transfered from the "fromCard" to the "toCard"
+     */
     public Double getAmount(){
         return amount;
     }
+
+    /**
+     * Returns a custom JSON representation of the TransactionRequest Object
+     */
     @Override
     public String toString() {
         return "TransactionRequest{" + "fromCard=" + fromCard + ", toCard=" + toCard + ", amount=" + amount + '}';

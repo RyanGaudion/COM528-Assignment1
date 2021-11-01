@@ -19,17 +19,34 @@ import org.solent.oodd.pos.model.dto.Card;
 import java.util.List;
 
 /**
- *
+ * Interface for the Banking Service abstraction
  * @author rgaud
  */
 public interface IBankingService {    
-    //Returns Transactionresponse but merges this with request inside of the method
+
+    /**
+     * Send money from the from card to the to card of the specified amount
+     * @param fromCard the card to send money from
+     * @param toCard the card to send money to
+     * @param amount the amount to send
+     * @return Transaction model which includes both the transaction request and reponse
+     */
     public Transaction SendTransaction(Card fromCard, Card toCard, Double amount);
 
     //Automatically creates a request with the negative number of the transaction.getresponse.getamount
     //Also checks to see if the transaction to refund was successful in the first place before trying to refund it
+
+    /**
+     * Refund a completed transaction
+     * @param transaction the transaction to refund
+     * @return a new transaction model for the refunded transaction
+     */
     public Transaction RefundTransaction(Transaction transaction);
     
+    /**
+     * Gets the last recent transactions
+     * @return A list of recent transactions
+     */
     List<Transaction> GetLatestTransactions();
 
 }

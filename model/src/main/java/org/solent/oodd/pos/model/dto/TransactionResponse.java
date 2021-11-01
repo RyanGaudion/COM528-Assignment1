@@ -21,6 +21,7 @@ import java.util.Date;
 /**
  *
  * @author rgaud
+ * This model is the Data Transfer Object used as the response from the Bank API
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TransactionResponse {
@@ -38,29 +39,69 @@ public class TransactionResponse {
     }
     
     //Get Methods
+
+    /**
+     * Gets the status code returned from the API
+     * @return int representation of the status code
+     */
     public int getCode(){
         return code;
     }
+
+    /**
+     * Gets the message property
+     * @return the message returned from the Web API
+     */
     public String getMessage(){
         return message;
     }
+
+    /**
+     * Gets the status of the request (SUCCESS or FAILURE)
+     * @return TransactionStatus enum to represent success or failure
+     */
     public TransactionStatus getStatus(){
         return status;
     }
+
+    /**
+     * Gets the from card number
+     * @return Card number that the transaction was from
+     */
     public String getFromCardNo(){
         return fromCardNo;
     }
+
+    /**
+     * Gets the to card number
+     * @return Card number of the card that the money was sent to
+     */
     public String getToCardNo(){
         return toCardNo;
     }
+
+    /**
+     * Get's the transaction unique ID
+     * @return Unique Transaction ID as a String 
+     */
     public String getTransactionId(){
         return transactionId;
     }
+
+    /**
+     * Get's the Date of the transaction
+     * @return Date and Time that the transaction response was recieved
+     */
     public Date getTransactionDate(){
         return transactionDate;
     }
     
     //Set Methods
+    /**
+     * Sets the status code property
+     * @param code the integar to set the code property to
+     * @return True if the Length of the code is 3, if not doesn't set property and returns false
+     */
     public Boolean setCode(int code){
         //Check Code is 3 digits
         if(String.valueOf(code).length() == 3){
@@ -70,26 +111,61 @@ public class TransactionResponse {
         return false;
     }
     
+    /**
+     * Sets the message property of the response
+     * @param message The message from the API
+     * @return True unless there was an issue setting the property
+     */
     public Boolean setMessage(String message){
         this.message = message;
         return true;
     }
+
+    /**
+     * Sets the status of the Transaction Response
+     * @param status The Status of the Request
+     * @return True unless there was an issue setting the property
+     */
     public Boolean setStatus(TransactionStatus status){
         this.status = status;
         return true;
     }
+
+    /**
+     * Sets the card number of the From Card
+     * @param fromCardNo the Card number of the from card
+     * @return True unless there was an issue setting the property
+     */
     public Boolean setFromCardNo(String fromCardNo){
         this.fromCardNo = fromCardNo;
         return true;
     }
+
+    /**
+     * Sets the card number of the To Card
+     * @param toCardNo the Card number of the to card
+     * @return True unless there was an issue setting the property
+     */
     public Boolean setToCardNo(String toCardNo){
         this.toCardNo = toCardNo;
         return true;
     }
+
+    /**
+     * Sets the unique transaction ID of the request
+    * @param transactionId the unique ID for the transaction 
+    * @return True unless there was an issue setting the property
+    */
     public Boolean setTransactionId(String transactionId){
         this.transactionId = transactionId;
         return true;
     }
+
+    /**
+     * Sets the Date of the transaction
+     * @param date the date and time of the request
+     * @return True unless there was an issue setting the property
+     */
     public Boolean setTransactionDate(Date date){
         this.transactionDate = date;
         return true;

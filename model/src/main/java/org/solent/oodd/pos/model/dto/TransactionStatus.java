@@ -18,7 +18,7 @@ package org.solent.oodd.pos.model.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- *
+ * Basic enum of potential status responses from the Bank API
  * @author rgaud
  */
 public enum TransactionStatus{

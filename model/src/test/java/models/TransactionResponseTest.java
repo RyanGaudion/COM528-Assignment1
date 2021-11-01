@@ -18,8 +18,6 @@ package models;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -27,10 +25,14 @@ import org.solent.oodd.pos.model.dto.TransactionResponse;
 import org.solent.oodd.pos.model.dto.TransactionStatus;
 
 /**
- *
+ * Tests for the transaction response class
  * @author rgaud
  */
 public class TransactionResponseTest {
+
+    /**
+     * Tests the setting and getting of the response code
+     */
     @Test
     public void ResponseCodeTest(){
         TransactionResponse response = new TransactionResponse();
@@ -38,6 +40,9 @@ public class TransactionResponseTest {
         assertEquals(200, response.getCode());
     }
     
+    /**
+     * Tests the setting and getting of the from card number
+     */
     @Test
     public void ResponseFromCardNoTest(){
         TransactionResponse response = new TransactionResponse();
@@ -45,6 +50,9 @@ public class TransactionResponseTest {
         assertEquals("2000000000000000", response.getFromCardNo());
     }
     
+    /**
+     * Tests the setting and getting of the to card number
+     */
     @Test
     public void ResponseToCardNoTest(){
         TransactionResponse response = new TransactionResponse();
@@ -52,6 +60,9 @@ public class TransactionResponseTest {
         assertEquals("4000000000000000", response.getToCardNo());
     }
     
+    /**
+     * Tests the setting and getting of the resposne message
+     */
     @Test
     public void ResponseMessageTest(){
         TransactionResponse response = new TransactionResponse();
@@ -59,6 +70,9 @@ public class TransactionResponseTest {
         assertEquals("Invalid Card Name Selected", response.getMessage());
     }
     
+    /**
+     * Tests the setting and getting of the response code
+     */
     @Test
     public void ResponseStatus(){
         TransactionResponse response = new TransactionResponse();
@@ -69,6 +83,9 @@ public class TransactionResponseTest {
         assertEquals(TransactionStatus.FAIL, response.getStatus());
     }
     
+    /**
+     * Tests the setting and getting of the response date
+     */
     @Test
     public void ResponseDate(){
         TransactionResponse response = new TransactionResponse();
@@ -84,12 +101,14 @@ public class TransactionResponseTest {
         
     }
     
+    /**
+     * Tests the setting and getting of the response ID
+     */
     @Test
     public void ResponseId(){
         TransactionResponse response = new TransactionResponse();
         assertTrue(response.setTransactionId("abcdefg1234"));
-        assertEquals("abcdefg1234", response.getTransactionId());
-        
+        assertEquals("abcdefg1234", response.getTransactionId());  
     }
     
 }

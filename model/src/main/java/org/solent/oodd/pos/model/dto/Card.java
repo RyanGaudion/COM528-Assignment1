@@ -23,6 +23,7 @@ import java.time.DateTimeException;
 /**
  *
  * @author rgaud
+ * This class holds the information about a single Card
  */
 public class Card {
     private String cardNumber = "";
@@ -33,23 +34,46 @@ public class Card {
     
     
     //Get Methods
-    public String GetCardNumber(){
+    /**
+     * Gets the card number
+     * @return cardNumber
+     */
+    public String getCardNumber(){
         return cardNumber;
     }
-    public String GetCVV(){
+    
+    /**
+     * Gets the card CVV
+     * @return cvv
+     */
+    public String getCVV(){
         return cvv;
     }
     
-    public String GetName(){
+    /**
+     * Gets the card name/ card user's name
+     * @return name
+     */
+    public String getName(){
         return name;
     }
     
-    public String GetExpiryDateString(){
+    /**
+     * Get's the card Expiry Date as a String in the format MM/yy 
+     * @return expiryDate
+     */
+    public String getExpiryDateString(){
         return expiryDate;
     }
     
     //Set Methods
-    public Boolean SetCardNumber(String CardNumber){
+    /**
+     * Removes whitespace from the input, checks for 16 digits 
+     * and then sets the card number property
+     * @param CardNumber a 16 digit card number
+     * @return True if validation was success, valse if not
+     */
+    public Boolean setCardNumber(String CardNumber){
         //Removes all whitespace from String
         CardNumber = CardNumber.replaceAll("\\s+","");
         //Valdiates for a 16 digit card number
@@ -60,12 +84,22 @@ public class Card {
         return false;
     }
     
-    public Boolean SetName(String Name){
+    /**
+     * Sets the name of the card
+     * @param Name String for the card user's name
+     * @return true (unless there was an error)
+     */
+    public Boolean setName(String Name){
         this.name = Name;
         return true;
     }
     
-    public Boolean SetCVV(String Cvv){
+    /**
+     * Checks the CVV is 3 or 4 digits and then passes it in
+     * @param Cvv A 3 or 4 digit String of the CVV
+     * @return True if validation was success or false
+     */
+    public Boolean setCVV(String Cvv){
         //Vallidates for a 3 or 4 digit CVV number
         if(Cvv.length() == 3 || Cvv.length() == 4){
             this.cvv = Cvv;
@@ -75,7 +109,13 @@ public class Card {
     }
     
     //MM/yy
-    public Boolean SetExpiryDate(String endDate){        
+
+    /**
+     * Checks the String is in the format of MM/yy and then set's the endDate proeprty
+     * @param endDate the expiry Date of the card in the format of MM/yy
+     * @return Returns true if validation was successful, if not returns false
+     */
+    public Boolean setExpiryDate(String endDate){        
         try{
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yy");
             YearMonth date = YearMonth.parse(endDate, formatter);
@@ -96,15 +136,27 @@ public class Card {
         }
     }
     
+    /**
+     * Get's the Card's Issue Number
+     * @return Issue Number of the Card
+     */
     public String getIssueNumber() {
         return issueNumber;
     }
 
+    /**
+     * Sets the Card's Issue Number
+     * @param issueNumber String of the Card's issue number
+     * @return True unless there were any issues
+     */
     public boolean setIssueNumber(String issueNumber) {
         this.issueNumber = issueNumber;
         return true;
     }
     
+    /**
+     * @return Returns a custom JSON representation of the Card Object
+     */
     @Override
     public String toString() {
         return "Card{" + "name=" + name + ", expiryDate=" + expiryDate + ", cardNumber=" + cardNumber + ", cvv=NOT PRINTED" + '}';

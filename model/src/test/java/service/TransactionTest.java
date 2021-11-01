@@ -23,33 +23,35 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- *
+ * Test methods for the Transaction Class
  * @author rgaud
  */
 public class TransactionTest {
-    
+    /**
+     * Full test of all getters and setters on the transaction object
+     */
     @Test
     public void fullTransactionTest()
     {
         Card card = new Card();
-        assertEquals(true, card.SetCardNumber("0000 0000 0000 0000"));
+        assertEquals(true, card.setCardNumber("0000 0000 0000 0000"));
         
         Card card2 = new Card();
-        assertEquals(true, card2.SetCardNumber("0002 0002 0002 0002"));
+        assertEquals(true, card2.setCardNumber("0002 0002 0002 0002"));
         
         
         TransactionRequest req = new TransactionRequest(card, card2, 100.00);
         
         TransactionResponse response = new TransactionResponse();
         assertEquals(true, response.setCode(300));
-        assertEquals(true, response.setFromCardNo(card.GetCardNumber()));
-        assertEquals(true, response.setToCardNo(card2.GetCardNumber()));
+        assertEquals(true, response.setFromCardNo(card.getCardNumber()));
+        assertEquals(true, response.setToCardNo(card2.getCardNumber()));
         
         Transaction transaction = new Transaction();
         assertEquals(true, transaction.setTransactionRequest(req));
         assertEquals(true, transaction.setTransactionResponse(response));  
         
         assertEquals(300, transaction.getTransactionResponse().getCode());
-        assertEquals("0002000200020002", transaction.getTransactionRequest().getToCard().GetCardNumber());
+        assertEquals("0002000200020002", transaction.getTransactionRequest().getToCard().getCardNumber());
     }
 }

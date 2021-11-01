@@ -19,7 +19,7 @@ import org.solent.oodd.pos.model.dto.TransactionRequest;
 import org.solent.oodd.pos.model.dto.TransactionResponse;
 
 /**
- *
+ * A combination of a transaction Request as well as a transaction response
  * @author rgaud
  */
 public class Transaction {
@@ -30,19 +30,36 @@ public class Transaction {
         
     }
     
+    /**
+     * Constructor requiring a transaction request and response
+     * @param req the Transaction Request that was sent to the API
+     * @param response the Transaction Response that was returned from the API
+     */
     public Transaction(TransactionRequest req, TransactionResponse response){
         this.transactionRequest = req;
         this.transactionResponse = response;
     }
     
+    /**
+     * Get the transaction request
+     * @return the transaction request
+     */
     public TransactionRequest getTransactionRequest(){
         return transactionRequest;
     }
     
+    /**
+     * Get the transaction response
+     * @return the transaction response
+     */
     public TransactionResponse getTransactionResponse(){
         return transactionResponse;
     }
-    
+
+    /**
+     * Sets the transaction request if it's not null
+     * @return true if the request was not null
+     */
     public boolean setTransactionRequest(TransactionRequest request){
         if(request != null){
             transactionRequest = request;
@@ -51,6 +68,10 @@ public class Transaction {
         return false;
     }
     
+    /**
+     * Sets the transaction response if it's not null
+     * @return true if the response was not null
+     */
     public boolean setTransactionResponse(TransactionResponse response){
         if(response != null){
             transactionResponse = response;

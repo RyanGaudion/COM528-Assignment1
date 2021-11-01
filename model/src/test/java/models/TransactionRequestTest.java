@@ -21,52 +21,64 @@ import org.solent.oodd.pos.model.dto.Card;
 import org.solent.oodd.pos.model.dto.TransactionRequest;
 
 /**
- *
+ * Tests of the TransactionRequest class
  * @author rgaud
  */
 public class TransactionRequestTest {
+    /**
+     * Tests the setting and getting of all properties on the transaction request
+     */
     @Test
     public void RequestFullTest(){
         Card card = new Card();
-        assertEquals(true, card.SetCardNumber("0000 0000 0000 0000"));        
-        assertEquals(true, card.SetCVV("343"));
+        assertEquals(true, card.setCardNumber("0000 0000 0000 0000"));        
+        assertEquals(true, card.setCVV("343"));
 
         Card card2 = new Card();
-        assertEquals(true, card2.SetCardNumber("0002 0002 0002 0002"));        
-        assertEquals(true, card2.SetCVV("3334"));
+        assertEquals(true, card2.setCardNumber("0002 0002 0002 0002"));        
+        assertEquals(true, card2.setCVV("3334"));
         TransactionRequest req = new TransactionRequest(card, card2, 100.00);
         
         assertEquals(100.00, req.getAmount(), 0.0);
         assertEquals(card2, req.getToCard());        
         assertEquals(card, req.getFromCard());
-        assertEquals("3334", req.getToCard().GetCVV());        
-        assertEquals("343", req.getFromCard().GetCVV());
-        assertEquals("0000000000000000", req.getFromCard().GetCardNumber());        
-        assertEquals("0002000200020002", req.getToCard().GetCardNumber()); 
+        assertEquals("3334", req.getToCard().getCVV());        
+        assertEquals("343", req.getFromCard().getCVV());
+        assertEquals("0000000000000000", req.getFromCard().getCardNumber());        
+        assertEquals("0002000200020002", req.getToCard().getCardNumber()); 
     }
     
+    /**
+     * Tests the setting and getting of the from Card in more detail
+     */
     @Test
     public void FromCardTest(){
         Card card = new Card();
-        assertEquals(true, card.SetCardNumber("0000 0000 0000 0000"));        
-        assertEquals(true, card.SetCVV("343"));
+        assertEquals(true, card.setCardNumber("0000 0000 0000 0000"));        
+        assertEquals(true, card.setCVV("343"));
         
         TransactionRequest req = new TransactionRequest(card, new Card(), 0.0);
-        assertEquals("0000000000000000", req.getFromCard().GetCardNumber());
-        assertEquals("343", req.getFromCard().GetCVV());
+        assertEquals("0000000000000000", req.getFromCard().getCardNumber());
+        assertEquals("343", req.getFromCard().getCVV());
     }
     
+    /**
+     * Tests the setting and getting of the to card in more detail
+     */
     @Test
     public void ToCardTest(){
         Card card = new Card();
-        assertEquals(true, card.SetCardNumber("0002 0020 0002 0020"));        
-        assertEquals(true, card.SetCVV("2243"));
+        assertEquals(true, card.setCardNumber("0002 0020 0002 0020"));        
+        assertEquals(true, card.setCVV("2243"));
         
         TransactionRequest req = new TransactionRequest(new Card(), card, 0.0);
-        assertEquals("0002002000020020", req.getToCard().GetCardNumber());        
-        assertEquals("2243", req.getToCard().GetCVV());
+        assertEquals("0002002000020020", req.getToCard().getCardNumber());        
+        assertEquals("2243", req.getToCard().getCVV());
     }
     
+    /**
+     * Tests the setting and getting of the transaction amount in mroe detail
+     */
     @Test
     public void AmountTest(){
         TransactionRequest req = new TransactionRequest(new Card(), new Card(), 100.0);

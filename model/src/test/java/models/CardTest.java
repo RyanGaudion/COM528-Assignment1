@@ -20,42 +20,57 @@ import org.junit.Test;
 import org.solent.oodd.pos.model.dto.Card;
 
 /**
- *
+ * Test Methods for the card class
  * @author rgaud
  */
 public class CardTest {
+    /**
+     * Tests the setting and getting of a card number
+     */
     @Test
     public void setBasicCardNumberTest()
     {
         Card card = new Card();
-        assertEquals(true, card.SetCardNumber("0000 0000 0000 0000"));
-        assertEquals("0000000000000000", card.GetCardNumber());
+        assertEquals(true, card.setCardNumber("0000 0000 0000 0000"));
+        assertEquals("0000000000000000", card.getCardNumber());
     }
     
+    /**
+     * Tests the setting and getting of a card name
+     */
     @Test
     public void setNameTest()
     {
         Card card = new Card();
-        assertEquals(true, card.SetName("Joe Bloggs"));
-        assertEquals("Joe Bloggs", card.GetName());
+        assertEquals(true, card.setName("Joe Bloggs"));
+        assertEquals("Joe Bloggs", card.getName());
     }
     
+    /**
+     * Tests the setting and getting of an invaliud Card Number (should return false)
+     */
     @Test
     public void setInvalidCardNumberTest()
     {
         Card card = new Card();
-        assertEquals(false, card.SetCardNumber("000000000000000"));
-        assertEquals("", card.GetCardNumber());
+        assertEquals(false, card.setCardNumber("000000000000000"));
+        assertEquals("", card.getCardNumber());
     }
     
+    /**
+     * Tests the setting and getting of a Card CVV Number
+     */
     @Test
     public void setCVVTest()
     {
         Card card = new Card();
-        assertEquals(true, card.SetCVV("846"));
-        assertEquals("846", card.GetCVV());
+        assertEquals(true, card.setCVV("846"));
+        assertEquals("846", card.getCVV());
     }
     
+    /**
+     * Tests the setting and getting of a Card Issue Number
+     */
     @Test
     public void setIssueNumberTest()
     {
@@ -64,37 +79,49 @@ public class CardTest {
         assertEquals("02", card.getIssueNumber());
     }
     
+    /**
+     * Tests the setting and getting of a 4 digit Card CVV Number
+     */
     @Test
     public void setCVV4DigitTest()
     {
         Card card = new Card();
-        assertEquals(true, card.SetCVV("8461"));
-        assertEquals("8461", card.GetCVV());
+        assertEquals(true, card.setCVV("8461"));
+        assertEquals("8461", card.getCVV());
     }
     
+    /**
+     * Tests the setting and getting of an invalid length CVV Number
+     */
     @Test
     public void setInvalidCVVTest()
     {
         Card card = new Card();
-        assertEquals(false, card.SetCVV("84615"));
-        assertEquals("", card.GetCVV());
+        assertEquals(false, card.setCVV("84615"));
+        assertEquals("", card.getCVV());
     }
     
+    /**
+     * Tests the setting and getting of a card expiry date
+     */
     @Test
     public void setExpiryDateTest()
     {
         Card card = new Card();
-        assertEquals(true, card.SetExpiryDate("05/21"));
-        assertEquals("05/21", card.GetExpiryDateString());
+        assertEquals(true, card.setExpiryDate("05/21"));
+        assertEquals("05/21", card.getExpiryDateString());
     }
     
+    /**
+     * Tests the setting and getting of multiple invalid expiry dates
+     */
     @Test
     public void setInvalidExpiryDate(){
         Card card = new Card();
-        assertEquals(false, card.SetExpiryDate("abcde123"));        
-        assertEquals(false, card.SetExpiryDate("14/-0"));        
-        assertEquals(false, card.SetExpiryDate("14/24"));        
-        assertEquals(true, card.SetExpiryDate("11/24"));
+        assertEquals(false, card.setExpiryDate("abcde123"));        
+        assertEquals(false, card.setExpiryDate("14/-0"));        
+        assertEquals(false, card.setExpiryDate("14/24"));        
+        assertEquals(true, card.setExpiryDate("11/24"));
     }
     
 }
