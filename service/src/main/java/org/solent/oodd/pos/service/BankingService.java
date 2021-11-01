@@ -26,7 +26,7 @@ import org.solent.oodd.pos.model.service.IBankingService;
 import org.solent.oodd.pos.model.service.Transaction;
 
 /**
- *
+ * The Banking Service responsible for keeping track of transactions as well as accessing the Bank Rest Client
  * @author rgaud
  */
 public class BankingService implements IBankingService{
@@ -43,6 +43,10 @@ public class BankingService implements IBankingService{
     }
     
     
+    /**
+     * Send Transaction method simply sends money from 1 card to another using the Bank API. 
+     * This method implements Http Authentication
+     */
     @Override
     public Transaction SendTransaction(Card fromCard, Card toCard, Double amount) {
         IBankRestClient client = ClientObjectFactory.getBankClient();
@@ -56,6 +60,10 @@ public class BankingService implements IBankingService{
         return transaction;
     }
 
+    /**
+     * Refund Transaction takes in a full Transaction object and then fetches the 
+     * required information to refund the transaction
+     */
     @Override
     public Transaction RefundTransaction(Transaction transaction) {
         IBankRestClient client = ClientObjectFactory.getBankClient();
@@ -74,6 +82,9 @@ public class BankingService implements IBankingService{
         
     }
     
+    /**
+     * This uses the transactions list to get the 9 most recent transactions
+     */
     @Override
     public List<Transaction> GetLatestTransactions(){
         //Returns either all the transactions or the last 9 - whichever is smallest

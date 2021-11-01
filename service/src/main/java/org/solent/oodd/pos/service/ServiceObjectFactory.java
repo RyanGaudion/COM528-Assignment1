@@ -18,7 +18,8 @@ package org.solent.oodd.pos.service;
 import org.solent.oodd.pos.model.service.IBankingService;
 
 /**
- *
+ * This service object factory is responsible for getting a single Banking Service object to
+ * use thorughout the application
  * @author rgaudion
  */
 public class ServiceObjectFactory {
@@ -29,6 +30,12 @@ public class ServiceObjectFactory {
         
     }
     
+    /**
+     * Get's a single Banking Service (as singleton). 
+     * Is thread safe as it uses a synchronized lock. 
+     * Creates the banking service if 1 doesn't exists
+     * @return the singleton banking service
+     */
     public static IBankingService getBankingService(){
         if(bankingService == null){
             synchronized (ServiceObjectFactory.class) {
