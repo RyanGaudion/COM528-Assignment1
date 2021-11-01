@@ -17,6 +17,8 @@ package org.solent.oodd.pos.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -33,6 +35,7 @@ public class TransactionResponse {
     private String transactionId; //Could be a GUID
     private Date transactionDate;
 
+    final static Logger LOG = LogManager.getLogger(TransactionResponse.class);
     
     public TransactionResponse(){
         
@@ -89,8 +92,8 @@ public class TransactionResponse {
     }
 
     /**
-     * Get's the Date of the transaction
-     * @return Date and Time that the transaction response was recieved
+     * Gets the Date of the transaction
+     * @return Date and Time that the transaction response was received
      */
     public Date getTransactionDate(){
         return transactionDate;
@@ -99,15 +102,17 @@ public class TransactionResponse {
     //Set Methods
     /**
      * Sets the status code property
-     * @param code the integar to set the code property to
+     * @param code the int to set the code property to
      * @return True if the Length of the code is 3, if not doesn't set property and returns false
      */
     public Boolean setCode(int code){
         //Check Code is 3 digits
         if(String.valueOf(code).length() == 3){
+            LOG.info("Set Code Validation - Success: " + code);
             this.code = code;
             return true;
         }
+        LOG.info("Set Code Validation - Failed: " + code);
         return false;
     }
     

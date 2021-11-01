@@ -15,6 +15,9 @@
  */
 package org.solent.oodd.pos.model.dto;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * A Data Transfer Object used to send a transaction request to the Bank API 
  * @author rgaud
@@ -24,20 +27,23 @@ public class TransactionRequest {
     private Card toCard;
     private Double amount;
 
+    final static Logger LOG = LogManager.getLogger(TransactionRequest.class);
+
     /**
      * Empty constructor - required for serialising and de-serialising
      */
     public TransactionRequest(){
-        
+        LOG.debug("New Transaction Request - empty constructor");
     }
     
     /**
-     * Quick Constructor which sets or neccessary properties
+     * Quick Constructor which sets or necessary properties
      * @param from fromCard for the transaction
      * @param to toCard for the transaction
      * @param amount amount for the transaction as a double
      */
     public TransactionRequest(Card from, Card to, Double amount){
+        LOG.debug("New Transaction Request - full constructor");
         fromCard = from;
         toCard = to;
         this.amount = amount;
@@ -46,7 +52,7 @@ public class TransactionRequest {
     /**
      * Sets the from Card
      * @param card Card that the transaction should be made from
-     * @return returns True as long as there were no errors in setting the proeprty
+     * @return returns True as long as there were no errors in setting the property
      */
     public boolean setFromCard(Card card){
         this.fromCard = card;
@@ -56,7 +62,7 @@ public class TransactionRequest {
     /**
      * Sets the to Card
      * @param card Card that the transaction amount should be sent to
-     * @return returns True as long as there were no errors in setting the proeprty
+     * @return returns True as long as there were no errors in setting the property
      */
     public boolean setToCard(Card card){
         this.toCard = card;
@@ -66,7 +72,7 @@ public class TransactionRequest {
     /**
      * Sets how much money should be transfered for the transaction
      * @param amount the amount to transfer (as a Double)
-     * @return returns True as long as there were no errors in setting the proeprty
+     * @return returns True as long as there were no errors in setting the property
      */
     public boolean setAmount(double amount){
         this.amount = amount;
@@ -91,7 +97,7 @@ public class TransactionRequest {
 
     /**
      * Simply gets the amount set for the transactionRequest
-     * @return Double representation of the amount that will be transfered from the "fromCard" to the "toCard"
+     * @return Double representation of the amount that will be transferred from the "fromCard" to the "toCard"
      */
     public Double getAmount(){
         return amount;

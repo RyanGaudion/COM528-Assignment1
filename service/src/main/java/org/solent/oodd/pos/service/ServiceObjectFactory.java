@@ -15,35 +15,42 @@
  */
 package org.solent.oodd.pos.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.oodd.pos.model.service.IBankingService;
 
 /**
  * This service object factory is responsible for getting a single Banking Service object to
- * use thorughout the application
+ * use throughout the application
  * @author rgaudion
  */
 public class ServiceObjectFactory {
     
     private static IBankingService bankingService;
     
+    final static Logger LOG = LogManager.getLogger(ServiceObjectFactory.class);
+
     private ServiceObjectFactory(){
         
     }
     
     /**
-     * Get's a single Banking Service (as singleton). 
+     * Gets a single Banking Service (as singleton). 
      * Is thread safe as it uses a synchronized lock. 
      * Creates the banking service if 1 doesn't exists
      * @return the singleton banking service
      */
     public static IBankingService getBankingService(){
+        LOG.debug("getBankingService Called");
         if(bankingService == null){
             synchronized (ServiceObjectFactory.class) {
                 if(bankingService == null){
+                    LOG.debug("ServiceObjectFactory created new banking service");
                     bankingService = new BankingService();
                 }
             }
         }
+        LOG.debug("ServiceObjectFactory returned banking service");
         return bankingService;
     }        
 }

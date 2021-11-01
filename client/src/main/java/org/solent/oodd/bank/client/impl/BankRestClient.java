@@ -55,7 +55,7 @@ public class BankRestClient implements IBankRestClient {
     /**
      * @param request The TransactionRequest Object for the request
      * @return TransactionResponse
-     * This methdo simply calls the Transaction Request endpoint for the API and returns a TransactionResponse object
+     * This method simply calls the Transaction Request endpoint for the API and returns a TransactionResponse object
      */
     @Override
     public TransactionResponse transferMoney(TransactionRequest request) {

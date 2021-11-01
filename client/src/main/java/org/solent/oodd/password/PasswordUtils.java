@@ -15,6 +15,8 @@
  */
 package org.solent.oodd.password;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
@@ -25,11 +27,14 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class PasswordUtils {
     
+    final static Logger LOG = LogManager.getLogger(PasswordUtils.class);
+
     /**
      * @param password The password as a String that should be hashed
      * @return String - The BCrypt hash of the password String
      */
     public static String hashPassword(String password){
+        LOG.debug("Hash Password hit");
         return BCrypt.hashpw(password, BCrypt.gensalt(12));
     }
     
@@ -39,6 +44,7 @@ public class PasswordUtils {
      * @return True if the passwords match
      */
     public static boolean checkPassword(String password, String hashed){
+        LOG.debug("Check Password hit");
         return BCrypt.checkpw(password, hashed);
     }
     
