@@ -21,6 +21,7 @@ import org.solent.oodd.pos.model.service.IBankRestClient;
 /**
  *
  * @author rgaud
+ * The Client Object Factory is responsible for creating the BankClient as a Singleton
  */
 public class ClientObjectFactory {
     private static IBankRestClient bankClient;
@@ -29,6 +30,11 @@ public class ClientObjectFactory {
 
     }
     
+    /**
+     * @return IBankRestClient
+     * This method creates a new IBankRestClient if one doesn't exist 
+     * or returns the current one if one exits
+     */
     public static IBankRestClient getBankClient(){
 
         if (bankClient == null) {

@@ -26,11 +26,18 @@ import org.solent.oodd.password.PasswordUtils;
 /**
  *
  * @author gallenc
+ * @author rgaudion
+ * This test class is responsible for testing the PasswordUtils which 
+ * hashes passwords and checks String to hashes
  */
 public class PasswordUtilsTest {
 
     final static Logger LOG = LogManager.getLogger(PasswordUtilsTest.class);
     
+    /**
+     * This test will create a password hash and then check multiple passwords
+     * against this hash - testing for both successful and unsuccessful checks
+     */
     @Test
     public void testPasswordUtils(){
         

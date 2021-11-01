@@ -46,11 +46,19 @@ public class JsonDtoTests {
                 .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 
+    /**
+     * This test method tests that the TransactionRequest to JsonString and back
+     * It First uses objectMapper to write the request as a Json String
+     * It then uses objectMapper to deserialise this string and read it as a TransactionRequest
+     */
     @Test
     public void testJsonMessages() throws JsonProcessingException {        
         
         Card fromCard = new Card();
+        fromCard.SetCardNumber("4444444499997777");
         Card toCard = new Card();
+        toCard.SetCVV("3344");
+        toCard.SetCardNumber("2222333399996666");
         Double amount = 100.01;
         
         TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);

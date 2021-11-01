@@ -27,10 +27,10 @@ import org.junit.Before;
 import org.solent.oodd.bank.client.impl.BankRestClient;
 /**
  *
- * @author rgaudion 
  * @author kpeacock 
+ * @author rgaudion
  * @author cgallen
-
+ * This Class is responsible for testing the transaction methods of the REST Client
  */
 public class BankClientTest {
 
@@ -43,6 +43,10 @@ public class BankClientTest {
     String toUsername=null;
     String toPassword=null;
 
+    /*
+     * Before the Tests are performed a default fromCard, toCard
+     * as well as Username and password are setup
+     */
     @Before
     public void before() {
         fromCard = new Card();

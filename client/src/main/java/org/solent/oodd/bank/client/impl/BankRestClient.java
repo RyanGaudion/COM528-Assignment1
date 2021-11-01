@@ -37,6 +37,7 @@ import org.solent.oodd.pos.model.service.IBankRestClient;
  *
  * @author rgaudion 
  * @author cgallen
+ * The Bank REST Client is responsible for all REST calls to the Bank API and for deserialising these responses to Java Objects
  */
 public class BankRestClient implements IBankRestClient {
 
@@ -44,10 +45,18 @@ public class BankRestClient implements IBankRestClient {
 
     String urlStr;
 
+    /** 
+     * @param urlStr A String of the URL endpoint that the API is located at.
+     */
     public BankRestClient(String urlStr) {
         this.urlStr = urlStr;
     }
 
+    /**
+     * @param request The TransactionRequest Object for the request
+     * @return TransactionResponse
+     * This methdo simply calls the Transaction Request endpoint for the API and returns a TransactionResponse object
+     */
     @Override
     public TransactionResponse transferMoney(TransactionRequest request) {
         LOG.debug("transferMoney called: ");
@@ -74,6 +83,15 @@ public class BankRestClient implements IBankRestClient {
 
     }
 
+    /**
+     * @param request
+     * @param userName
+     * @param password
+     * @return TransactionResponse
+     * This method performs the same function as the other transferMoney method 
+     * however this method provides Http Authentication using the username and 
+     * password of the ShopKeeper
+     */
     @Override
     public TransactionResponse transferMoney(TransactionRequest request, String userName, String password) {
         LOG.debug("transferMoney called: ");

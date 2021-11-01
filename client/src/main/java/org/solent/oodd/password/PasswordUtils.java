@@ -20,13 +20,24 @@ import org.mindrot.jbcrypt.BCrypt;
 /**
  *
  * @author gallenc
+ * This utility is responsible for hashing a password using BCrypt 
+ * as well as checking a password against a hash
  */
 public class PasswordUtils {
     
+    /**
+     * @param password The password as a String that should be hashed
+     * @return String - The BCrypt hash of the password String
+     */
     public static String hashPassword(String password){
         return BCrypt.hashpw(password, BCrypt.gensalt(12));
     }
     
+    /**
+     * @param password The Password that needs to be checked
+     * @param hashed The Hash to check the password against
+     * @return True if the passwords match
+     */
     public static boolean checkPassword(String password, String hashed){
         return BCrypt.checkpw(password, hashed);
     }
