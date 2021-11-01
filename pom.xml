@@ -26,7 +26,8 @@
         <module>model</module>
         <module>service</module>
         <module>web</module>
-	<module>client</module>
+	      <module>client</module>
+        <module>pointOfSalesDevice-DAO</module>
     </modules>
     
     <dependencyManagement>
