@@ -5,10 +5,12 @@
  */
 package service;
 
-import org.solent.com504.oodd.pos.model.service.Transaction;
+import org.solent.oodd.pos.model.dto.TransactionResponse;
+import org.solent.oodd.pos.model.dto.Card;
+import org.solent.oodd.pos.model.dto.TransactionRequest;
+import org.solent.oodd.pos.model.service.Transaction;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import org.solent.com504.oodd.pos.model.dto.*;
 
 /**
  *

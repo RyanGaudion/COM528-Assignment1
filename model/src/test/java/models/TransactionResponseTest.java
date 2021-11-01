@@ -13,8 +13,8 @@ import java.util.logging.Logger;
 import org.junit.Assert;
 import static org.junit.Assert.*;
 import org.junit.Test;
-import org.solent.com504.oodd.pos.model.dto.TransactionResponse;
-import org.solent.com504.oodd.pos.model.dto.TransactionStatus;
+import org.solent.oodd.pos.model.dto.TransactionResponse;
+import org.solent.oodd.pos.model.dto.TransactionStatus;
 
 /**
  *
