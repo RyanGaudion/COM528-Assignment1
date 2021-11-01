@@ -50,16 +50,16 @@ public class BankClientTest {
     @Before
     public void before() {
         fromCard = new Card();
-        fromCard.SetCardNumber("5133880000000012");
-        fromCard.SetCVV("123");
-        fromCard.SetExpiryDate("11/21");
-        fromCard.SetName("test user1");
+        fromCard.setCardNumber("5133880000000012");
+        fromCard.setCVV("123");
+        fromCard.setExpiryDate("11/21");
+        fromCard.setName("test user1");
 
         toCard = new Card();
-        toCard.SetCardNumber("4285860000000021");
-        toCard.SetCVV("123");
-        toCard.SetExpiryDate("11/21");
-        toCard.SetName("test user2");
+        toCard.setCardNumber("4285860000000021");
+        toCard.setCVV("123");
+        toCard.setExpiryDate("11/21");
+        toCard.setName("test user2");
         
         toUsername = "testuser2";
         toPassword = "defaulttestpass";
@@ -109,10 +109,10 @@ public class BankClientTest {
     @Test
     public void invalidFromCardTest(){
         Card invalidFromCard = new Card();
-        invalidFromCard.SetName("Invalid From Card");
-        invalidFromCard.SetCVV("989");
-        invalidFromCard.SetCardNumber("invalid");
-        invalidFromCard.SetExpiryDate("23/43");
+        invalidFromCard.setName("Invalid From Card");
+        invalidFromCard.setCVV("989");
+        invalidFromCard.setCardNumber("invalid");
+        invalidFromCard.setExpiryDate("23/43");
 
         BankRestClient client = new BankRestClient(bankUrl);
         TransactionRequest req = new TransactionRequest(invalidFromCard, toCard, 50.0);
@@ -128,10 +128,10 @@ public class BankClientTest {
     @Test
     public void invalidToCardTest(){
         Card invalidToCard = new Card();
-        invalidToCard.SetName("Invalid To Card");
-        invalidToCard.SetCVV("989");
-        invalidToCard.SetCardNumber("invalid");
-        invalidToCard.SetExpiryDate("11/22");
+        invalidToCard.setName("Invalid To Card");
+        invalidToCard.setCVV("989");
+        invalidToCard.setCardNumber("invalid");
+        invalidToCard.setExpiryDate("11/22");
         
         BankRestClient client = new BankRestClient(bankUrl);
         TransactionRequest req = new TransactionRequest(fromCard, invalidToCard, 50.0);
