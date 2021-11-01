@@ -17,7 +17,10 @@ import org.junit.Before;
 import org.solent.oodd.bank.client.impl.BankRestClient;
 /**
  *
+ * @author rgaudion 
+ * @author kpeacock 
  * @author cgallen
+
  */
 public class BankClientTest {
 

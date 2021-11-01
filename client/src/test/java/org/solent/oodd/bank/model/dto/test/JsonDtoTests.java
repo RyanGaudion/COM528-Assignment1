@@ -18,7 +18,9 @@ import org.junit.Before;
 
 /**
  *
+ * @author rgaudion 
  * @author cgallen
+
  */
 public class JsonDtoTests {
 
@@ -38,22 +40,17 @@ public class JsonDtoTests {
     public void testJsonMessages() throws JsonProcessingException {        
         
         Card fromCard = new Card();
-        //trequest.setFromCard(fromCard);
         Card toCard = new Card();
-        //trequest.setToCard(toCard);
-
         Double amount = 100.01;
         
-        TransactionRequest trequest = new TransactionRequest(fromCard, toCard, amount);
+        TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);
         
-        //trequest.setAmount(amount);
+        String requestString = objectMapper.writeValueAsString(request);
 
-        String tRequestString = objectMapper.writeValueAsString(trequest);
+        LOG.debug("Transaction Request String: \n" + requestString);
 
-        LOG.debug("Json transactionRequest output:\n" + tRequestString);
-
-        TransactionRequest receivedTransactionRequest = objectMapper.readValue(tRequestString, TransactionRequest.class);
+        TransactionRequest transactionRequestResult = objectMapper.readValue(requestString, TransactionRequest.class);
         
-        assertTrue(trequest.toString().equals(receivedTransactionRequest.toString()));
+        assertTrue(request.toString().equals(transactionRequestResult.toString()));
     }
 }

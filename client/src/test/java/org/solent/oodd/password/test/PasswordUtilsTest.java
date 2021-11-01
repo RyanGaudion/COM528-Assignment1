@@ -8,7 +8,6 @@ package org.solent.oodd.password.test;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.mindrot.jbcrypt.BCrypt;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.oodd.password.PasswordUtils;
