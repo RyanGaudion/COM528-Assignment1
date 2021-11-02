@@ -27,7 +27,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.solent.oodd</groupId>
+            <groupId>solent.ac.uk.ood</groupId>
             <artifactId>pointOfSalesDevice-DAO</artifactId>
             <version>${project.version}</version>
         </dependency>

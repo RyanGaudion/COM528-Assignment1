@@ -6,7 +6,7 @@
         <artifactId>pointOfSalesDevice</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.solent.oodd</groupId>
+    <groupId>solent.ac.uk.ood</groupId>
     <artifactId>pointOfSalesDevice-DAO</artifactId>
     <packaging>jar</packaging>
     <dependencies>
