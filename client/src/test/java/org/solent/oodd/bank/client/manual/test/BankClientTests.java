@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.solent.oodd.bank.client.test.manual;
+package org.solent.oodd.bank.client.manual.test;
 
 import org.solent.oodd.pos.model.dto.TransactionResponse;
 import org.solent.oodd.pos.model.dto.Card;
-import org.solent.oodd.pos.model.dto.TransactionStatus;
 import org.solent.oodd.pos.model.dto.TransactionRequest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,11 +31,11 @@ import org.solent.oodd.bank.client.impl.BankRestClient;
  * @author cgallen
  * This Class is responsible for testing the transaction methods of the REST Client
  */
-public class BankClientTest {
+public class BankClientTests {
 
-    final static Logger LOG = LogManager.getLogger(BankClientTest.class);
+    final static Logger LOG = LogManager.getLogger(BankClientTests.class);
 
-    String bankUrl = "http://localhost:8080/bank/rest";
+    String bankUrl = "http://com528bank.ukwest.cloudapp.azure.com:8080/rest";
     Card fromCard = null;
     Card toCard = null;
     
@@ -50,13 +49,13 @@ public class BankClientTest {
     @Before
     public void before() {
         fromCard = new Card();
-        fromCard.setCardNumber("5133880000000012");
+        fromCard.setCardnumber("5133880000000012");
         fromCard.setCVV("123");
         fromCard.setExpiryDate("11/21");
         fromCard.setName("test user1");
 
         toCard = new Card();
-        toCard.setCardNumber("4285860000000021");
+        toCard.setCardnumber("4285860000000021");
         toCard.setCVV("123");
         toCard.setExpiryDate("11/21");
         toCard.setName("test user2");
@@ -79,7 +78,9 @@ public class BankClientTest {
         TransactionResponse response = client.transferMoney(req);
         LOG.debug("transaction reply:" + response);
 
-        assertEquals(TransactionStatus.SUCCESS, response.getStatus());
+        LOG.debug(response);       
+        assertEquals("SUCCESS", response.getStatus());
+
 
     }
 
@@ -99,7 +100,7 @@ public class BankClientTest {
         TransactionResponse response = client.transferMoney(req, toUsername, toPassword);
         LOG.debug("transaction with auth reply:" + response);
         
-        assertEquals(TransactionStatus.SUCCESS, response.getStatus());
+        assertEquals("SUCCESS", response.getStatus());
 
     }
     
@@ -111,7 +112,7 @@ public class BankClientTest {
         Card invalidFromCard = new Card();
         invalidFromCard.setName("Invalid From Card");
         invalidFromCard.setCVV("989");
-        invalidFromCard.setCardNumber("invalid");
+        invalidFromCard.setCardnumber("invalid");
         invalidFromCard.setExpiryDate("23/43");
 
         BankRestClient client = new BankRestClient(bankUrl);
@@ -119,7 +120,7 @@ public class BankClientTest {
         
         TransactionResponse response =  client.transferMoney(req);
 
-        assertEquals (response.getStatus().toString(), "FAIL");
+        assertEquals ("FAIL", response.getStatus());
     }
     
     /**
@@ -130,7 +131,7 @@ public class BankClientTest {
         Card invalidToCard = new Card();
         invalidToCard.setName("Invalid To Card");
         invalidToCard.setCVV("989");
-        invalidToCard.setCardNumber("invalid");
+        invalidToCard.setCardnumber("invalid");
         invalidToCard.setExpiryDate("11/22");
         
         BankRestClient client = new BankRestClient(bankUrl);
@@ -138,7 +139,7 @@ public class BankClientTest {
         
         TransactionResponse response =  client.transferMoney(req);
 
-        assertEquals (response.getStatus().toString(), "FAIL");
+        assertEquals ("FAIL", response.getStatus());
     }
     
     /**
@@ -148,10 +149,10 @@ public class BankClientTest {
     public void InvalidTransactionAmountTest(){
         BankRestClient client = new BankRestClient(bankUrl);
         
-        TransactionRequest req = new TransactionRequest(fromCard, toCard, -50.0);
+        TransactionRequest req = new TransactionRequest(fromCard, toCard, 50000000000.0);
         TransactionResponse response =  client.transferMoney(req);
 
-        assertEquals (response.getStatus().toString(), "FAIL");
+        assertEquals ("FAIL", response.getStatus());
     }
 
 }

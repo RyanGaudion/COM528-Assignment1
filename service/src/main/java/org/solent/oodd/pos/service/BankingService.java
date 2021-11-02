@@ -44,10 +44,10 @@ public class BankingService implements IBankingService{
     
     public BankingService(PropertiesDao properties){
         //TODO - Change to Properties File
-        apiUsername = properties.getProperty("apiUsername");
-        apiPassword = properties.getProperty("apiPassword");
+        apiUsername = properties.getProperty("org.solent.oodd.pos.service.apiUsername");
+        apiPassword = properties.getProperty("org.solent.oodd.pos.service.apiPassword");
         shopKeeperCard = new Card();
-        shopKeeperCard.setCardNumber(properties.getProperty("shopCardNumber"));
+        shopKeeperCard.setCardnumber(properties.getProperty("org.solent.oodd.pos.service.shopKeeperCard"));
     }
     
     
@@ -57,7 +57,7 @@ public class BankingService implements IBankingService{
      */
     @Override
     public Transaction SendTransaction(Card fromCard, Double amount) {
-        LOG.debug("Send Transaction from: " + fromCard.getCardNumber() + " to: " + shopKeeperCard.getCardNumber() + " for: " + amount);
+        LOG.debug("Send Transaction from: " + fromCard.getCardnumber() + " to: " + shopKeeperCard.getCardnumber() + " for: " + amount);
 
         IBankRestClient client = ClientObjectFactory.getBankClient();
                
@@ -78,7 +78,7 @@ public class BankingService implements IBankingService{
      */
     @Override
     public Transaction RefundTransaction(Transaction transaction) {
-        LOG.debug("Refund Transaction from: " + transaction.getTransactionRequest().getFromCard().getCardNumber() + " to: " + transaction.getTransactionRequest().getToCard().getCardNumber() + " for: " + transaction.getTransactionRequest().getAmount());
+        LOG.debug("Refund Transaction from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " to: " + transaction.getTransactionRequest().getToCard().getCardnumber() + " for: " + transaction.getTransactionRequest().getAmount());
 
         IBankRestClient client = ClientObjectFactory.getBankClient();
         

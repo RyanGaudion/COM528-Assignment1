@@ -31,8 +31,8 @@ public class CardTest {
     public void setBasicCardNumberTest()
     {
         Card card = new Card();
-        assertEquals(true, card.setCardNumber("0000 0000 0000 0000"));
-        assertEquals("0000000000000000", card.getCardNumber());
+        assertEquals(true, card.setCardnumber("0000 0000 0000 0000"));
+        assertEquals("0000000000000000", card.getCardnumber());
     }
     
     /**
@@ -53,8 +53,8 @@ public class CardTest {
     public void setInvalidCardNumberTest()
     {
         Card card = new Card();
-        assertEquals(false, card.setCardNumber("000000000000000"));
-        assertEquals("", card.getCardNumber());
+        assertEquals(false, card.setCardnumber("000000000000000"));
+        assertEquals("", card.getCardnumber());
     }
     
     /**
@@ -109,7 +109,7 @@ public class CardTest {
     {
         Card card = new Card();
         assertEquals(true, card.setExpiryDate("05/21"));
-        assertEquals("05/21", card.getExpiryDate());
+        assertEquals("05/21", card.getEndDate());
     }
     
     /**

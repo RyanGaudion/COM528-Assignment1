@@ -28,9 +28,9 @@ import org.apache.logging.log4j.Logger;
  * This class holds the information about a single Card
  */
 public class Card {
-    private String cardNumber = "";
+    private String cardnumber = "";
     private String cvv = "";
-    private String expiryDate = "";
+    private String endDate = "";
     private String name = "";
     private String issueNumber = "";
     
@@ -42,8 +42,8 @@ public class Card {
      * Gets the card number
      * @return cardNumber
      */
-    public String getCardNumber(){
-        return cardNumber;
+    public String getCardnumber(){
+        return cardnumber;
     }
     
     /**
@@ -64,10 +64,10 @@ public class Card {
     
     /**
      * Get's the card Expiry Date as a String in the format MM/yy 
-     * @return expiryDate
+     * @return endDate
      */
-    public String getExpiryDate(){
-        return expiryDate;
+    public String getEndDate(){
+        return endDate;
     }
     
     //Set Methods
@@ -77,12 +77,12 @@ public class Card {
      * @param CardNumber a 16 digit card number
      * @return True if validation was success, valse if not
      */
-    public Boolean setCardNumber(String CardNumber){
+    public Boolean setCardnumber(String CardNumber){
         //Removes all whitespace from String
         CardNumber = CardNumber.replaceAll("\\s+","");
         //Valdiates for a 16 digit card number
         if(CardNumber.length() == 16){
-            this.cardNumber = CardNumber;
+            this.cardnumber = CardNumber;
             LOG.info("Set Card Number Validation - Success: " + CardNumber);
             return true;
         }
@@ -133,7 +133,7 @@ public class Card {
             }
             //If Parse was successful
             LOG.info("Set Expiry Date Validation - Success: " + endDate);
-            this.expiryDate = endDate;
+            this.endDate = endDate;
             return true;
             
         }
@@ -170,6 +170,6 @@ public class Card {
      */
     @Override
     public String toString() {
-        return "Card{" + "name=" + name + ", expiryDate=" + expiryDate + ", cardNumber=" + cardNumber + ", cvv=NOT PRINTED" + '}';
+        return "Card{" + "name=" + name + ", expiryDate=" + endDate + ", cardNumber=" + cardnumber + ", cvv=NOT PRINTED" + '}';
     }
 }

@@ -31,11 +31,11 @@ public class TransactionRequestTest {
     @Test
     public void RequestFullTest(){
         Card card = new Card();
-        assertEquals(true, card.setCardNumber("0000 0000 0000 0000"));        
+        assertEquals(true, card.setCardnumber("0000 0000 0000 0000"));        
         assertEquals(true, card.setCVV("343"));
 
         Card card2 = new Card();
-        assertEquals(true, card2.setCardNumber("0002 0002 0002 0002"));        
+        assertEquals(true, card2.setCardnumber("0002 0002 0002 0002"));        
         assertEquals(true, card2.setCVV("3334"));
         TransactionRequest req = new TransactionRequest(card, card2, 100.00);
         
@@ -44,8 +44,8 @@ public class TransactionRequestTest {
         assertEquals(card, req.getFromCard());
         assertEquals("3334", req.getToCard().getCVV());        
         assertEquals("343", req.getFromCard().getCVV());
-        assertEquals("0000000000000000", req.getFromCard().getCardNumber());        
-        assertEquals("0002000200020002", req.getToCard().getCardNumber()); 
+        assertEquals("0000000000000000", req.getFromCard().getCardnumber());        
+        assertEquals("0002000200020002", req.getToCard().getCardnumber()); 
     }
     
     /**
@@ -54,11 +54,11 @@ public class TransactionRequestTest {
     @Test
     public void FromCardTest(){
         Card card = new Card();
-        assertEquals(true, card.setCardNumber("0000 0000 0000 0000"));        
+        assertEquals(true, card.setCardnumber("0000 0000 0000 0000"));        
         assertEquals(true, card.setCVV("343"));
         
         TransactionRequest req = new TransactionRequest(card, new Card(), 0.0);
-        assertEquals("0000000000000000", req.getFromCard().getCardNumber());
+        assertEquals("0000000000000000", req.getFromCard().getCardnumber());
         assertEquals("343", req.getFromCard().getCVV());
     }
     
@@ -68,11 +68,11 @@ public class TransactionRequestTest {
     @Test
     public void ToCardTest(){
         Card card = new Card();
-        assertEquals(true, card.setCardNumber("0002 0020 0002 0020"));        
+        assertEquals(true, card.setCardnumber("0002 0020 0002 0020"));        
         assertEquals(true, card.setCVV("2243"));
         
         TransactionRequest req = new TransactionRequest(new Card(), card, 0.0);
-        assertEquals("0002002000020020", req.getToCard().getCardNumber());        
+        assertEquals("0002002000020020", req.getToCard().getCardnumber());        
         assertEquals("2243", req.getToCard().getCVV());
     }
     

@@ -22,7 +22,6 @@ import org.junit.Assert;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.solent.oodd.pos.model.dto.TransactionResponse;
-import org.solent.oodd.pos.model.dto.TransactionStatus;
 
 /**
  * Tests for the transaction response class
@@ -76,11 +75,11 @@ public class TransactionResponseTest {
     @Test
     public void ResponseStatus(){
         TransactionResponse response = new TransactionResponse();
-        assertTrue(response.setStatus(TransactionStatus.SUCCESS));
-        assertEquals(TransactionStatus.SUCCESS, response.getStatus());
+        assertTrue(response.setStatus("SUCCESS"));
+        assertEquals("SUCCESS", response.getStatus());
         
-        assertTrue(response.setStatus(TransactionStatus.FAIL));
-        assertEquals(TransactionStatus.FAIL, response.getStatus());
+        assertTrue(response.setStatus("FAIL"));
+        assertEquals("FAIL", response.getStatus());
     }
     
     /**

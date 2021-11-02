@@ -55,10 +55,10 @@ public class JsonDtoTests {
     public void testJsonMessages() throws JsonProcessingException {        
         
         Card fromCard = new Card();
-        fromCard.setCardNumber("4444444499997777");
+        fromCard.setCardnumber("4444444499997777");
         Card toCard = new Card();
         toCard.setCVV("3344");
-        toCard.setCardNumber("2222333399996666");
+        toCard.setCardnumber("2222333399996666");
         Double amount = 100.01;
         
         TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);

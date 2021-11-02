@@ -23,7 +23,7 @@ import org.apache.logging.log4j.LogManager;
 public class PropertiesDao {
 
     final static Logger LOG = LogManager.getLogger(PropertiesDao.class);
-
+    
     private File propertiesFile;
 
     private Properties properties = new Properties();
@@ -32,10 +32,11 @@ public class PropertiesDao {
         try {
             propertiesFile = new File(propertiesFileLocation);
             if (!propertiesFile.exists()) {
-                LOG.info("properties file does not exist: creating new file: " + propertiesFile.getAbsolutePath());
-                propertiesFile.getParentFile().mkdirs();
-                propertiesFile.createNewFile();
-                saveProperties();
+                LOG.info("properties file does not exist: loading default ");                
+                //LOG.info("properties file does not exist: creating new file: " + propertiesFile.getAbsolutePath());
+                //propertiesFile.getParentFile().mkdirs();
+                //propertiesFile.createNewFile();
+                //saveProperties();
                 loadDefaultProperties();
             }
             loadProperties();

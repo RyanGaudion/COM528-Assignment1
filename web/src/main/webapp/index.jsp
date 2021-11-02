@@ -4,6 +4,8 @@
     Updated on : 21 Oct 2021, 12:07:00
     Authors     : rgaudion, rpriest
 --%>
+<%@page import="com.fasterxml.jackson.databind.exc.InvalidFormatException"%>
+<%@page import="org.solent.oodd.pos.model.service.Transaction"%>
 <%@page import="org.solent.oodd.pos.model.service.IBankingService"%>
 <%@page import="org.solent.oodd.pos.web.WebObjectFactory"%>
 <%@page import="java.util.Date"%>
@@ -81,7 +83,7 @@
                 String cardNumber = actionHistory.get(2);
                 LOG.info("card number " + cardNumber);
                 Card tmpCard = new Card();
-                if(!tmpCard.setCardNumber(cardNumber)){
+                if(!tmpCard.setCardnumber(cardNumber)){
                     actionHistory.remove(2);
                     padText = "Invalid Card Number - Please Try Again";
                 }
@@ -89,7 +91,7 @@
                     padText = "Please enter the expiry Date in format 'MMyy'";
                 }
             }
-            //Expiry Date --> CVV
+            //Expiry Date --> IssueNumber
             else if(actionHistory.size() == 4){
                 String expiryDateS = actionHistory.get(3);
                 Card tmpCard = new Card();
@@ -101,7 +103,7 @@
                         padText = "Invalid Expiry Date - Please enter in the format 'MMyy'";
                     }
                     else{
-                        padText = "Please enter the card CVV number";
+                        padText = "Please enter the card issue number";
                     }
                 }
                 catch(StringIndexOutOfBoundsException ex){
@@ -110,18 +112,49 @@
                 }
 
             }
-            //CVV --> Complete
+            //Issue Number --> CVV
             else if(actionHistory.size() == 5){
-                String cvv = actionHistory.get(4);
+                String issueNumber = actionHistory.get(4);
+                if(issueNumber != null && issueNumber.length() > 0){
+                    padText = "Please enter the card CVV number";
+                }
+                else{
+                    actionHistory.remove(4);
+                    padText = "Invalid Issue Number - Please try again";
+                }
+            }
+            //CVV --> Complete
+            else if(actionHistory.size() == 6){
+                String cvv = actionHistory.get(5);
                 Card tmpCard = new Card();
                 if(!tmpCard.setCVV(cvv)){
-                    actionHistory.remove(4);
+                    actionHistory.remove(5);
                     padText = "Invalid CVV - Please enter the CVV with length of 3 or 4 digits";
                 }
                 else{
                     padText = "Complete Transaction";
                     //Do Transaction
-                    
+                    Card fromCard = new Card();
+                    fromCard.setCVV(actionHistory.get(5));
+                    fromCard.setIssueNumber(actionHistory.get(4));
+                    fromCard.setExpiryDate(actionHistory.get(3));
+                    fromCard.setCardnumber(actionHistory.get(2));
+                    Double amount = Double.parseDouble(actionHistory.get(1));
+                    try{
+                        Transaction transaction = bankingService.SendTransaction(fromCard, amount);
+                        if(transaction.getTransactionResponse().getStatus() == "SUCCESS"){
+                            padText = "Successful Transaction";
+                        }
+                        else{
+                            padText = "Transaction Failed - " + transaction.getTransactionResponse().getMessage();
+                        }
+                    }
+                    catch(Exception ex){
+                        padText = "Transaction Failed. Please ensure you have the correct ApiURL and then restart the app";
+                        LOG.error(ex);
+                        actionHistory.clear();
+                    }
+
                     //Cleanup
                     actionHistory.clear();
                 }

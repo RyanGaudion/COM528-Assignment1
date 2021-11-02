@@ -29,7 +29,7 @@ import org.apache.logging.log4j.Logger;
 public class TransactionResponse {
     private int code;
     private String message;
-    private TransactionStatus status;
+    private String status;
     private String fromCardNo;
     private String toCardNo;
     private String transactionId; //Could be a GUID
@@ -63,7 +63,7 @@ public class TransactionResponse {
      * Gets the status of the request (SUCCESS or FAILURE)
      * @return TransactionStatus enum to represent success or failure
      */
-    public TransactionStatus getStatus(){
+    public String getStatus(){
         return status;
     }
 
@@ -131,7 +131,7 @@ public class TransactionResponse {
      * @param status The Status of the Request
      * @return True unless there was an issue setting the property
      */
-    public Boolean setStatus(TransactionStatus status){
+    public Boolean setStatus(String status){
         this.status = status;
         return true;
     }
