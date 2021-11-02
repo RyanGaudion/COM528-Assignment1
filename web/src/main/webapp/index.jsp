@@ -33,8 +33,6 @@
     
     // holds user's response
     
-    IBankingService bankingService = WebObjectFactory.getBankingService();
-    
     
     LOG.error("-------");
     String userresponse = request.getParameter("userResponse");
@@ -71,7 +69,7 @@
                 String amountValue = actionHistory.get(1);
                 try{
                     double d = Double.parseDouble(amountValue);
-                    padText = "Valid Amount - Please Enter Card Number";
+                    padText = "Please Enter Card Number";
                 }
                 catch(NumberFormatException ex){
                     actionHistory.remove(1);
@@ -141,8 +139,9 @@
                     fromCard.setCardnumber(actionHistory.get(2));
                     Double amount = Double.parseDouble(actionHistory.get(1));
                     try{
+                        IBankingService bankingService = WebObjectFactory.getBankingService();
                         Transaction transaction = bankingService.SendTransaction(fromCard, amount);
-                        if(transaction.getTransactionResponse().getStatus() == "SUCCESS"){
+                        if("SUCCESS".equals(transaction.getTransactionResponse().getStatus())){
                             padText = "Successful Transaction";
                         }
                         else{

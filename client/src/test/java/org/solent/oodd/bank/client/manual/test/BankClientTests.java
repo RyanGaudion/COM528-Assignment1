@@ -51,6 +51,7 @@ public class BankClientTests {
         fromCard = new Card();
         fromCard.setCardnumber("5133880000000012");
         fromCard.setCVV("123");
+        fromCard.setIssueNumber("01");
         fromCard.setExpiryDate("11/21");
         fromCard.setName("test user1");
 
