@@ -47,8 +47,12 @@
 </details>
 
 
-## Requirements
-The following section outlines the requirements for the software to meet the [design brief](https://learn.solent.ac.uk/pluginfile.php/2938474/mod_resource/content/1/Assessment%20Brief%20-%20COM528-504%20-%20AE1%20-%20GROUP%20%282021-2022%29%201.0.pdf).
+## Objectives and requirements
+The overall objective of this application is to enable a user to submit a transaction with their card, removing the funds from their account and transferring it to the account associated with the POS device.
+Users must be able to enter in their card details (card number, name, expiry date, cvv code). The card number should be validated using the Luhn algorithm.
+In addition to this, refunding transactions must be possible.
+
+The following section outlines the requirements and features the application must have for it to meet the [design brief](https://learn.solent.ac.uk/pluginfile.php/2938474/mod_resource/content/1/Assessment%20Brief%20-%20COM528-504%20-%20AE1%20-%20GROUP%20%282021-2022%29%201.0.pdf).
 
 ### Software Design
 This application must be created using the following technologies:
@@ -61,7 +65,7 @@ This application must be created using the following technologies:
 * All classes need to be documented with Javadoc.
 * Error handling that provides meaningful messages for the user.
 
-### Use Cases
+### Use Cases and Features
 The following requirements are written from the perspective of what different users need from the application:
 
 | Use case ID  	| Actor 	| Action | Software Reaction |
