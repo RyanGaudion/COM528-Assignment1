@@ -4,6 +4,8 @@
     Updated on : 21 Oct 2021, 12:07:00
     Authors     : rgaudion, rpriest
 --%>
+<%@page import="org.solent.oodd.cardchecker.CardValidationResult"%>
+<%@page import="org.solent.oodd.cardchecker.CardChecker"%>
 <%@page import="com.fasterxml.jackson.databind.exc.InvalidFormatException"%>
 <%@page import="org.solent.oodd.pos.model.service.Transaction"%>
 <%@page import="org.solent.oodd.pos.model.service.IBankingService"%>
@@ -88,7 +90,18 @@
                     padText = "Invalid Card Number - Please Try Again";
                 }
                 else{
-                    padText = "Please enter the expiry Date in format 'MMyy'";
+                    //Card Checker
+                    CardValidationResult validationResult = CardChecker.checkValidity(cardNumber);
+                    //Card Checker Valid
+                    if(validationResult.getIsValid()){
+                        padText = "Card Number Validated as: " + validationResult.getCardCompany() +  "\n Please enter the expiry Date in format 'MMyy'";
+                    }
+                    //Card Chceker Invalid
+                    else{
+                        padText = "Invalid Card Number: " + validationResult.getMessage()+  "\n Please try again";
+                        actionHistory.remove(2);
+                    }
+                    
                 }
             }
             //Expiry Date --> IssueNumber
