@@ -268,13 +268,17 @@
             }
             
         }
+        //Not Option 1 or 2
+        else{
+            actionHistory.clear();
+        }
     }
     else{
         LOG.error("8 ");
         session.setAttribute("actionHistory", new ArrayList<String>());
     }
     
-    //actionHistory.clear();
+   // actionHistory.clear();
     
     
 
@@ -307,7 +311,7 @@
                 </div>
                 </div>
             <div id="div-cmd">
-                <div id="btncancel" class="btn-style">Cancel</div>
+                <div id="btncancel" class="btn-style">Clear</div>
                 <div id="btnundo" class="btn-style">Undo</div>
                 <!--input type="hidden" name="action" value="submitResponse"-->
                 <button id="btnconfirm" class="btn-style" type="submit">Confirm</button>
