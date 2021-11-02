@@ -75,7 +75,7 @@ The following requirements are written from the perspective of what different us
 | UC7			| User 		| The user confirms a purchase transaction. | The application stores all transactions locally in a log file. The CVV number must not be stored by the application. |
 | UC8			| User 		| A user visits a page allowing them to reverse their previous transactions. | The application displays their previous transactions, and the gives them the option to reverse (refund) it. |
 | UC9			| Admin		| Admin tries to configure a device. | The application needs to verify the credentials of the admin, so that they can access and modify the configuration settings. |
-| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile, this logfile should be accssible for admins. |
+| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile, this logfile should be accessible for admins. |
 | UC11			| User		| User requests the app to perform any action. | The program must be able to complete user requests within 1 second. |
 | UC12			| Admin 	| Admin configures the device. | The identify credentials of the device need to be stored securely in a properties file. |
 | UC13			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
