@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.oodd.pointofsalesdevice.dao;
+package org.solent.oodd.pos.dao;
 
 import java.io.File;
 import java.io.FileInputStream;

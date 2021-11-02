@@ -20,7 +20,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.oodd.factory.ClientObjectFactory;
-import org.solent.oodd.pointofsalesdevice.dao.PropertiesDao;
+import org.solent.oodd.pos.dao.PropertiesDao;
 import org.solent.oodd.pos.model.dto.Card;
 import org.solent.oodd.pos.model.dto.TransactionRequest;
 import org.solent.oodd.pos.model.dto.TransactionResponse;

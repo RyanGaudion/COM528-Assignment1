@@ -17,7 +17,7 @@ package org.solent.oodd.pos.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solent.oodd.pointofsalesdevice.dao.DaoObjectFactory;
+import org.solent.oodd.pos.dao.DaoObjectFactory;
 import org.solent.oodd.pos.model.service.IBankingService;
 
 /**

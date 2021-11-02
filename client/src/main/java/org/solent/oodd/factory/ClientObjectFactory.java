@@ -18,7 +18,7 @@ package org.solent.oodd.factory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.oodd.bank.client.impl.BankRestClient;
-import org.solent.oodd.pointofsalesdevice.dao.DaoObjectFactory;
+import org.solent.oodd.pos.dao.DaoObjectFactory;
 import org.solent.oodd.pos.model.service.IBankRestClient;
 
 /**
