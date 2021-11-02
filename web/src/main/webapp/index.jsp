@@ -131,28 +131,33 @@
                     actionHistory.remove(5);
                     padText = "Invalid CVV - Please enter the CVV with length of 3 or 4 digits";
                 }
+                //Complete Transactions
                 else{
                     padText = "Complete Transaction";
-                    //Do Transaction
+                    //Setup Transaction
                     Card fromCard = new Card();
                     fromCard.setCVV(actionHistory.get(5));
                     fromCard.setIssueNumber(actionHistory.get(4));
                     fromCard.setExpiryDate(actionHistory.get(3));
                     fromCard.setCardnumber(actionHistory.get(2));
                     Double amount = Double.parseDouble(actionHistory.get(1));
+                    
+                    //Try to send Transaction
                     try{
                         IBankingService bankingService = WebObjectFactory.getBankingService();
                         Transaction transaction = bankingService.SendTransaction(fromCard, amount);
+                        //Transaction Success
                         if("SUCCESS".equals(transaction.getTransactionResponse().getStatus())){
                             padText = "Successful Transaction \n Press 1 for a new Transaction or 2 to refund a transaction";
                             actionHistory.clear();
-                            //return;
                         }
+                        //Transaction Fail
                         else{
                             padText = "Transaction Failed: "  + transaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction or 2 to refund a transaction";
                             actionHistory.clear();
                         }
                     }
+                    //Transaction didn't return from API
                     catch(Exception ex){
                         LOG.error(ex);
                         padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
@@ -167,10 +172,12 @@
         }
         //Refund Transaction
         else if ("2".equals(actionHistory.get(0))){
+            //List Refund
             if(actionHistory.size() == 1){
                 padText = "Please select an transaction to refund: ";
                 IBankingService bankingService = WebObjectFactory.getBankingService();
                 List<Transaction> transactions = bankingService.GetLatestSuccessfulTransactions();
+                //Transactions Available to Refund
                 if(transactions.size() > 0){
                     for (int i = 0; i < transactions.size(); i++) {
                         Transaction transaction = transactions.get(i);
@@ -179,30 +186,39 @@
                         padText = padText + "\n " + i + " - from: " + CardNumber + " - amount: " + Amount;
                     }
                 }
+                //No Transactions to Refund
                 else{
                     padText = "No Transaction History to Refund" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
                     actionHistory.clear();
                 }               
             }
+            //Select Refund
             else if(actionHistory.size() == 2){
                 IBankingService bankingService = WebObjectFactory.getBankingService();
                 List<Transaction> transactions = bankingService.GetLatestSuccessfulTransactions();
                 int transactionInt;
                 try {
-                   transactionInt = Integer.parseInt(actionHistory.get(1));
-                   Transaction tranasactionToRefund = transactions.get(transactionInt);
-                   try{
-                       Transaction refundTransaction = bankingService.RefundTransaction(tranasactionToRefund);
-                       if("SUCCESS".equals(refundTransaction.getTransactionResponse().getStatus())){
+                    //Get selected transaction
+                    transactionInt = Integer.parseInt(actionHistory.get(1));
+                    Transaction tranasactionToRefund = transactions.get(transactionInt);
+                    try{
+                        //Try to refund
+                        Transaction refundTransaction = bankingService.RefundTransaction(tranasactionToRefund);
+                        
+                        //Refund Success
+                        if("SUCCESS".equals(refundTransaction.getTransactionResponse().getStatus())){
                             padText = "Successful Refund \n Press 1 for a new Transaction or 2 to refund a transaction";
                             actionHistory.clear();
                             //return;
                         }
+                        
+                        //Refund Failure 
                         else{
                             padText = "Refund Failed: "  + refundTransaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction or 2 to refund a transaction";
                             actionHistory.clear();
                         }
                    }
+                    //Catch unknown refund failure
                     catch(Exception ex){
                         LOG.error(ex);
                         padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
@@ -210,6 +226,7 @@
                     }
                    
                 }
+                //Catch invalid input exception
                 catch (NumberFormatException e)
                 {
                     actionHistory.remove(1);
@@ -217,9 +234,23 @@
                     if(transactions.size() > 0){
                         for (int i = 0; i < transactions.size(); i++) {
                             Transaction transaction = transactions.get(i);
-                            padText = padText + "\n " + i + " - from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " - amount: " + transaction.getTransactionRequest().getAmount();
+                            String CardNumber = transaction.getTransactionRequest().getFromCard().getCardnumber();
+                            Double Amount = transaction.getTransactionRequest().getAmount();
+                            padText = padText + "\n " + i + " - from: " + CardNumber + " - amount: " + Amount;
                         }
-                    }                   
+                    }             
+                }
+                catch(IndexOutOfBoundsException ex){
+                    actionHistory.remove(1);
+                    padText = "Invalid ID - Please select an transaction to refund: ";
+                    if(transactions.size() > 0){
+                        for (int i = 0; i < transactions.size(); i++) {
+                            Transaction transaction = transactions.get(i);
+                            String CardNumber = transaction.getTransactionRequest().getFromCard().getCardnumber();
+                            Double Amount = transaction.getTransactionRequest().getAmount();
+                            padText = padText + "\n " + i + " - from: " + CardNumber + " - amount: " + Amount;
+                        }
+                    }
                 }
             }
             
