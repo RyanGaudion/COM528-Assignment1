@@ -1,7 +1,7 @@
 <%-- 
     Document   : indexjsp
     Created on : 21 Oct 2021, 07:52:36
-    Updated on : 21 Oct 2021, 12:07:00
+    Updated on : 02 Nov 2021, 12:40:00
     Authors     : rgaudion, rpriest
 --%>
 <%@page import="org.solent.oodd.cardchecker.CardValidationResult"%>
