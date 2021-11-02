@@ -43,7 +43,6 @@ public class BankingService implements IBankingService{
     final static Logger LOG = LogManager.getLogger(BankingService.class);
     
     public BankingService(PropertiesDao properties){
-        //TODO - Change to Properties File
         apiUsername = properties.getProperty("org.solent.oodd.pos.service.apiUsername");
         apiPassword = properties.getProperty("org.solent.oodd.pos.service.apiPassword");
         shopKeeperCard = new Card();
