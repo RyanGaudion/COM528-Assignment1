@@ -34,17 +34,24 @@ function createPinPad() {
         let divnum = document.createElement("div");
         divnum.setAttribute("class","div-num");
         // creates blank 'filler' divs for formatting
-        if (i === 10 || i === 12){
+        if (i === 10){
             // blank filler
             divnum.setAttribute("title","");
             divnum.setAttribute("id",`div-button-blank1`);
             divnum.setAttribute("class","div-num-blank");
-            divnum.innerHTML = "";
         } else if (i === 11) {
             // middle button = 0
             divnum.setAttribute("title",0);
             divnum.setAttribute("id",`div-button-0`);
             divnum.innerHTML = "0";
+            // builds the divs to the dynamic sizing
+            divnum.style.height = buttonheight + "px";
+            divnum.style.width = buttonwidth + "px";
+        } else if (i === 12) {
+            // righthand button = ' . '
+            divnum.setAttribute("title",".");
+            divnum.setAttribute("id",`div-button-dec`);
+            divnum.innerHTML = ".";
             // builds the divs to the dynamic sizing
             divnum.style.height = buttonheight + "px";
             divnum.style.width = buttonwidth + "px";
@@ -67,7 +74,26 @@ document.onclick = function(event) {
     if (el.className === "div-num" && el.nodeName === "DIV") {
         let divbutton = document.getElementById(el.id);
         let txtpininput = document.getElementById("txtpininput");
-        userentry += divbutton.title;
+        let currenttext = txtpininput.value;
+        console.log(currenttext)
+        // checks for existing decimal points and decimal point button press
+        if ((currenttext.includes(".")) && (divbutton.title.includes("."))) {
+            // ignores if already present
+        } else {
+            // check decimal point has been entered already
+            if (currenttext.includes(".")) {
+                let dploc = currenttext.indexOf(".");
+                // restricts to 2 dp
+                if (currenttext.length <= (dploc + 2)) {
+                    // adds button value to user entry
+                    userentry += divbutton.title;
+                }
+            } else {
+                // adds button value to user entry
+                userentry += divbutton.title;
+            }
+        }
+        // assigns userentry to input box value
         txtpininput.value = `${userentry}`;
     };
 };
