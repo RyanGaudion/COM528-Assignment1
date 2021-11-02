@@ -46,6 +46,6 @@ public interface IBankingService {
      * Gets the last recent transactions
      * @return A list of recent transactions
      */
-    List<Transaction> GetLatestTransactions();
+    List<Transaction> GetLatestSuccessfulTransactions();
 
 }

@@ -88,7 +88,7 @@ public class BankingService implements IBankingService{
         
         TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);
         
-        TransactionResponse response = client.transferMoney(request, apiUsername, apiPassword);
+        TransactionResponse response = client.transferMoney(request);
         LOG.debug("Refund Response Status: " + response.getStatus());
 
         Transaction refundTransaction = new Transaction(request, response);
@@ -101,10 +101,16 @@ public class BankingService implements IBankingService{
      * This uses the transactions list to get the 9 most recent transactions
      */
     @Override
-    public List<Transaction> GetLatestTransactions(){
+    public List<Transaction> GetLatestSuccessfulTransactions(){
         //Returns either all the transactions or the last 9 - whichever is smallest
         LOG.debug("Get Latest Transactions: " + transactions.size());
-        List<Transaction> latestTransactions = transactions.subList(transactions.size()- Math.min(transactions.size(), 9), transactions.size());
+        List<Transaction> successfulTransactions = new ArrayList<Transaction>();
+        for (Transaction transaction : transactions) {
+            if(transaction.getTransactionResponse().getStatus().equals("SUCCESS")){
+                successfulTransactions.add(transaction);
+            }
+        }
+        List<Transaction> latestTransactions = successfulTransactions.subList(transactions.size()- Math.min(transactions.size(), 9), transactions.size());
         return latestTransactions;
     }
     

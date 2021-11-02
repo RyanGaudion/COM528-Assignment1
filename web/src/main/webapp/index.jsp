@@ -34,6 +34,7 @@
     // holds user's response
     
     
+    
     LOG.error("-------");
     String userresponse = request.getParameter("userResponse");
     ArrayList<String> actionHistory = (ArrayList<String>)session.getAttribute("actionHistory");
@@ -142,28 +143,81 @@
                         IBankingService bankingService = WebObjectFactory.getBankingService();
                         Transaction transaction = bankingService.SendTransaction(fromCard, amount);
                         if("SUCCESS".equals(transaction.getTransactionResponse().getStatus())){
-                            padText = "Successful Transaction";
+                            padText = "Successful Transaction \n Press 1 for a new Transaction or 2 to refund a transaction";
+                            actionHistory.clear();
+                            //return;
                         }
                         else{
-                            padText = "Transaction Failed - " + transaction.getTransactionResponse().getMessage();
+                            padText = "Transaction Failed: "  + transaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                            actionHistory.clear();
                         }
                     }
                     catch(Exception ex){
-                        padText = "Transaction Failed. Please ensure you have the correct ApiURL and then restart the app";
                         LOG.error(ex);
+                        padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
                         actionHistory.clear();
                     }
 
-                    //Cleanup
-                    actionHistory.clear();
+
                 }
             }
             
             
         }
+        //Refund Transaction
         else if ("2".equals(actionHistory.get(0))){
             if(actionHistory.size() == 1){
-                padText = "Please select an transaction to refund";
+                padText = "Please select an transaction to refund: ";
+                IBankingService bankingService = WebObjectFactory.getBankingService();
+                List<Transaction> transactions = bankingService.GetLatestSuccessfulTransactions();
+                if(transactions.size() > 0){
+                    for (int i = 0; i < transactions.size(); i++) {
+                        Transaction transaction = transactions.get(i);
+                        padText = padText + "\n " + i + " - from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " - amount: " + transaction.getTransactionRequest().getAmount();
+                    }
+                }
+                else{
+                    padText = "No Transaction History to Refund" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                    actionHistory.clear();
+                }               
+            }
+            else if(actionHistory.size() == 2){
+                IBankingService bankingService = WebObjectFactory.getBankingService();
+                List<Transaction> transactions = bankingService.GetLatestSuccessfulTransactions();
+                int transactionInt;
+                try {
+                   transactionInt = Integer.parseInt(actionHistory.get(1));
+                   Transaction tranasactionToRefund = transactions.get(transactionInt);
+                   try{
+                       Transaction refundTransaction = bankingService.RefundTransaction(tranasactionToRefund);
+                       if("SUCCESS".equals(refundTransaction.getTransactionResponse().getStatus())){
+                            padText = "Successful Refund \n Press 1 for a new Transaction or 2 to refund a transaction";
+                            actionHistory.clear();
+                            //return;
+                        }
+                        else{
+                            padText = "Refund Failed: "  + refundTransaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                            actionHistory.clear();
+                        }
+                   }
+                    catch(Exception ex){
+                        LOG.error(ex);
+                        padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                        actionHistory.clear();
+                    }
+                   
+                }
+                catch (NumberFormatException e)
+                {
+                    actionHistory.remove(1);
+                    padText = "Invalid ID - Please select an transaction to refund: ";
+                    if(transactions.size() > 0){
+                        for (int i = 0; i < transactions.size(); i++) {
+                            Transaction transaction = transactions.get(i);
+                            padText = padText + "\n " + i + " - from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " - amount: " + transaction.getTransactionRequest().getAmount();
+                        }
+                    }                   
+                }
             }
             
         }
@@ -173,13 +227,14 @@
         session.setAttribute("actionHistory", new ArrayList<String>());
     }
     
+    //actionHistory.clear();
+    
     
 
     //session.setAttribute("actionHistory", new ArrayList<String>());
     
-    
-%>
 
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -196,7 +251,7 @@
                 <div id="div-pininput">
                     <div id="div-userfeedback">
                         <p>Menu System</p>
-                        <p><%= padText %></p>
+                        <p style="white-space: pre-line"><%= padText %></p>
                     </div>
                     <input id="txtpininput" type="text" name="userResponse" value="">
                 </div>
