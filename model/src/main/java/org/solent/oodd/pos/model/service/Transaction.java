@@ -25,6 +25,8 @@ import org.solent.oodd.pos.model.dto.TransactionResponse;
 public class Transaction {
     private TransactionRequest transactionRequest;
     private TransactionResponse transactionResponse;
+    private Boolean isRefund = false;
+    
     
     public Transaction(){
         
@@ -57,6 +59,14 @@ public class Transaction {
     }
 
     /**
+     * Gets if this transaction is a refund or has been refunded
+     * @return true if this transaction is a refund or has been refunded
+     */
+    public Boolean getIsRefund(){
+        return isRefund;
+    }
+    
+    /**
      * Sets the transaction request if it's not null
      * @return true if the request was not null
      */
@@ -78,5 +88,14 @@ public class Transaction {
             return true;
         }
         return false;
+    }
+    
+    /**
+     * Sets if this transaction is a refund or has been refunded
+     * @return true if the value has been set successfully
+     */
+    public Boolean setIsRefund(Boolean refunded){
+        isRefund = refunded;
+        return true;
     }
 }

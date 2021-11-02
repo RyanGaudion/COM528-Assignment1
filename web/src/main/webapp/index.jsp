@@ -38,6 +38,7 @@
     LOG.error("-------");
     String userresponse = request.getParameter("userResponse");
     ArrayList<String> actionHistory = (ArrayList<String>)session.getAttribute("actionHistory");
+    //actionHistory.clear();
     if(userresponse == null){
         userresponse = "";
     }
@@ -173,7 +174,9 @@
                 if(transactions.size() > 0){
                     for (int i = 0; i < transactions.size(); i++) {
                         Transaction transaction = transactions.get(i);
-                        padText = padText + "\n " + i + " - from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " - amount: " + transaction.getTransactionRequest().getAmount();
+                        String CardNumber = transaction.getTransactionRequest().getFromCard().getCardnumber();
+                        Double Amount = transaction.getTransactionRequest().getAmount();
+                        padText = padText + "\n " + i + " - from: " + CardNumber + " - amount: " + Amount;
                     }
                 }
                 else{

@@ -92,6 +92,8 @@ public class BankingService implements IBankingService{
         LOG.debug("Refund Response Status: " + response.getStatus());
 
         Transaction refundTransaction = new Transaction(request, response);
+        refundTransaction.setIsRefund(true);
+        transaction.setIsRefund(true);
         transactions.add(refundTransaction);
         return refundTransaction;
         
@@ -106,11 +108,11 @@ public class BankingService implements IBankingService{
         LOG.debug("Get Latest Transactions: " + transactions.size());
         List<Transaction> successfulTransactions = new ArrayList<Transaction>();
         for (Transaction transaction : transactions) {
-            if(transaction.getTransactionResponse().getStatus().equals("SUCCESS")){
+            if(transaction.getTransactionResponse().getStatus() != null && transaction.getTransactionResponse().getStatus().equals("SUCCESS") && transaction.getIsRefund() != true){
                 successfulTransactions.add(transaction);
             }
         }
-        List<Transaction> latestTransactions = successfulTransactions.subList(transactions.size()- Math.min(transactions.size(), 9), transactions.size());
+        List<Transaction> latestTransactions = successfulTransactions.subList(successfulTransactions.size()- Math.min(successfulTransactions.size(), 9), successfulTransactions.size());
         return latestTransactions;
     }
     
