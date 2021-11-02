@@ -15,6 +15,9 @@
  */
 package org.solent.oodd.pos.web;
 
+import org.solent.oodd.pos.model.service.IBankingService;
+import org.solent.oodd.pos.service.ServiceObjectFactory;
+
 /**
  *
  * @author rgaudion
@@ -22,19 +25,15 @@ package org.solent.oodd.pos.web;
 public class WebObjectFactory {
 
     //Device REST Service here
-    //static ShoppingService shoppingService = ServiceObjectFactory.getShoppingService();
+    static IBankingService bannkingService = ServiceObjectFactory.getBankingService();
     
     // cannot instantiate
     private WebObjectFactory(){
         
     }
     
-    /*public static ShoppingService getShoppingService(){
-        return shoppingService;
+    public static IBankingService getBankingService(){
+        return bannkingService;
     }
-    
-    public static ShoppingCart getNewShoppingCart(){
-        return ServiceObjectFactory.getNewShoppingCart();
-    }*/
     
 }

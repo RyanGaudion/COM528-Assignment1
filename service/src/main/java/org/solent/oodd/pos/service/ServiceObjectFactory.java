@@ -17,6 +17,7 @@ package org.solent.oodd.pos.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.solent.oodd.pointofsalesdevice.dao.DaoObjectFactory;
 import org.solent.oodd.pos.model.service.IBankingService;
 
 /**
@@ -46,7 +47,7 @@ public class ServiceObjectFactory {
             synchronized (ServiceObjectFactory.class) {
                 if(bankingService == null){
                     LOG.debug("ServiceObjectFactory created new banking service");
-                    bankingService = new BankingService();
+                    bankingService = new BankingService(DaoObjectFactory.getPropertiesDao());
                 }
             }
         }

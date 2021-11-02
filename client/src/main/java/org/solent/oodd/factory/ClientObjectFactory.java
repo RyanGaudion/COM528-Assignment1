@@ -18,6 +18,7 @@ package org.solent.oodd.factory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.oodd.bank.client.impl.BankRestClient;
+import org.solent.oodd.pointofsalesdevice.dao.DaoObjectFactory;
 import org.solent.oodd.pos.model.service.IBankRestClient;
 
 /**
@@ -46,7 +47,7 @@ public class ClientObjectFactory {
                 if (bankClient == null) {
                     // TODO - creates a single instance of the dao
                     LOG.debug("ClientObjectFactory created new client");
-                    bankClient = new BankRestClient("url");
+                    bankClient = new BankRestClient(DaoObjectFactory.getPropertiesDao().getProperty("org.solent.oodd.pos.service.apiUrl"));
                 }
             }
         }

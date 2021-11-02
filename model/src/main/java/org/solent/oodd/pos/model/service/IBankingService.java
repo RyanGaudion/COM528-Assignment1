@@ -25,13 +25,12 @@ import java.util.List;
 public interface IBankingService {    
 
     /**
-     * Send money from the from card to the to card of the specified amount
+     * Send money from the from card to the to card of the specified amount. To Card is always the shop keeper's card
      * @param fromCard the card to send money from
-     * @param toCard the card to send money to
      * @param amount the amount to send
      * @return Transaction model which includes both the transaction request and reponse
      */
-    public Transaction SendTransaction(Card fromCard, Card toCard, Double amount);
+    public Transaction SendTransaction(Card fromCard, Double amount);
 
     //Automatically creates a request with the negative number of the transaction.getresponse.getamount
     //Also checks to see if the transaction to refund was successful in the first place before trying to refund it

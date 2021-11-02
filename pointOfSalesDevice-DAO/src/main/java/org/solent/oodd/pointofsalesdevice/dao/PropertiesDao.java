@@ -36,9 +36,10 @@ public class PropertiesDao {
                 propertiesFile.getParentFile().mkdirs();
                 propertiesFile.createNewFile();
                 saveProperties();
+                loadDefaultProperties();
             }
             loadProperties();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             LOG.error("cannot load properties", ex);
         }
     }
@@ -59,7 +60,7 @@ public class PropertiesDao {
             LOG.debug("saving properties to: " + propertiesFile.getAbsolutePath());
 
             output = new FileOutputStream(propertiesFile);
-            String comments = "# properties example file";
+            String comments = "# properties file";
             properties.store(output, comments);
 
         } catch (IOException ex) {
@@ -88,6 +89,24 @@ public class PropertiesDao {
                     input.close();
                 }
             } catch (IOException ex) {
+            }
+        }
+    }
+    
+    private void loadDefaultProperties(){
+        InputStream input = null;
+        try{
+            LOG.debug("loading properties from: default");
+            input = PropertiesDao.class.getClassLoader().getResourceAsStream("application.default.properties");
+            properties.load(input);
+        } catch(IOException ex){
+            LOG.error("cannot load properties", ex);
+        } finally {
+            try{
+                if(input != null){
+                    input.close();
+                }
+            } catch (IOException ex){
             }
         }
     }

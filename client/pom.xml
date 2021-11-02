@@ -32,6 +32,12 @@
             <version>${project.version}</version>
         </dependency>
         
+            <dependency>
+            <groupId>org.solent.oodd</groupId>
+            <artifactId>pointOfSalesDevice-DAO</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        
         
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>

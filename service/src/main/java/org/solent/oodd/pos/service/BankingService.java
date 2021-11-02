@@ -20,6 +20,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.oodd.factory.ClientObjectFactory;
+import org.solent.oodd.pointofsalesdevice.dao.PropertiesDao;
 import org.solent.oodd.pos.model.dto.Card;
 import org.solent.oodd.pos.model.dto.TransactionRequest;
 import org.solent.oodd.pos.model.dto.TransactionResponse;
@@ -34,15 +35,19 @@ import org.solent.oodd.pos.model.service.Transaction;
 public class BankingService implements IBankingService{
 
     private final String apiUsername;
-    private final String apiPassword;
+    private final String apiPassword;    
+    private final Card shopKeeperCard;
+
     private final List<Transaction> transactions = new ArrayList();
     
     final static Logger LOG = LogManager.getLogger(BankingService.class);
     
-    public BankingService(){
+    public BankingService(PropertiesDao properties){
         //TODO - Change to Properties File
-        apiUsername = "";
-        apiPassword = "";
+        apiUsername = properties.getProperty("apiUsername");
+        apiPassword = properties.getProperty("apiPassword");
+        shopKeeperCard = new Card();
+        shopKeeperCard.setCardNumber(properties.getProperty("shopCardNumber"));
     }
     
     
@@ -51,12 +56,12 @@ public class BankingService implements IBankingService{
      * This method implements Http Authentication
      */
     @Override
-    public Transaction SendTransaction(Card fromCard, Card toCard, Double amount) {
-        LOG.debug("Send Transaction from: " + fromCard.getCardNumber() + " to: " + toCard.getCardNumber() + " for: " + amount);
+    public Transaction SendTransaction(Card fromCard, Double amount) {
+        LOG.debug("Send Transaction from: " + fromCard.getCardNumber() + " to: " + shopKeeperCard.getCardNumber() + " for: " + amount);
 
         IBankRestClient client = ClientObjectFactory.getBankClient();
                
-        TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);
+        TransactionRequest request = new TransactionRequest(fromCard, shopKeeperCard, amount);
         
         TransactionResponse response = client.transferMoney(request, apiUsername, apiPassword);
         
@@ -77,7 +82,7 @@ public class BankingService implements IBankingService{
 
         IBankRestClient client = ClientObjectFactory.getBankClient();
         
-        Card fromCard = transaction.getTransactionRequest().getToCard();        
+        Card fromCard = shopKeeperCard;       
         Card toCard = transaction.getTransactionRequest().getFromCard();
         Double amount = transaction.getTransactionRequest().getAmount();
         

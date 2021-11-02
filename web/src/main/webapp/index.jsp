@@ -4,6 +4,8 @@
     Updated on : 21 Oct 2021, 12:07:00
     Authors     : rgaudion, rpriest
 --%>
+<%@page import="org.solent.oodd.pos.model.service.IBankingService"%>
+<%@page import="org.solent.oodd.pos.web.WebObjectFactory"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.solent.oodd.pos.model.dto.Card"%>
@@ -28,6 +30,10 @@
     // String menuitem = request.getParameter("menuItem");
     
     // holds user's response
+    
+    IBankingService bankingService = WebObjectFactory.getBankingService();
+    
+    
     LOG.error("-------");
     String userresponse = request.getParameter("userResponse");
     ArrayList<String> actionHistory = (ArrayList<String>)session.getAttribute("actionHistory");
