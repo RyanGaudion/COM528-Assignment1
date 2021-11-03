@@ -5,6 +5,7 @@
  */
 package org.solent.oodd.pos.dao;
 
+import org.solent.oodd.pos.dao.DaoObjectFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,7 +37,7 @@ public class PropertiesDao {
                 //saveProperties();
                 loadDefaultProperties();
             }
-            loadProperties();
+            loadDefaultProperties();
         } catch (Exception ex) {
             LOG.error("cannot load properties", ex);
         }

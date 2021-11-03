@@ -49,7 +49,7 @@
     <body>
         <h1>Properties Jsp</h1>
         <p><%=message%></p>
-        <form action="./propertiesExample.jsp" method="POST">
+        <form action="./properties.jsp" method="POST">
             <p>URL Property <input type="text" name="url" value="<%=url%>"></p>
             <p>Username Property <input type="text" name="username" value="<%=username%>"></p>
             <p>Password Property <input type="text" name="password" value="<%=password%>"></p>
