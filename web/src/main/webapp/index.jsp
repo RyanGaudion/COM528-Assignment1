@@ -302,7 +302,7 @@
                 <div id="div-pininput">
                     <div id="div-userfeedback">
                         <p>Menu System</p>
-                        <p style="white-space: pre-line"><%= padText %></p>
+                        <p><%= padText %></p>
                     </div>
                     <input id="txtpininput" type="text" name="userResponse" value="">
                 </div>
@@ -311,10 +311,9 @@
                 </div>
                 </div>
             <div id="div-cmd">
-                <div id="btncancel" class="btn-style">Clear</div>
+                <div id="btncancel" class="btn-style">Clear</img></div>
                 <div id="btnundo" class="btn-style">Undo</div>
-                <!--input type="hidden" name="action" value="submitResponse"-->
-                <button id="btnconfirm" class="btn-style" type="submit">Confirm</button>
+                <button id="btnconfirm" class="btn-style-conf" type="submit">Confirm</button>
             </div>
         </form>
         <!-- page script -->

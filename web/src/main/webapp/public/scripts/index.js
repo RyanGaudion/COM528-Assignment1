@@ -51,7 +51,9 @@ function createPinPad() {
             // righthand button = ' . '
             divnum.setAttribute("title",".");
             divnum.setAttribute("id",`div-button-dec`);
-            divnum.innerHTML = ".";
+            // adds strong emphasis to the decimal point for 
+            // visibility
+            divnum.innerHTML = "<strong>.</strong>";
             // builds the divs to the dynamic sizing
             divnum.style.height = buttonheight + "px";
             divnum.style.width = buttonwidth + "px";
