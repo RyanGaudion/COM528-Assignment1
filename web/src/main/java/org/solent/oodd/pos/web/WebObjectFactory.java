@@ -15,6 +15,9 @@
  */
 package org.solent.oodd.pos.web;
 
+import java.io.File;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.oodd.pos.model.service.IBankingService;
 import org.solent.oodd.pos.service.ServiceObjectFactory;
 
@@ -24,16 +27,36 @@ import org.solent.oodd.pos.service.ServiceObjectFactory;
  */
 public class WebObjectFactory {
 
+    final static Logger LOG = LogManager.getLogger(WebObjectFactory.class);
+
+    private static PropertiesDao propertiesDao = null;
+
+    public static PropertiesDao getPropertiesDao() {
+        if (propertiesDao == null) {
+            synchronized (WebObjectFactory.class) {
+                if (propertiesDao == null) {
+                    // creates a single instance of the dao
+                    String TEMP_DIR = System.getProperty("java.io.tmpdir");
+                    File propertiesFile = new File(TEMP_DIR + "/application.properties");
+                    LOG.debug("using system temp directory: " + TEMP_DIR);
+                    LOG.debug("using application properties file : " + propertiesFile.getAbsolutePath());
+                    propertiesDao = new PropertiesDao(propertiesFile.getAbsolutePath());
+                }
+            }
+        }
+        return propertiesDao;
+    }
+
     //Device REST Service here
     static IBankingService bannkingService = ServiceObjectFactory.getBankingService();
-    
+
     // cannot instantiate
-    private WebObjectFactory(){
-        
+    private WebObjectFactory() {
+
     }
-    
-    public static IBankingService getBankingService(){
+
+    public static IBankingService getBankingService() {
         return bannkingService;
     }
-    
+
 }
