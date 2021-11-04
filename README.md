@@ -15,6 +15,8 @@ The developers involved in this project where:
 - [Steven Hawkins](https://github.com/5hawks48)
 - [Ryan Gaudion](https://github.com/RyanGaudion)
 
+The application is built using Enterprise Java technologies with a Multi-Module Maven Project Structure. It uses a Java Server Page for the front end with Javascript to generate the UI. The UI communicates to the JSP using a simple HTML form. The application uses a JAX-RS Client as well as Jersey to communicate to a REST Bank API. All projects in the solution have comprehensive unit tests. 
+
 # Using the app
 When using Netbeans the web app is deployed by default to [http://localhost:8080/pointOfSalesDevice](http://localhost:8080/pointOfSalesDevice).
 
