@@ -51,7 +51,7 @@
     if(actionHistory == null){
         actionHistory = new ArrayList<String>();
     }
-    String padText = "Press 1 for a new Transaction or 2 to refund a transaction";
+    String padText = "Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
     
     
     LOG.error("1 " + actionHistory);    
@@ -161,19 +161,19 @@
                         Transaction transaction = bankingService.SendTransaction(fromCard, amount);
                         //Transaction Success
                         if("SUCCESS".equals(transaction.getTransactionResponse().getStatus())){
-                            padText = "Successful Transaction \n Press 1 for a new Transaction or 2 to refund a transaction";
+                            padText = "Successful Transaction \n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
                             actionHistory.clear();
                         }
                         //Transaction Fail
                         else{
-                            padText = "Transaction Failed: "  + transaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                            padText = "Transaction Failed: "  + transaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
                             actionHistory.clear();
                         }
                     }
                     //Transaction didn't return from API
                     catch(Exception ex){
                         LOG.error(ex);
-                        padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                        padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
                         actionHistory.clear();
                     }
 
@@ -201,7 +201,7 @@
                 }
                 //No Transactions to Refund
                 else{
-                    padText = "No Transaction History to Refund" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                    padText = "No Transaction History to Refund" + "\n Press 1 for a new Transaction,  2 to refund a transaction or 3 to validate a card";
                     actionHistory.clear();
                 }               
             }
@@ -220,21 +220,21 @@
                         
                         //Refund Success
                         if("SUCCESS".equals(refundTransaction.getTransactionResponse().getStatus())){
-                            padText = "Successful Refund \n Press 1 for a new Transaction or 2 to refund a transaction";
+                            padText = "Successful Refund \n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
                             actionHistory.clear();
                             //return;
                         }
                         
                         //Refund Failure 
                         else{
-                            padText = "Refund Failed: "  + refundTransaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                            padText = "Refund Failed: "  + refundTransaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
                             actionHistory.clear();
                         }
                    }
                     //Catch unknown refund failure
                     catch(Exception ex){
                         LOG.error(ex);
-                        padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction or 2 to refund a transaction";
+                        padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
                         actionHistory.clear();
                     }
                    
@@ -268,7 +268,31 @@
             }
             
         }
-        //Not Option 1 or 2
+        //Check Luhn Code
+        else if("3".equals(actionHistory.get(0))){
+            if(actionHistory.size() == 1){
+                padText = "Please select a Card Number to check ";
+            }
+            //Select Refund
+            else if(actionHistory.size() == 2){
+                //Check Luhn Code
+                String cardNumber = actionHistory.get(1);
+                CardValidationResult validationResult = CardChecker.checkValidity(cardNumber);
+                if(validationResult == null){
+                    padText = "Unable to validate card "+ "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+                }
+                else if(!validationResult.getIsValid()){
+                    padText = "Invalid Card: \n"+ validationResult.getMessage() + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+                }
+                else{
+                    padText = "Card is a valid and the company is: " + validationResult.getCardCompany().toString() + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+                }
+                actionHistory.clear();                
+            }
+        }
+        
+        
+        //Not Option 1 or 2 or 3
         else{
             actionHistory.clear();
         }
