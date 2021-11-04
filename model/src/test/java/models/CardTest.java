@@ -108,7 +108,7 @@ public class CardTest {
     public void setExpiryDateTest()
     {
         Card card = new Card();
-        assertEquals(true, card.setExpiryDate("05/21"));
+        assertEquals(true, card.setEndDate("05/21"));
         assertEquals("05/21", card.getEndDate());
     }
     
@@ -118,10 +118,10 @@ public class CardTest {
     @Test
     public void setInvalidExpiryDate(){
         Card card = new Card();
-        assertEquals(false, card.setExpiryDate("abcde123"));        
-        assertEquals(false, card.setExpiryDate("14/-0"));        
-        assertEquals(false, card.setExpiryDate("14/24"));        
-        assertEquals(true, card.setExpiryDate("11/24"));
+        assertEquals(false, card.setEndDate("abcde123"));        
+        assertEquals(false, card.setEndDate("14/-0"));        
+        assertEquals(false, card.setEndDate("14/24"));        
+        assertEquals(true, card.setEndDate("11/24"));
     }
     
 }

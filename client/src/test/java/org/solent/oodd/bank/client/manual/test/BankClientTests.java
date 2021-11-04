@@ -52,13 +52,13 @@ public class BankClientTests {
         fromCard.setCardnumber("5133880000000012");
         fromCard.setCVV("123");
         fromCard.setIssueNumber("01");
-        fromCard.setExpiryDate("11/21");
+        fromCard.setEndDate("11/21");
         fromCard.setName("test user1");
 
         toCard = new Card();
         toCard.setCardnumber("4285860000000021");
         toCard.setCVV("123");
-        toCard.setExpiryDate("11/21");
+        toCard.setEndDate("11/21");
         toCard.setName("test user2");
         
         toUsername = "testuser2";
@@ -114,7 +114,7 @@ public class BankClientTests {
         invalidFromCard.setName("Invalid From Card");
         invalidFromCard.setCVV("989");
         invalidFromCard.setCardnumber("invalid");
-        invalidFromCard.setExpiryDate("23/43");
+        invalidFromCard.setEndDate("23/43");
 
         BankRestClient client = new BankRestClient(bankUrl);
         TransactionRequest req = new TransactionRequest(invalidFromCard, toCard, 50.0);
@@ -133,7 +133,7 @@ public class BankClientTests {
         invalidToCard.setName("Invalid To Card");
         invalidToCard.setCVV("989");
         invalidToCard.setCardnumber("invalid");
-        invalidToCard.setExpiryDate("11/22");
+        invalidToCard.setEndDate("11/22");
         
         BankRestClient client = new BankRestClient(bankUrl);
         TransactionRequest req = new TransactionRequest(fromCard, invalidToCard, 50.0);

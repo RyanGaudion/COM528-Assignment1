@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Steven Hawkins <5hawks48@solent.ac.uk>.
+ * Copyright 2021 Steven Hawkins.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import org.apache.logging.log4j.LogManager;
  * https://en.wikipedia.org/wiki/Luhn_algorithm - PAN number
  * https://en.wikipedia.org/wiki/Payment_card_number
  *
- * @author Steven Hawkins <5hawks48@solent.ac.uk>
+ * @author Steven Hawkins 5hawks48@solent.ac.uk
  */
 public class CardChecker {
 
@@ -33,7 +33,7 @@ public class CardChecker {
      * Removes non-numeric characters from the input, and 
      * checks the validity of the given card number.
      *
-     * @param cardInput
+     * @param cardInput The Card Number to check the validity of
      * @return CardValidationResult informing on pass/fail of check as well as card company name.
      */
     public static CardValidationResult checkValidity(final String cardInput) {

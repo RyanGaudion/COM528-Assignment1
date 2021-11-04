@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Steven Hawkins <5hawks48@solent.ac.uk>.
+ * Copyright 2021 Steven Hawkins.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import org.apache.logging.log4j.LogManager;
 
 /**
  * Test numbers sourced from: https://www.paypalobjects.com/en_GB/vhelp/paypalmanager_help/credit_card_numbers.htm
- * @author Steven Hawkins <5hawks48@solent.ac.uk>
+ * @author Steven Hawkins 5hawks48@solent.ac.uk
  */
 public class CardCheckerTest {
 

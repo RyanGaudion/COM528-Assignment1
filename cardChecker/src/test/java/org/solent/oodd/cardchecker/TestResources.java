@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Steven Hawkins <5hawks48@solent.ac.uk>.
+ * Copyright 2021 Steven Hawkins.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * Class containing test data for the cardChecker project. 
- * @author Steven Hawkins <5hawks48@solent.ac.uk>
+ * @author Steven Hawkins 5hawks48@solent.ac.uk
  */
 public class TestResources {
 
