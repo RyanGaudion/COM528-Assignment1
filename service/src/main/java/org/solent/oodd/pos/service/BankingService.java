@@ -58,6 +58,7 @@ public class BankingService implements IBankingService{
     public Transaction SendTransaction(Card fromCard, Double amount) {
         LOG.debug("Send Transaction from: " + fromCard.getCardnumber() + " to: " + shopKeeperCard.getCardnumber() + " for: " + amount);
 
+       
         IBankRestClient client = ClientObjectFactory.getBankClient();
                
         TransactionRequest request = new TransactionRequest(fromCard, shopKeeperCard, amount);
