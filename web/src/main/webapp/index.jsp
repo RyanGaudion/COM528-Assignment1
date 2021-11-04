@@ -160,7 +160,7 @@
                         try{
                             LOG.debug("6th Menu - Try Transaction");
                             IBankingService bankingService = WebObjectFactory.getBankingService();
-                            Transaction transaction = bankingService.SendTransaction(fromCard, amount);
+                            Transaction transaction = bankingService.sendTransaction(fromCard, amount);
                             //Transaction Success
                             if("SUCCESS".equals(transaction.getTransactionResponse().getStatus())){
                                 LOG.debug("6th Menu - Transaction Success");
@@ -194,7 +194,7 @@
                     LOG.debug("1st Menu = List Refund");
                     padText = "Please select an transaction to refund: ";
                     IBankingService bankingService = WebObjectFactory.getBankingService();
-                    List<Transaction> transactions = bankingService.GetLatestSuccessfulTransactions();
+                    List<Transaction> transactions = bankingService.getLatestSuccessfulTransactions();
                     LOG.debug("1st Menu = Refunds Available: " + transactions.size());
                     //Transactions Available to Refund
                     if(transactions.size() > 0){
@@ -217,7 +217,7 @@
                 else if(actionHistory.size() == 2){
                     LOG.debug("2nd Menu = Select Refund");
                     IBankingService bankingService = WebObjectFactory.getBankingService();
-                    List<Transaction> transactions = bankingService.GetLatestSuccessfulTransactions();
+                    List<Transaction> transactions = bankingService.getLatestSuccessfulTransactions();
                     int transactionInt;
                     try {
                         //Get selected transaction
@@ -227,7 +227,7 @@
                         LOG.debug("2nd Menu = Selected from: " + transactionToRefund.getTransactionRequest().getFromCard() + "Amount: " + transactionToRefund.getTransactionRequest().getAmount());
                         try{
                             //Try to refund
-                            Transaction refundTransaction = bankingService.RefundTransaction(transactionToRefund);
+                            Transaction refundTransaction = bankingService.refundTransaction(transactionToRefund);
 
                             //Refund Success
                             if("SUCCESS".equals(refundTransaction.getTransactionResponse().getStatus())){
@@ -327,6 +327,8 @@
     catch(Exception ex){
         LOG.error("Unknown Error - Restarting Stat", ex);
         padText = "Unknown Error - Restarting System Stat"+ "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+        IBankingService bankingService = WebObjectFactory.getBankingService();
+        bankingService.clearTransactions();
         session.setAttribute("actionHistory", new ArrayList<String>());
     }
       

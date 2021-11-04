@@ -30,7 +30,7 @@ public interface IBankingService {
      * @param amount the amount to send
      * @return Transaction model which includes both the transaction request and reponse
      */
-    public Transaction SendTransaction(Card fromCard, Double amount);
+    public Transaction sendTransaction(Card fromCard, Double amount);
 
     //Automatically creates a request with the negative number of the transaction.getresponse.getamount
     //Also checks to see if the transaction to refund was successful in the first place before trying to refund it
@@ -40,12 +40,18 @@ public interface IBankingService {
      * @param transaction the transaction to refund
      * @return a new transaction model for the refunded transaction
      */
-    public Transaction RefundTransaction(Transaction transaction);
+    public Transaction refundTransaction(Transaction transaction);
     
     /**
      * Gets the last recent transactions
      * @return A list of recent transactions
      */
-    List<Transaction> GetLatestSuccessfulTransactions();
+    List<Transaction> getLatestSuccessfulTransactions();
+    
+    /**
+     * Removes all transactions from the list of previous transactions
+     * @return true if clear was successful
+     */
+    public Boolean clearTransactions();
 
 }
