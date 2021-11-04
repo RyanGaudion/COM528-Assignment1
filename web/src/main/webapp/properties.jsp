@@ -21,6 +21,7 @@
 
 <%
     PropertiesDao propertiesDao = DaoObjectFactory.getPropertiesDao();
+    
     String url = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUrl");
     String username = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUsername");
     String password = propertiesDao.getProperty("org.solent.oodd.pos.service.apiPassword");
@@ -29,17 +30,20 @@
 
     String action = (String) request.getParameter("action");
     if ("updateProperties".equals(action)) {
-        message = "updating properties";
-        url = (String) request.getParameter("apiUrl");
-        username = (String) request.getParameter("apiUsername");
-        password = (String) request.getParameter("apiPassword");
+        message = "Properties updated sucessfully";
+        url = (String) request.getParameter("url");
+        username = (String) request.getParameter("username");
+        password = (String) request.getParameter("password");
         shopKeeperCard = (String) request.getParameter("shopKeeperCard");
+        
         propertiesDao.setProperty("org.solent.oodd.pos.service.apiUrl", url);
         propertiesDao.setProperty("org.solent.oodd.pos.service.apiUsername", username);
         propertiesDao.setProperty("org.solent.oodd.pos.service.apiPassword", password);
         propertiesDao.setProperty("org.solent.oodd.pos.service.shopKeeperCard", shopKeeperCard);
     }
 %>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,15 +53,13 @@
     <body>
         <h1>Properties Jsp</h1>
         <p><%=message%></p>
-<<<<<<< HEAD
+        
         <form action="./properties.jsp" method="POST">
-=======
-        <form action="./propertiesExample.jsp" method="POST">
->>>>>>> 45c9f1d1847709efe0cbf4707e5239af11eda92c
+
             <p>URL Property <input type="text" name="url" value="<%=url%>"></p>
             <p>Username Property <input type="text" name="username" value="<%=username%>"></p>
             <p>Password Property <input type="text" name="password" value="<%=password%>"></p>
-            <p>Shop Keeper Card Property <input type="text" name="password" value="<%=shopKeeperCard%>"></p>
+            <p>Shop Keeper Card Property <input type="text" name="shopKeeperCard" value="<%=shopKeeperCard%>"></p>
             <input type="hidden" name="action" value="updateProperties">
 
             <button class="btn" type="submit" >Update Properties</button>
