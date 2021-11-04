@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Steven Hawkins <5hawks48@solent.ac.uk>.
+ * Copyright 2021 Steven Hawkins .
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package org.solent.oodd.cardchecker;
 
 /**
  * Class providing details of a card validation.
- * @author Steven Hawkins <5hawks48@solent.ac.uk>
+ * @author Steven Hawkins 5hawks48@solent.ac.uk
  */
 public class CardValidationResult {
     private String message;
@@ -26,8 +26,8 @@ public class CardValidationResult {
     
     /**
      * Constructor to use for invalid results.
-     * @param isValid
-     * @param message 
+     * @param isValid true is the card is valid or false if it is not
+     * @param message if the card is not valid then the message will give a reason
      */
     public CardValidationResult(Boolean isValid, String message) {
         this.cardCompany = CardCompany.UNKNOWN;
@@ -37,8 +37,8 @@ public class CardValidationResult {
     
     /**
      * Constructor to use for valid results.
-     * @param message
-     * @param cardCompany 
+     * @param message reason why the card is or is not valid
+     * @param cardCompany company that the card relates to
      */
     public CardValidationResult(String message, CardCompany cardCompany) {
         this.isValid = true;

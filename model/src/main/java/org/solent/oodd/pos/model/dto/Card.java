@@ -119,11 +119,11 @@ public class Card {
     //MM/yy
 
     /**
-     * Checks the String is in the format of MM/yy and then set's the endDate proeprty
+     * Checks the String is in the format of MM/yy and then set's the endDate property
      * @param endDate the expiry Date of the card in the format of MM/yy
      * @return Returns true if validation was successful, if not returns false
      */
-    public Boolean setExpiryDate(String endDate){        
+    public Boolean setEndDate(String endDate){        
         try{
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yy");
             YearMonth date = YearMonth.parse(endDate, formatter);

@@ -31,7 +31,7 @@
             <artifactId>cardChecker</artifactId>
             <version>${project.version}</version>
         </dependency>
-        
+       
         <dependency>
             <groupId>solent.ac.uk.ood</groupId>
             <artifactId>pointOfSalesDevice-service</artifactId>

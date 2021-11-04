@@ -55,9 +55,9 @@ public class BankingService implements IBankingService{
      * This method implements Http Authentication
      */
     @Override
-    public Transaction SendTransaction(Card fromCard, Double amount) {
+    public Transaction sendTransaction(Card fromCard, Double amount) {
         LOG.debug("Send Transaction from: " + fromCard.getCardnumber() + " to: " + shopKeeperCard.getCardnumber() + " for: " + amount);
-
+       
         IBankRestClient client = ClientObjectFactory.getBankClient();
                
         TransactionRequest request = new TransactionRequest(fromCard, shopKeeperCard, amount);
@@ -76,7 +76,7 @@ public class BankingService implements IBankingService{
      * required information to refund the transaction
      */
     @Override
-    public Transaction RefundTransaction(Transaction transaction) {
+    public Transaction refundTransaction(Transaction transaction) {
         LOG.debug("Refund Transaction from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " to: " + transaction.getTransactionRequest().getToCard().getCardnumber() + " for: " + transaction.getTransactionRequest().getAmount());
 
         IBankRestClient client = ClientObjectFactory.getBankClient();
@@ -102,7 +102,7 @@ public class BankingService implements IBankingService{
      * This uses the transactions list to get the 9 most recent transactions
      */
     @Override
-    public List<Transaction> GetLatestSuccessfulTransactions(){
+    public List<Transaction> getLatestSuccessfulTransactions(){
         //Returns either all the transactions or the last 9 - whichever is smallest
         LOG.debug("Get Latest Transactions: " + transactions.size());
         List<Transaction> successfulTransactions = new ArrayList<Transaction>();
@@ -113,6 +113,15 @@ public class BankingService implements IBankingService{
         }
         List<Transaction> latestTransactions = successfulTransactions.subList(successfulTransactions.size()- Math.min(successfulTransactions.size(), 9), successfulTransactions.size());
         return latestTransactions;
+    }
+    
+    /**
+     * Clears all transactions from the list of transactions
+     */
+    @Override
+    public Boolean clearTransactions(){
+        transactions.clear();
+        return true;
     }
     
 }

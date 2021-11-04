@@ -116,6 +116,10 @@ Sadly the assessment criteria was misunderstood, and these wireframes are not re
 
 ![](/documentation/Images/Wireframes/Pin_Pad.png)
 
+Upon testing and developing the proposed pin pad design, we realised a few improvements could be made. The gold buttons were distracting, the square buttons harsh and imposing, and there was no way of inputting a decimal number. As such, the buttons were rounded slightly, the button text was set to white and the buttons to black (emulating a card reader), and a new button for a decimal point was included.
+
+![](/documentation/Images/Wireframes/Pin_Pad_Mk2.png)
+
 #### Menu System Flow
 Menu system flow diagram:
 

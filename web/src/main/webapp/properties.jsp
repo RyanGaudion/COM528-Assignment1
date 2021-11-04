@@ -49,7 +49,11 @@
     <body>
         <h1>Properties Jsp</h1>
         <p><%=message%></p>
+<<<<<<< HEAD
         <form action="./properties.jsp" method="POST">
+=======
+        <form action="./propertiesExample.jsp" method="POST">
+>>>>>>> 45c9f1d1847709efe0cbf4707e5239af11eda92c
             <p>URL Property <input type="text" name="url" value="<%=url%>"></p>
             <p>Username Property <input type="text" name="username" value="<%=username%>"></p>
             <p>Password Property <input type="text" name="password" value="<%=password%>"></p>
