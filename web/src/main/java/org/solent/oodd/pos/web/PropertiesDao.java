@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.solent.oodd.pos.dao;
+package org.solent.oodd.pos.web;
+
+/**
+ *
+ * @author ISA06002471
+ */
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,12 +34,12 @@ public class PropertiesDao {
         try {
             propertiesFile = new File(propertiesFileLocation);
             if (!propertiesFile.exists()) {
-                LOG.info("properties file does not exist: loading default ");                
-                //LOG.info("properties file does not exist: creating new file: " + propertiesFile.getAbsolutePath());
-                //propertiesFile.getParentFile().mkdirs();
-                //propertiesFile.createNewFile();
-                //saveProperties();
-                loadDefaultProperties();
+//                LOG.info("properties file does not exist: loading default ");                
+                LOG.info("properties file does not exist: creating new file: " + propertiesFile.getAbsolutePath());
+                propertiesFile.getParentFile().mkdirs();
+                propertiesFile.createNewFile();
+                saveProperties();
+//                loadDefaultProperties();
             }
             loadProperties();
         } catch (Exception ex) {

@@ -26,11 +26,11 @@
             <version>${project.version}</version>
         </dependency>
         
-        <dependency>
+<!--        <dependency>
             <groupId>org.solent.oodd</groupId>
             <artifactId>cardChecker</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
         
         <dependency>
             <groupId>solent.ac.uk.ood</groupId>
