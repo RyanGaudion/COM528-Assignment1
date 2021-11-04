@@ -103,7 +103,7 @@
                     //Add / into dateString
                     try{
                         expiryDateS = expiryDateS.substring(0, 2) + "/" + expiryDateS.substring(2);
-                        if(!tmpCard.setExpiryDate(expiryDateS)){
+                        if(!tmpCard.setEndDate(expiryDateS)){
                             actionHistory.remove(3);
                             LOG.debug("4th Menu = Invalid Expiry Date");
                             padText = "Invalid Expiry Date - Please enter in the format 'MMyy'";
@@ -152,7 +152,11 @@
                         Card fromCard = new Card();
                         fromCard.setCVV(actionHistory.get(5));
                         fromCard.setIssueNumber(actionHistory.get(4));
-                        fromCard.setExpiryDate(actionHistory.get(3));
+                        //Need to add forward slash to endDate
+                        if(actionHistory.get(3).length() > 3){
+                            String expiryDateS = actionHistory.get(3).substring(0, 2) + "/" + actionHistory.get(3).substring(2);
+                            fromCard.setEndDate(expiryDateS);                      
+                        }
                         fromCard.setCardnumber(actionHistory.get(2));
                         Double amount = Double.parseDouble(actionHistory.get(1));
 
