@@ -16,7 +16,7 @@ The developers involved in this project where:
 - [Ryan Gaudion](https://github.com/RyanGaudion)
 
 # Using the app
-When using Netbeans the single app is deployed to [http://localhost:8080/pointOfSalesDevice](http://localhost:8080/pointOfSalesDevice).
+When using Netbeans the web app is deployed by default to [http://localhost:8080/pointOfSalesDevice](http://localhost:8080/pointOfSalesDevice).
 
 The PinPad uses the number buttons to navigate through the menu to either make a transaction or refund a transaction.  
 `Cancel` - Clears the whole user input  
