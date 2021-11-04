@@ -57,7 +57,6 @@ public class BankingService implements IBankingService{
     @Override
     public Transaction SendTransaction(Card fromCard, Double amount) {
         LOG.debug("Send Transaction from: " + fromCard.getCardnumber() + " to: " + shopKeeperCard.getCardnumber() + " for: " + amount);
-
        
         IBankRestClient client = ClientObjectFactory.getBankClient();
                
