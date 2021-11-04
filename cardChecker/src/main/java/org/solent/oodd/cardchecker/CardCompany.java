@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Steven Hawkins <5hawks48@solent.ac.uk>.
+ * Copyright 2021 Steven Hawkins.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import org.apache.logging.log4j.Logger;
 /**
  * Represents the different card companies that can be detected.
  * Sourced from: https://stackoverflow.com/a/23814692
- * @author Steven Hawkins <5hawks48@solent.ac.uk>
+ * @author Steven Hawkins 5hawks48@solent.ac.uk
  */
 public enum CardCompany {
 
@@ -48,7 +48,7 @@ public enum CardCompany {
 
     /**
      * Detects which card company issued the card number.
-     * @param cardNumber
+     * @param cardNumber the Card Number to detect the card company of
      * @return CardCompany associated with the input number. Returns CardComapny.UNKNOWN for non-matches.
      */
     public static CardCompany detect(String cardNumber) {
