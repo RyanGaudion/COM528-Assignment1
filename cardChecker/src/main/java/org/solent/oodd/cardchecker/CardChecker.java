@@ -101,7 +101,7 @@ public class CardChecker {
      * Performs the MOD10 portion of the Luhn calculation to
      * validate the check sum and check digit.
      * @param cardNo
-     * @return
+     * @return True/False whether the card number passed the Luhn algorithm.
      */
     private static boolean checkLuhn(String cardNo) {
         if (cardNo == null || cardNo.length() == 0) {
