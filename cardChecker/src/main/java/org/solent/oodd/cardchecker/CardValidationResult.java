@@ -46,14 +46,26 @@ public class CardValidationResult {
         this.cardCompany = cardCompany;
     }
     
+    /**
+     * Gets this card's card company.
+     * @return The Card company of this card.
+     */
     public CardCompany getCardCompany() {
         return this.cardCompany;
     }
     
+    /**
+     * 
+     * @return This result's message.
+     */
     public String getMessage() {
         return this.message;
     }
     
+    /**
+     * 
+     * @return This result's validity.
+     */
     public Boolean getIsValid(){
         return this.isValid;
     }     
