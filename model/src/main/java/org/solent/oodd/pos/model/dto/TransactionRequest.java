@@ -70,7 +70,7 @@ public class TransactionRequest {
     }
     
     /**
-     * Sets how much money should be transfered for the transaction
+     * Sets how much money should be transferred for the transaction
      * @param amount the amount to transfer (as a Double)
      * @return returns True as long as there were no errors in setting the property
      */
