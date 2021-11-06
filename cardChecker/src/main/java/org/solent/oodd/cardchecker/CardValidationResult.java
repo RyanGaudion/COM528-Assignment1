@@ -34,7 +34,7 @@ public class CardValidationResult {
      * @param message if the card is not valid then the message will give a reason
      */
     public CardValidationResult(Boolean isValid, String message) {
-        LOG.debug("Creating card validation result.");
+        LOG.info("Creating card validation result.");
         this.cardCompany = CardCompany.UNKNOWN;
         this.message = message;
         this.isValid = isValid;
@@ -46,7 +46,7 @@ public class CardValidationResult {
      * @param cardCompany company that the card relates to
      */
     public CardValidationResult(String message, CardCompany cardCompany) {
-        LOG.debug("Creating valid card validation result.");
+        LOG.info("Creating valid card validation result.");
         this.isValid = true;
         this.message = message;
         this.cardCompany = cardCompany;
