@@ -32,7 +32,7 @@ public class CardCompanyTest {
     }
     
     /**
-     * Test of detect method, of class CardCompany.
+     * Test of detect method, of class CardCompany with valid inputs..
      */
     @Test
     public void testDetect() {
@@ -42,6 +42,9 @@ public class CardCompanyTest {
         }      
     }
     
+    /**
+     * Test of detect method, of class CardCompany with invalid inputs.
+     */
     @Test
     public void testDetectInvalidCards() {
         logger.debug(CardCompanyTest.class + ", CardCompany Detect invalid cards test.");

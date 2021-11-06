@@ -25,7 +25,8 @@ import java.util.Map;
 public class TestResources {
 
     /**
-     * Get a List of pairs representing valid Credit cards.
+     * Get a List of pairs representing valid Credit card numbers and their
+     * associated card company.
      * @return java.util.List<java.util.Map.Entry<CardCompany, String>>
      */
     public static java.util.List<java.util.Map.Entry<CardCompany, String>> getCardPairs() {

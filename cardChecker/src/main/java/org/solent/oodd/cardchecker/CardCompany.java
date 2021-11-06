@@ -42,6 +42,10 @@ public enum CardCompany {
         this.pattern = null;
     }
 
+    /**
+     * 
+     * @param pattern The expression to be compiled.
+     */
     CardCompany(String pattern) {
         this.pattern = Pattern.compile(pattern);
     }
