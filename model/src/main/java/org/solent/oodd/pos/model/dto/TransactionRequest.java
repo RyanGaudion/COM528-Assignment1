@@ -33,7 +33,7 @@ public class TransactionRequest {
      * Empty constructor - required for serialising and de-serialising
      */
     public TransactionRequest(){
-        LOG.debug("New Transaction Request - empty constructor");
+        LOG.info("New Transaction Request - empty constructor");
     }
     
     /**
@@ -43,7 +43,7 @@ public class TransactionRequest {
      * @param amount amount for the transaction as a double
      */
     public TransactionRequest(Card from, Card to, Double amount){
-        LOG.debug("New Transaction Request - full constructor");
+        LOG.info("New Transaction Request - full constructor");
         fromCard = from;
         toCard = to;
         this.amount = amount;

@@ -83,10 +83,10 @@ public class Card {
         //Valdiates for a 16 digit card number
         if(CardNumber.length() == 16){
             this.cardnumber = CardNumber;
-            LOG.info("Set Card Number Validation - Success: " + CardNumber);
+            LOG.debug("Set Card Number Validation - Success: " + CardNumber);
             return true;
         }
-        LOG.info("Set Card Number Validation - Failed: " + CardNumber);
+        LOG.debug("Set Card Number Validation - Failed: " + CardNumber);
         return false;
     }
     
@@ -109,10 +109,10 @@ public class Card {
         //Vallidates for a 3 or 4 digit CVV number
         if(Cvv.length() == 3 || Cvv.length() == 4){
             this.cvv = Cvv;
-            LOG.info("Set CVV Validation - Success: ");
+            LOG.debug("Set CVV Validation - Success: ");
             return true;
         }
-        LOG.info("Set CVV Validation - Failed: " + Cvv);
+        LOG.debug("Set CVV Validation - Failed: " + Cvv);
         return false;
     }
     
@@ -148,7 +148,7 @@ public class Card {
     }
     
     /**
-     * Get's the Card's Issue Number
+     * Gets the Card's Issue Number
      * @return Issue Number of the Card
      */
     public String getIssueNumber() {
