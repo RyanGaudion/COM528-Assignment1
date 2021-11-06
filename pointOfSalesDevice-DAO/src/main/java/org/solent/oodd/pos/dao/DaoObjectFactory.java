@@ -24,7 +24,7 @@ import org.apache.logging.log4j.Logger;
  * @author rgaud
  */
 public class DaoObjectFactory {
-    final static Logger LOG = LogManager.getLogger(DaoObjectFactory.class);
+    final static Logger logger = LogManager.getLogger(DaoObjectFactory.class);
 
     private static PropertiesDao propertiesDao = null;
 
@@ -35,8 +35,8 @@ public class DaoObjectFactory {
                     // creates a singleton of the dao
                     String tempDir = System.getProperty("java.io.tmpdir");
                     File propertiesFile = new File(tempDir + "/application.properties");
-                    LOG.debug("using system temp directory: " + tempDir);
-                    LOG.debug("using application properties file : " + propertiesFile.getAbsolutePath());
+                    logger.debug("using system temp directory: " + tempDir);
+                    logger.debug("using application properties file : " + propertiesFile.getAbsolutePath());
                     propertiesDao = new PropertiesDao(propertiesFile.getAbsolutePath());
                 }
             }

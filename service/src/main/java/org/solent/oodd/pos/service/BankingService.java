@@ -40,7 +40,7 @@ public class BankingService implements IBankingService{
 
     private final List<Transaction> transactions = new ArrayList();
     
-    final static Logger LOG = LogManager.getLogger(BankingService.class);
+    final static Logger logger = LogManager.getLogger(BankingService.class);
     
     public BankingService(PropertiesDao properties){
         apiUsername = properties.getProperty("org.solent.oodd.pos.service.apiUsername");
@@ -56,7 +56,7 @@ public class BankingService implements IBankingService{
      */
     @Override
     public Transaction sendTransaction(Card fromCard, Double amount) {
-        LOG.debug("Send Transaction from: " + fromCard.getCardnumber() + " to: " + shopKeeperCard.getCardnumber() + " for: " + amount);
+        logger.debug("Send Transaction from: " + fromCard.getCardnumber() + " to: " + shopKeeperCard.getCardnumber() + " for: " + amount);
        
         IBankRestClient client = ClientObjectFactory.getBankClient();
                
@@ -64,7 +64,7 @@ public class BankingService implements IBankingService{
         
         TransactionResponse response = client.transferMoney(request, apiUsername, apiPassword);
         
-        LOG.debug("Transaction Response Status: " + response.getStatus());
+        logger.debug("Transaction Response Status: " + response.getStatus());
 
         Transaction transaction = new Transaction(request, response);
         transactions.add(transaction);
@@ -77,7 +77,7 @@ public class BankingService implements IBankingService{
      */
     @Override
     public Transaction refundTransaction(Transaction transaction) {
-        LOG.debug("Refund Transaction from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " to: " + transaction.getTransactionRequest().getToCard().getCardnumber() + " for: " + transaction.getTransactionRequest().getAmount());
+        logger.debug("Refund Transaction from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " to: " + transaction.getTransactionRequest().getToCard().getCardnumber() + " for: " + transaction.getTransactionRequest().getAmount());
 
         IBankRestClient client = ClientObjectFactory.getBankClient();
         
@@ -88,7 +88,7 @@ public class BankingService implements IBankingService{
         TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);
         
         TransactionResponse response = client.transferMoney(request);
-        LOG.debug("Refund Response Status: " + response.getStatus());
+        logger.debug("Refund Response Status: " + response.getStatus());
 
         Transaction refundTransaction = new Transaction(request, response);
         refundTransaction.setIsRefund(true);
@@ -104,7 +104,7 @@ public class BankingService implements IBankingService{
     @Override
     public List<Transaction> getLatestSuccessfulTransactions(){
         //Returns either all the transactions or the last 9 - whichever is smallest
-        LOG.debug("Get Latest Transactions: " + transactions.size());
+        logger.debug("Get Latest Transactions: " + transactions.size());
         List<Transaction> successfulTransactions = new ArrayList<Transaction>();
         for (Transaction transaction : transactions) {
             if(transaction.getTransactionResponse().getStatus() != null && transaction.getTransactionResponse().getStatus().equals("SUCCESS") && transaction.getIsRefund() != true){

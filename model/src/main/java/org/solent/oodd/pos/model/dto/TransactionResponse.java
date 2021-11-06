@@ -35,7 +35,7 @@ public class TransactionResponse {
     private String transactionId; //Could be a GUID
     private Date transactionDate;
 
-    final static Logger LOG = LogManager.getLogger(TransactionResponse.class);
+    final static Logger logger = LogManager.getLogger(TransactionResponse.class);
     
     public TransactionResponse(){
         
@@ -108,11 +108,11 @@ public class TransactionResponse {
     public Boolean setCode(int code){
         //Check Code is 3 digits
         if(String.valueOf(code).length() == 3){
-            LOG.debug(TransactionResponse.class + "Set Code Validation - Success: " + code);
+            logger.debug(TransactionResponse.class + "Set Code Validation - Success: " + code);
             this.code = code;
             return true;
         }
-        LOG.debug(TransactionResponse.class + "Set Code Validation - Failed: " + code);
+        logger.debug(TransactionResponse.class + "Set Code Validation - Failed: " + code);
         return false;
     }
     

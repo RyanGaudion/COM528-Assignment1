@@ -27,13 +27,13 @@ public class TransactionRequest {
     private Card toCard;
     private Double amount;
 
-    final static Logger LOG = LogManager.getLogger(TransactionRequest.class);
+    final static Logger logger = LogManager.getLogger(TransactionRequest.class);
 
     /**
      * Empty constructor - required for serialising and de-serialising
      */
     public TransactionRequest(){
-        LOG.info("New Transaction Request - empty constructor");
+        logger.info("New Transaction Request - empty constructor");
     }
     
     /**
@@ -43,7 +43,7 @@ public class TransactionRequest {
      * @param amount amount for the transaction as a double
      */
     public TransactionRequest(Card from, Card to, Double amount){
-        LOG.info("New Transaction Request - full constructor");
+        logger.info("New Transaction Request - full constructor");
         fromCard = from;
         toCard = to;
         this.amount = amount;

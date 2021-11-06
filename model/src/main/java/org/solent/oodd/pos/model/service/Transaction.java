@@ -28,7 +28,7 @@ public class Transaction {
     private TransactionRequest transactionRequest;
     private TransactionResponse transactionResponse;
     private Boolean isRefund = false;
-    final static Logger LOG = LogManager.getLogger(Transaction.class);
+    final static Logger logger = LogManager.getLogger(Transaction.class);
     
     public Transaction(){
         
@@ -73,7 +73,7 @@ public class Transaction {
      * @return true if the request was not null
      */
     public boolean setTransactionRequest(TransactionRequest request){
-        LOG.info(Transaction.class + "Set transaction request");
+        logger.info(Transaction.class + "Set transaction request");
         if(request != null){
             transactionRequest = request;
             return true;
@@ -86,7 +86,7 @@ public class Transaction {
      * @return true if the response was not null
      */
     public boolean setTransactionResponse(TransactionResponse response){
-        LOG.info(Transaction.class + "Set transaction response");
+        logger.info(Transaction.class + "Set transaction response");
         if(response != null){
             transactionResponse = response;
             return true;
