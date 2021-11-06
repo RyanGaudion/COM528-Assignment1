@@ -35,7 +35,7 @@ public class CardValidationResultTest {
      */
     @Test
     public void testGetMessage() {
-        logger.debug("getError");
+        logger.debug("getMessage test");
         CardValidationResult instance = new CardValidationResult(false, "error msg");
         String expResult = "error msg";
         String result = instance.getMessage();
@@ -47,7 +47,7 @@ public class CardValidationResultTest {
      */
     @Test
     public void testGetIsValid() {
-        logger.debug("getIsValid");
+        logger.debug("getIsValid test");
         CardValidationResult instance = new CardValidationResult(false, "error msg");;
         Boolean expResult = false;
         Boolean result = instance.getIsValid();
@@ -59,7 +59,7 @@ public class CardValidationResultTest {
      */
     @Test
     public void testGetCardCompany() {
-        logger.debug("getCardCompany");
+        logger.debug("getCardCompany test");
         CardValidationResult instance = new CardValidationResult("msg", CardCompany.JCB);;
         CardCompany expResult = CardCompany.JCB;
         CardCompany result = instance.getCardCompany();

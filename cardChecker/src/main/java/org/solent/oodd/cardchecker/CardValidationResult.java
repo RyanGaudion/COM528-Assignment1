@@ -15,6 +15,9 @@
  */
 package org.solent.oodd.cardchecker;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Class providing details of a card validation.
  * @author Steven Hawkins 5hawks48@solent.ac.uk
@@ -23,13 +26,15 @@ public class CardValidationResult {
     private String message;
     private Boolean isValid;
     private CardCompany cardCompany;
+    final static Logger LOG = LogManager.getLogger(CardValidationResult.class);
     
     /**
-     * Constructor to use for invalid results.
+     * Constructor to use for unknown card companies results.
      * @param isValid true is the card is valid or false if it is not
      * @param message if the card is not valid then the message will give a reason
      */
     public CardValidationResult(Boolean isValid, String message) {
+        LOG.debug("Creating card validation result.");
         this.cardCompany = CardCompany.UNKNOWN;
         this.message = message;
         this.isValid = isValid;
@@ -41,6 +46,7 @@ public class CardValidationResult {
      * @param cardCompany company that the card relates to
      */
     public CardValidationResult(String message, CardCompany cardCompany) {
+        LOG.debug("Creating valid card validation result.");
         this.isValid = true;
         this.message = message;
         this.cardCompany = cardCompany;

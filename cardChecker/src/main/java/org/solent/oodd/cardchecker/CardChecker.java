@@ -55,6 +55,7 @@ public class CardChecker {
         }
 
         if (!checkLuhn(cardNumber)) {
+            logger.error(CardChecker.class + ": failed Luhn check.");
             return new CardValidationResult(false, cardNumber + ": Failed Luhn check");
         }
         
@@ -104,6 +105,7 @@ public class CardChecker {
      * @return True/False whether the card number passed the Luhn algorithm.
      */
     private static boolean checkLuhn(String cardNo) {
+        logger.debug(CardChecker.class + ": Performing Luhn check.");
         if (cardNo == null || cardNo.length() == 0) {
             logger.error(CardChecker.class + ": Null card entered.");
             return false;
