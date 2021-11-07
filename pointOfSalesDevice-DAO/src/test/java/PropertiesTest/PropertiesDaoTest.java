@@ -79,35 +79,24 @@ public class PropertiesDaoTest {
      */
     public void savePropertiesTest() {
         
-        OutputStream output = null;
-        try {
-            String url = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUrl");
-            String username = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUsername");
-            String password = propertiesDao.getProperty("org.solent.oodd.pos.service.apiPassword");
-            String shopKeeperCard = propertiesDao.getProperty("org.solent.oodd.pos.service.shopKeeperCard");
+        try (OutputStream output = new FileOutputStream("tomcat/apache-tomcat-9.0.53/temp")) {
 
-            propertiesDao.setProperty("org.solent.oodd.pos.service.apiUrl", url);
-            propertiesDao.setProperty("org.solent.oodd.pos.service.apiUsername", username);
-            propertiesDao.setProperty("org.solent.oodd.pos.service.apiPassword", password);
-            propertiesDao.setProperty("org.solent.oodd.pos.service.shopKeeperCard", shopKeeperCard);
+            Properties prop = new Properties();
 
-            LOG.debug("saving properties to: " + propertiesFile.getAbsolutePath());
+            // set the properties value
+            prop.setProperty("org.solent.oodd.pos.service.apiUrl", "TEST");
+            prop.setProperty("org.solent.oodd.pos.service.apiUsername", "TEST");
+            prop.setProperty("org.solent.oodd.pos.service.apiPassword", "passwordTest");
+            prop.setProperty("org.solent.oodd.pos.service.shopKeeperCard", "Test123456");
+            
+            prop.store(output, null);
+            assertTrue(output != null);
+            
+            System.out.println(prop);
 
-            output = new FileOutputStream(propertiesFile);
-            String comments = "#Test properties file";
-
-            properties.store(output, comments);
-            //assertTrue(propertiesFile.exists());
-
-        } catch (IOException ex) {
-            LOG.error("cannot save properties", ex);
-        } finally {
-            try {
-                if (output != null) {
-                    output.close();
-                }
-            } catch (IOException ex) {
-            }
+        } catch (IOException io) {
+            io.printStackTrace();
         }
+
     }
 }

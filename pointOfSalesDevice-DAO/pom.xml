@@ -35,13 +35,13 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>solent.ac.uk.ood</groupId>
             <artifactId>pointOfSalesDevice-web</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>test</scope>
             <type>war</type>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>solent.ac.uk.ood</groupId>
             <artifactId>pointOfSalesDevice-model</artifactId>
