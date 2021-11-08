@@ -78,10 +78,10 @@ The following requirements are written from the perspective of what different us
 | UC6			| User 		| The user confirms a purchase transaction. | The application transfers money from the users credit card equal to the total amount required by the order. If there is not enough money in the account, the transaction does not complete and the users is shown an error message.  |
 | UC7			| User 		| The user confirms a purchase transaction. | The application stores all transactions locally in a log file. The CVV number must not be stored by the application. |
 | UC8			| User 		| A user visits a page allowing them to reverse their previous transactions. | The application displays their previous transactions, and the gives them the option to reverse (refund) it. |
-| UC9			| Admin		| Admin tries to configure a device. | The application needs to verify the credentials of the admin, so that they can access and modify the configuration settings. |
-| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile, this logfile should be accessible for admins. |
-| UC11			| User		| User requests the app to perform any action. | The program must be able to complete user requests within 1 second. |
-| UC12			| Admin 	| Admin configures the device. | The identify credentials of the device need to be stored securely in a properties file. |
+| UC9			| Admin		| Admin tries to configure a device. | The admin enters the configuration settings URL, and can edit the properties file from there. |
+| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile; this logfile should be accessible for admins and stored locally. |
+| UC11			| User		| User requests the app to  perform any action. | The program must be able to complete user requests within 1 second. |
+| UC12			| Admin 	| Admin configures the device. | The identity credentials of the device need to be stored securely in a local properties file. |
 | UC13			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
 
 ## Project Diagrams
