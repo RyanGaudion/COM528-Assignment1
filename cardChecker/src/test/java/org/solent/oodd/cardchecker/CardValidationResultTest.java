@@ -22,7 +22,7 @@ import org.apache.logging.log4j.LogManager;
 
 /**
  *
- * @author Steven
+ * @author Steven Hawkins 5hawks48@solent.ac.uk
  */
 public class CardValidationResultTest {
     public static Logger logger = LogManager.getLogger(CardValidationResult.class);
