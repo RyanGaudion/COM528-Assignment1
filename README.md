@@ -38,10 +38,12 @@ Location of normal Logs & Transaction Logs
 
 --ToDo--
 
-### Unsupported Browsers
-This application has been tested with Microsoft Edge and is approved to work for this browser. Other browsers may also work however the following won't work:
-- Internet Explorer
-
+### System Requirements
+This system requirements for this program are:
+- A system running Windows 10 or newer.
+- [Java JDK](https://www.oracle.com/java/technologies/downloads/#java8) version 8 or newer.
+- [Apache Maven](https://maven.apache.org/install.html) 3.8 or newer
+- One of the following web browsers: Google Chrome, Mozilla Firefox or Microsoft Edge. Internet Explorer is unsupported by this application.
 
 # Building/Testing the App
 Running the following command in the project root folder will build the project with Maven and will also run all the tests for the Project Solution:
@@ -49,7 +51,11 @@ Running the following command in the project root folder will build the project 
 `mvn clean install`
 
 ## JavaDoc Creation
----ToDo--
+To view JavaDocs, navigate to the project folder within a command prompt and run:
+
+`mvn javadoc:javadoc`
+
+Visit https://maven.apache.org/plugins/maven-javadoc-plugin/index.html for more information.
 
 
 
