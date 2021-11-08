@@ -33,7 +33,7 @@ import org.solent.oodd.bank.client.impl.BankRestClient;
  */
 public class BankClientTests {
 
-    final static Logger LOG = LogManager.getLogger(BankClientTests.class);
+    final static Logger logger = LogManager.getLogger(BankClientTests.class);
 
     String bankUrl = "http://com528bank.ukwest.cloudapp.azure.com:8080/rest";
     Card fromCard = null;
@@ -77,9 +77,9 @@ public class BankClientTests {
 
         TransactionRequest req = new TransactionRequest(fromCard, toCard, amount);
         TransactionResponse response = client.transferMoney(req);
-        LOG.debug("transaction reply:" + response);
+        logger.debug("transaction reply:" + response);
 
-        LOG.debug(response);       
+        logger.debug(response);       
         assertEquals("SUCCESS", response.getStatus());
 
 
@@ -99,7 +99,7 @@ public class BankClientTests {
  
         TransactionRequest req = new TransactionRequest(fromCard, toCard, amount);
         TransactionResponse response = client.transferMoney(req, toUsername, toPassword);
-        LOG.debug("transaction with auth reply:" + response);
+        logger.debug("transaction with auth reply:" + response);
         
         assertEquals("SUCCESS", response.getStatus());
 

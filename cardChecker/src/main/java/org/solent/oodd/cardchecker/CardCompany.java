@@ -57,7 +57,7 @@ public enum CardCompany {
      */
     public static CardCompany detect(String cardNumber) {
         if (cardNumber == null) {
-            logger.error(CardCompany.class + ": Null card entered.");
+            logger.warn(CardCompany.class + ": Null card entered.");
             return CardCompany.UNKNOWN;
         }
         cardNumber = cardNumber.replaceAll("[^\\d]", ""); //("[^0-9]+$", ""); // Remove all non-numerics.

@@ -41,7 +41,7 @@ public class CardChecker {
          * Null values should not be accepted.
          */
         if (cardInput == null) {
-            logger.error(CardChecker.class + ": Null card entered.");
+            logger.warn(CardChecker.class + ": Null card entered.");
             return new CardValidationResult(false, "Card cannot be null.");
         }
 
@@ -50,17 +50,18 @@ public class CardChecker {
          */
         String cardNumber = cardInput.replaceAll("[^\\d]", ""); //("[^0-9]+$", ""); // Remove all non-numerics.
         if (cardInput.length() < 13 || cardInput.length() > 19) {
-            logger.error(CardChecker.class + ": Bad card length for " + cardInput);
+            logger.warn(CardChecker.class + ": Bad card length for " + cardInput);
             return new CardValidationResult(false, "Card length fell outside of appropriate range.");
         }
 
         if (!checkLuhn(cardNumber)) {
+            logger.warn(CardChecker.class + ": failed Luhn check.");
             return new CardValidationResult(false, cardNumber + ": Failed Luhn check");
         }
         
         CardCompany cc = CardCompany.detect(cardNumber);
         if (cc == CardCompany.UNKNOWN) {
-            logger.debug(CardChecker.class + " CC Check, No." + cardNumber + ", cc: " + cc );
+            logger.warn(CardChecker.class + " CC Check, No." + cardNumber + ", cc: " + cc );
             return new CardValidationResult(false ,"Failed card company check.");
         }
         
@@ -104,11 +105,12 @@ public class CardChecker {
      * @return True/False whether the card number passed the Luhn algorithm.
      */
     private static boolean checkLuhn(String cardNo) {
+        logger.info(CardChecker.class + ": Performing Luhn check.");
         if (cardNo == null || cardNo.length() == 0) {
-            logger.error(CardChecker.class + ": Null card entered.");
+            logger.warn(CardChecker.class + ": Null card entered.");
             return false;
         } else if (!cardNo.matches("[0-9]+$")) {
-            logger.error(CardChecker.class + ": Non-numeric card entered.");
+            logger.warn(CardChecker.class + ": Non-numeric card entered.");
             return false;
         }
         int sum = sumDigits(cardNo, false); // Take in whole card.
