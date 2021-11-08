@@ -165,6 +165,7 @@ Every developer is responsible for writing tests for the code they implement. Fo
 There are however additional testing Tasks that need to be complete outside of the inital Unit tests per class which you can see below:
 | Task        | Description | Assigned To |
 | ----------- | ----------- | ----------- |
+| Standard Unit Tests       | All methods must have a corresponding unit test. Creators of the method are responsible for the creation of the unit tests for that method.        | Everyone       |
 | Develop Test Plan        | Develop a test plan for the entire scope of the work, including edge cases.        | Kain Peacock        |
 | Carry Out Test Plan        | Carry out all the tests detailed within the Test Plan, and document the results.        | Lewis Holmes        |
 
