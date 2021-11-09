@@ -78,7 +78,7 @@ public class BankingService implements IBankingService{
             return transaction;
         }
         catch(Exception ex){
-            TransactionLogger.info("Transaction Failed: " + fromCard.toString() + shopKeeperCard.toString() +", amount:" + amount.toString());
+            TransactionLogger.info("Transaction Failed: " + "From Card: " + fromCard.toString() + "To Card: " + shopKeeperCard.toString() +", amount:" + amount.toString());
             throw ex;
         }
 
