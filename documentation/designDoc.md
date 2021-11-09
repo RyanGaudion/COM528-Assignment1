@@ -77,10 +77,10 @@ The following requirements are written from the perspective of what different us
 | UC6			| User 		| The user confirms a purchase transaction. | The application transfers money from the users credit card equal to the total amount required by the order. If there is not enough money in the account, the transaction does not complete and the users is shown an error message.  |
 | UC7			| User 		| The user confirms a purchase transaction. | The application stores all transactions locally in a log file. The CVV number must not be stored by the application. |
 | UC8			| User 		| A user visits a page allowing them to reverse their previous transactions. | The application displays their previous transactions, and the gives them the option to reverse (refund) it. |
-| UC9			| Admin		| Admin tries to configure a device. | The application needs to verify the credentials of the admin, so that they can access and modify the configuration settings. |
-| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile, this logfile should be accessible for admins. |
-| UC11			| User		| User requests the app to perform any action. | The program must be able to complete user requests within 1 second. |
-| UC12			| Admin 	| Admin configures the device. | The identify credentials of the device need to be stored securely in a properties file. |
+| UC9			| Admin		| Admin tries to configure a device. | The admin enters the configuration settings URL, and can edit the properties file from there. |
+| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile; this logfile should be accessible for admins and stored locally. |
+| UC11			| User		| User requests the app to  perform any action. | The program must be able to complete user requests within 1 second. |
+| UC12			| Admin 	| Admin configures the device. | The identity credentials of the device need to be stored securely in a local properties file. |
 | UC13			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
 
 ## Project Diagrams
@@ -153,11 +153,11 @@ Each developer has responsibilities in each of these 3 areas which can be seen b
 | Banking Service | Create an abstraction upon the client as well as the Luhn Algorithm code in order to access all funcitonality through a single banking service class | Ryan Gaudion |
 | Build REST Client    | Code the REST Client and make it use our DTO models | Kain Peacock & Ryan Gaudion |
 | Properties File Reading | Setup the DAO (Data Access Object) to be able to read and write data from the Properties File| Lewis Holmes |
-| Transaction Logging | Develop code that allows all transactions to be logged to their own file | Lewis Holmes |
+| Transaction Logging | Develop code that allows all transactions to be logged to their own file | Ryan Gaudion |
 | Luhn Algorithm | Develop the Luhn Algorithm validation class in order to verify the legitimacy of Card | Steven Hawkins |
 | Pinpad UI | Develop a PinPad UI that displays the entered numbers on the screen | Richard Priest |
-| UI Menu | Develop a menu system to allow all required functionality to be able to be edited via the PinPad | Richard Priest |
-| UI to backend communication | Write code on the JSP frontend that allows each menu action to be processed via the Java JSP backend  | Richard Priest |
+| UI Menu | Develop a menu system to allow all required functionality to be able to be inputed via the PinPad | Richard Priest & Ryan Gaudion |
+| UI to backend communication | Write code on the JSP frontend that allows each menu action to be processed via the Java JSP backend  | Richard Priest & Ryan Gaudion |
 
 ### Testing
 Every developer is responsible for writing tests for the code they implement. For example, the developer who writes a Model class should write the unit tests required to test every Get and Set method inside of that class; as well as any business logic methods the class implements. By making sure that all classes have Unit tests we can ensure our code has a great code coverage. This is especially important and useful when implementing Continous Integration as it allows us to identify breaking changes before they are even pulled into our development branch.
@@ -165,8 +165,9 @@ Every developer is responsible for writing tests for the code they implement. Fo
 There are however additional testing Tasks that need to be complete outside of the inital Unit tests per class which you can see below:
 | Task        | Description | Assigned To |
 | ----------- | ----------- | ----------- |
-| ToDo        | ToDo        | ToDo        |
-
+| Standard Unit Tests       | All methods must have a corresponding unit test. Creators of the method are responsible for the creation of the unit tests for that method.        | Everyone       |
+| Develop Test Plan        | Develop a test plan for the entire scope of the work, including edge cases.        | Kain Peacock        |
+| Carry Out Test Plan        | Carry out all the tests detailed within the Test Plan, and document the results.        | Lewis Holmes        |
 
 ## Coding Standard
 Due to the fact there are 4 developers working on one project our code could look very different if we don't implement a standard for elements of the code such as class naming conventions and variable naming conventions.
