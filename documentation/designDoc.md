@@ -20,7 +20,6 @@
                 <li><a href="#menu-system-flow">Menu System Flow</a></li>
             </ul>
         </li>
-        <li><a href="#list-of-features">List of Features</a></li>
         <li>
             <a href="#task-assignment">Task Assignment</a>
             <ul>
@@ -128,9 +127,6 @@ Upon testing and developing the proposed pin pad design, we realised a few impro
 Menu system flow diagram:
 
 ![](/documentation/Images/MenuSystemFlow.png)
-
-## List of Features
-
 
 ## Task Assignment
 During this project we have split the Software Development Lifecycle (SDLC) into 3 main sections - Design/Documentation, Development/Unit Testing and Testing/Documentation.
