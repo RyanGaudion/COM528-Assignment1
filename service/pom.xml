@@ -24,7 +24,7 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>solent.ac.uk.ood.examples</groupId>
+            <groupId>solent.ac.uk.ood</groupId>
             <artifactId>bank-client</artifactId>
             <version>${project.version}</version>
         </dependency>

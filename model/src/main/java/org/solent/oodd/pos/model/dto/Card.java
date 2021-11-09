@@ -170,6 +170,6 @@ public class Card {
      */
     @Override
     public String toString() {
-        return "Card{" + "name=" + name + ", expiryDate=" + endDate + ", cardNumber=" + cardnumber + ", cvv=NOT PRINTED" + '}';
+        return "Card{" + ", expiryDate=" + endDate + ", issueNumber=" + issueNumber + ", cardNumber=" + cardnumber + ", cvv=NOT PRINTED" + '}';
     }
 }

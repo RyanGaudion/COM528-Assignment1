@@ -40,7 +40,9 @@ public class BankingService implements IBankingService{
 
     private final List<Transaction> transactions = new ArrayList();
     
-    final static Logger logger = LogManager.getLogger(BankingService.class);
+
+    final static Logger logger = LogManager.getLogger(BankingService.class);    
+    final static Logger TransactionLogger = LogManager.getLogger("Transaction_Logger");
     
     public BankingService(PropertiesDao properties){
         apiUsername = properties.getProperty("org.solent.oodd.pos.service.apiUsername");
@@ -64,8 +66,11 @@ public class BankingService implements IBankingService{
         
         TransactionResponse response = client.transferMoney(request, apiUsername, apiPassword);
         
-        logger.debug("Transaction Response Status: " + response.getStatus());
 
+        logger.debug("Transaction Response Status: " + response.getStatus());
+        
+        TransactionLogger.info("Sent Transaction: " + request.toString() + response.toString());
+        
         Transaction transaction = new Transaction(request, response);
         transactions.add(transaction);
         return transaction;
@@ -89,6 +94,9 @@ public class BankingService implements IBankingService{
         
         TransactionResponse response = client.transferMoney(request);
         logger.debug("Refund Response Status: " + response.getStatus());
+
+        TransactionLogger.info("Transaction To Refund: " + transaction.getTransactionRequest().toString() + transaction.getTransactionResponse().toString());        
+        TransactionLogger.info("Refund Transaction: " + request.toString() + response.toString());
 
         Transaction refundTransaction = new Transaction(request, response);
         refundTransaction.setIsRefund(true);
