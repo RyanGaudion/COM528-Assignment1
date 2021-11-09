@@ -58,22 +58,30 @@ public class BankingService implements IBankingService{
      */
     @Override
     public Transaction sendTransaction(Card fromCard, Double amount) {
-        logger.debug("Send Transaction from: " + fromCard.getCardnumber() + " to: " + shopKeeperCard.getCardnumber() + " for: " + amount);
+        try
+        {
+            logger.debug("Send Transaction from: " + fromCard.getCardnumber() + " to: " + shopKeeperCard.getCardnumber() + " for: " + amount);
        
-        IBankRestClient client = ClientObjectFactory.getBankClient();
-               
-        TransactionRequest request = new TransactionRequest(fromCard, shopKeeperCard, amount);
-        
-        TransactionResponse response = client.transferMoney(request, apiUsername, apiPassword);
-        
+            IBankRestClient client = ClientObjectFactory.getBankClient();
 
-        logger.debug("Transaction Response Status: " + response.getStatus());
-        
-        TransactionLogger.info("Sent Transaction: " + request.toString() + response.toString());
-        
-        Transaction transaction = new Transaction(request, response);
-        transactions.add(transaction);
-        return transaction;
+            TransactionRequest request = new TransactionRequest(fromCard, shopKeeperCard, amount);
+
+            TransactionResponse response = client.transferMoney(request, apiUsername, apiPassword);
+
+
+            logger.debug("Transaction Response Status: " + response.getStatus());
+
+            TransactionLogger.info("Sent Transaction: " + request.toString() + response.toString());
+
+            Transaction transaction = new Transaction(request, response);
+            transactions.add(transaction);
+            return transaction;
+        }
+        catch(Exception ex){
+            TransactionLogger.info("Transaction Failed: " + fromCard.toString() + amount.toString());
+            throw ex;
+        }
+
     }
 
     /**
@@ -82,28 +90,35 @@ public class BankingService implements IBankingService{
      */
     @Override
     public Transaction refundTransaction(Transaction transaction) {
-        logger.debug("Refund Transaction from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " to: " + transaction.getTransactionRequest().getToCard().getCardnumber() + " for: " + transaction.getTransactionRequest().getAmount());
+        try
+        {
+            logger.debug("Refund Transaction from: " + transaction.getTransactionRequest().getFromCard().getCardnumber() + " to: " + transaction.getTransactionRequest().getToCard().getCardnumber() + " for: " + transaction.getTransactionRequest().getAmount());
 
-        IBankRestClient client = ClientObjectFactory.getBankClient();
-        
-        Card fromCard = shopKeeperCard;       
-        Card toCard = transaction.getTransactionRequest().getFromCard();
-        Double amount = transaction.getTransactionRequest().getAmount();
-        
-        TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);
-        
-        TransactionResponse response = client.transferMoney(request);
-        logger.debug("Refund Response Status: " + response.getStatus());
+            IBankRestClient client = ClientObjectFactory.getBankClient();
 
-        TransactionLogger.info("Transaction To Refund: " + transaction.getTransactionRequest().toString() + transaction.getTransactionResponse().toString());        
-        TransactionLogger.info("Refund Transaction: " + request.toString() + response.toString());
+            Card fromCard = shopKeeperCard;       
+            Card toCard = transaction.getTransactionRequest().getFromCard();
+            Double amount = transaction.getTransactionRequest().getAmount();
 
-        Transaction refundTransaction = new Transaction(request, response);
-        refundTransaction.setIsRefund(true);
-        transaction.setIsRefund(true);
-        transactions.add(refundTransaction);
-        return refundTransaction;
-        
+            TransactionRequest request = new TransactionRequest(fromCard, toCard, amount);
+            
+            TransactionLogger.info("Transaction To Refund: " + transaction.getTransactionRequest().toString() + transaction.getTransactionResponse().toString());
+            
+            TransactionResponse response = client.transferMoney(request);
+            logger.debug("Refund Response Status: " + response.getStatus());
+
+            TransactionLogger.info("Refund Transaction: " + request.toString() + response.toString());
+
+            Transaction refundTransaction = new Transaction(request, response);
+            refundTransaction.setIsRefund(true);
+            transaction.setIsRefund(true);
+            transactions.add(refundTransaction);
+            return refundTransaction;
+        }
+        catch(Exception ex){
+            TransactionLogger.info("Refund Failed - : " + transaction.getTransactionRequest().toString() + transaction.getTransactionResponse().toString());
+            throw ex;
+        }        
     }
     
     /**

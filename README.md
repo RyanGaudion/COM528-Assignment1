@@ -43,7 +43,7 @@ Logging is handled by Log4j2 and the log config can be found at `web\src\main\re
 | Name      | Level | Location | Description |
 | ----------- | ----------- |----------- | ----------- |
 | POS-appLog      | `DEBUG` | ${sys:catalina.base}/logs/app/POS-appLog.log       | This contains all logs from level Debug and above from all namespaces of the application | 
-| POS-transactionLog   | `INFO` | ${sys:catalina.base}/logs/app/POS-transactionLog.log        | This contains only 3 types of logs. `Sent Transaction` - The transaction and it's response. `Transaction To Refund` the transaction that has been requested to be refunded. `Refund Transaction` the new transaction that refunds the previous transaction |
+| POS-transactionLog   | `INFO` | ${sys:catalina.base}/logs/app/POS-transactionLog.log        | This contains only 5 types of logs. `Sent Transaction` - The transaction and it's response. `Transaction To Refund` the transaction that has been requested to be refunded. `Refund Transaction` the new transaction that refunds the previous transaction. `Transaction Failed` transaction failed due to invalid details (card not found or username & password incorrect). `Refund Failed` refund failed due to invalid details (card not found or username & password incorrect). |
 
 ### System Requirements
 This system requirements for this program are:
