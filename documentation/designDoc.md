@@ -276,11 +276,11 @@ Each week during our planning meeting we will update the state of all tasks, add
 Due to the fact that we have a short timeline for this project our task board is really important in visualising how much work is left to complete as well as the progress of work during a week. It will allow us to see our "burndown rate" - how much work we are going through per week and will also allow us to speed up development if we are falling behind our deadline.
 
 
-[oracle-naming]: "https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html"
-[google-naming]: "https://google.github.io/styleguide/javaguide.html#s5-naming"
-[google-naming-github]: "https://github.com/google/styleguide"
-[successful-git]: "https://nvie.com/posts/a-successful-git-branching-model/"
-[github-flow]: "https://guides.github.com/introduction/flow/"
-[ci-usage]: "http://cope.eecs.oregonstate.edu/papers/OpenSourceCIUsage.pdf"
-[agile-advantages]: "https://cs.anu.edu.au/courses/comp3120/public_docs/WP_PM_AdvantagesofAgile.pdf"
-[agile-scrum]: "https://www.atlassian.com/agile/scrum"
+[oracle-naming]: https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html "Oracle Naming Conventions"
+[google-naming]: https://google.github.io/styleguide/javaguide.html#s5-naming "Google Naming Conventions"
+[google-naming-github]: https://github.com/google/styleguide "Google Styleguide Github"
+[successful-git]: https://nvie.com/posts/a-successful-git-branching-model/ "GitFlow"
+[github-flow]: https://guides.github.com/introduction/flow/ "GitHub Flow"
+[ci-usage]: http://cope.eecs.oregonstate.edu/papers/OpenSourceCIUsage.pdf "Open Source CI Usage"
+[agile-advantages]: https://cs.anu.edu.au/courses/comp3120/public_docs/WP_PM_AdvantagesofAgile.pdf "Advantages of Agile"
+[agile-scrum]: https://www.atlassian.com/agile/scrum "Scrum"
