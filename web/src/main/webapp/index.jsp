@@ -20,7 +20,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%
     
-    Logger LOG = LogManager.getLogger();    
+    Logger LOG = LogManager.getLogger("solent.ac.uk.ood.web");    
     LOG.debug("Index page");
     
     String userresponse = request.getParameter("userResponse");
@@ -181,7 +181,7 @@
                         //Transaction didn't return from API
                         catch(Exception ex){
                             LOG.error(ex);
-                            padText = "Transaction Failed: Please ensure you have the correct settings in the app proeprties file and then restart the app" + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+                            padText = "Transaction Failed: Please ensure this card number is setup in the banking API and your properties file settings are correct" + "\n \n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
                             actionHistory.clear();
                         }
 

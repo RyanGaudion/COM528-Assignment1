@@ -175,4 +175,13 @@ public class TransactionResponse {
         this.transactionDate = date;
         return true;
     } 
+    
+    
+    /**
+     * Returns a custom JSON representation of the TransactionResponse Object
+     */
+    @Override
+    public String toString() {
+        return "TransactionResponse{" + "transactionId="+ transactionId + ", transactionDate="+ transactionDate.toString() +", message=" + message + ", status=" + status + '}';
+    }
 }

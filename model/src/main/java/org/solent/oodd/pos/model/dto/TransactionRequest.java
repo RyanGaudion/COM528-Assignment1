@@ -15,6 +15,7 @@
  */
 package org.solent.oodd.pos.model.dto;
 
+import java.text.NumberFormat;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -108,6 +109,11 @@ public class TransactionRequest {
      */
     @Override
     public String toString() {
-        return "TransactionRequest{" + "fromCard=" + fromCard + ", toCard=" + toCard + ", amount=" + amount + '}';
+        NumberFormat fmt = NumberFormat.getInstance(); 
+        fmt.setGroupingUsed(false); 
+        fmt.setMaximumIntegerDigits(999); 
+        fmt.setMaximumFractionDigits(999); 
+        String total2 = fmt.format(amount);
+        return "TransactionRequest{" + "fromCard=" + fromCard + ", toCard=" + toCard + ", amount=" + total2 + '}';
     }
 }

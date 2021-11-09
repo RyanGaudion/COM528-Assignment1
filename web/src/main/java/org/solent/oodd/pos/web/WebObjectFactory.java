@@ -27,6 +27,12 @@ import org.solent.oodd.pos.service.ServiceObjectFactory;
  */
 public class WebObjectFactory {
 
+    // cannot instantiate
+    private WebObjectFactory() {
+
+    }
+
+    
     final static Logger logger = LogManager.getLogger(WebObjectFactory.class);
 
     private static PropertiesDao propertiesDao = null;
@@ -47,16 +53,8 @@ public class WebObjectFactory {
         return propertiesDao;
     }
 
-    //Device REST Service here
-    static IBankingService bannkingService = ServiceObjectFactory.getBankingService();
-
-    // cannot instantiate
-    private WebObjectFactory() {
-
-    }
-
     public static IBankingService getBankingService() {
-        return bannkingService;
+        return ServiceObjectFactory.getBankingService();
     }
 
 }
