@@ -92,6 +92,10 @@ A class diagram is used to describe classes and their relationships within the a
 
 ![](/documentation/Images/pos.model.service_classDiagram.PNG)
 
+The above class diagram was designed before development of the project. As you can see via the class diagram below - the models changed during the development of the project. This is okay due to the fact we are using an Agile methodology - our needs changed or we had unforseen issues that required the changes seen below.
+
+![](/documentation/Images/NewPOSClassDiagram.png)
+
 ### UML Robustness Diagram
 
 Robustness diagrams describe the system usage in the context of the object model. This allows for a clear and unambiguous explanation on how the model, its classes, and the operational processes work within the application. In order to create a robustness diagram, one must first identify the main classes, abstractions and objects, that will be used. Once identified and the use case is understood, the robustness diagram is created; Creating a technical overview and explanation on the use of the application. 
