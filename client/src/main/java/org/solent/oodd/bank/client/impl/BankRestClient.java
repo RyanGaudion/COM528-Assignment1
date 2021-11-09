@@ -41,7 +41,7 @@ import org.solent.oodd.pos.model.service.IBankRestClient;
  */
 public class BankRestClient implements IBankRestClient {
 
-    final static Logger LOG = LogManager.getLogger(BankRestClient.class);
+    final static Logger logger = LogManager.getLogger(BankRestClient.class);
 
     String urlStr;
 
@@ -59,7 +59,7 @@ public class BankRestClient implements IBankRestClient {
      */
     @Override
     public TransactionResponse transferMoney(TransactionRequest request) {
-        LOG.debug("transferMoney called: ");
+        logger.debug("transferMoney called: ");
 
         // sets up logging for the client       
         Client client = ClientBuilder.newClient(new ClientConfig().register(
@@ -77,7 +77,7 @@ public class BankRestClient implements IBankRestClient {
 
         TransactionResponse transactionReplyMessage = response.readEntity(TransactionResponse.class);
 
-        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
+        logger.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
 
         return transactionReplyMessage;
 
@@ -94,7 +94,7 @@ public class BankRestClient implements IBankRestClient {
      */
     @Override
     public TransactionResponse transferMoney(TransactionRequest request, String userName, String password) {
-        LOG.debug("transferMoney called: ");
+        logger.debug("transferMoney called: ");
 
         // sets up logging for the client       
         Client client = ClientBuilder.newClient(new ClientConfig().register(
@@ -116,7 +116,7 @@ public class BankRestClient implements IBankRestClient {
 
         TransactionResponse transactionReplyMessage = response.readEntity(TransactionResponse.class);
 
-        LOG.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
+        logger.debug("Response status=" + response.getStatus() + " ReplyMessage: " + transactionReplyMessage);
 
         return transactionReplyMessage;
 

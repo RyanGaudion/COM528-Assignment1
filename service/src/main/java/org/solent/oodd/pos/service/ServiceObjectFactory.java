@@ -29,7 +29,7 @@ public class ServiceObjectFactory {
     
     private static IBankingService bankingService;
     
-    final static Logger LOG = LogManager.getLogger(ServiceObjectFactory.class);
+    final static Logger logger = LogManager.getLogger(ServiceObjectFactory.class);
 
     private ServiceObjectFactory(){
         
@@ -42,16 +42,16 @@ public class ServiceObjectFactory {
      * @return the singleton banking service
      */
     public static IBankingService getBankingService(){
-        LOG.debug("getBankingService Called");
+        logger.debug("getBankingService Called");
         if(bankingService == null){
             synchronized (ServiceObjectFactory.class) {
                 if(bankingService == null){
-                    LOG.debug("ServiceObjectFactory created new banking service");
+                    logger.debug("ServiceObjectFactory created new banking service");
                     bankingService = new BankingService(DaoObjectFactory.getPropertiesDao());
                 }
             }
         }
-        LOG.debug("ServiceObjectFactory returned banking service");
+        logger.debug("ServiceObjectFactory returned banking service");
         return bankingService;
     }        
 }

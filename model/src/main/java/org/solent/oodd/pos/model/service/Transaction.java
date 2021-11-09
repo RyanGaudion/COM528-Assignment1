@@ -15,6 +15,8 @@
  */
 package org.solent.oodd.pos.model.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solent.oodd.pos.model.dto.TransactionRequest;
 import org.solent.oodd.pos.model.dto.TransactionResponse;
 
@@ -26,7 +28,7 @@ public class Transaction {
     private TransactionRequest transactionRequest;
     private TransactionResponse transactionResponse;
     private Boolean isRefund = false;
-    
+    final static Logger logger = LogManager.getLogger(Transaction.class);
     
     public Transaction(){
         
@@ -71,6 +73,7 @@ public class Transaction {
      * @return true if the request was not null
      */
     public boolean setTransactionRequest(TransactionRequest request){
+        logger.info(Transaction.class + "Set transaction request");
         if(request != null){
             transactionRequest = request;
             return true;
@@ -83,6 +86,7 @@ public class Transaction {
      * @return true if the response was not null
      */
     public boolean setTransactionResponse(TransactionResponse response){
+        logger.info(Transaction.class + "Set transaction response");
         if(response != null){
             transactionResponse = response;
             return true;

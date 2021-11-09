@@ -34,7 +34,7 @@ public class Card {
     private String name = "";
     private String issueNumber = "";
     
-    final static Logger LOG = LogManager.getLogger(Card.class);
+    final static Logger logger = LogManager.getLogger(Card.class);
 
     
     //Get Methods
@@ -83,10 +83,10 @@ public class Card {
         //Valdiates for a 16 digit card number
         if(CardNumber.length() == 16){
             this.cardnumber = CardNumber;
-            LOG.info("Set Card Number Validation - Success: " + CardNumber);
+            logger.debug("Set Card Number Validation - Success: " + CardNumber);
             return true;
         }
-        LOG.info("Set Card Number Validation - Failed: " + CardNumber);
+        logger.debug("Set Card Number Validation - Failed: " + CardNumber);
         return false;
     }
     
@@ -109,10 +109,10 @@ public class Card {
         //Vallidates for a 3 or 4 digit CVV number
         if(Cvv.length() == 3 || Cvv.length() == 4){
             this.cvv = Cvv;
-            LOG.info("Set CVV Validation - Success: ");
+            logger.debug("Set CVV Validation - Success: ");
             return true;
         }
-        LOG.info("Set CVV Validation - Failed: " + Cvv);
+        logger.debug("Set CVV Validation - Failed: " + Cvv);
         return false;
     }
     
@@ -132,23 +132,23 @@ public class Card {
                 throw new ParseException("invalid date string", 0);
             }
             //If Parse was successful
-            LOG.info("Set Expiry Date Validation - Success: " + endDate);
+            logger.info("Set Expiry Date Validation - Success: " + endDate);
             this.endDate = endDate;
             return true;
             
         }
         catch(ParseException ex){
-            LOG.info("Set Expiry Date Validation - Failed (Parse): " + endDate);
+            logger.info("Set Expiry Date Validation - Failed (Parse): " + endDate);
             return false;
         }
         catch(DateTimeException ex){
-            LOG.info("Set Expiry Date Validation - Failed (DateTime): " + endDate);
+            logger.info("Set Expiry Date Validation - Failed (DateTime): " + endDate);
             return false;
         }
     }
     
     /**
-     * Get's the Card's Issue Number
+     * Gets the Card's Issue Number
      * @return Issue Number of the Card
      */
     public String getIssueNumber() {

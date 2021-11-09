@@ -27,7 +27,7 @@ import org.solent.oodd.pos.model.service.IBankRestClient;
  * The Client Object Factory is responsible for creating the BankClient as a Singleton
  */
 public class ClientObjectFactory {
-    final static Logger LOG = LogManager.getLogger(ClientObjectFactory.class);
+    final static Logger logger = LogManager.getLogger(ClientObjectFactory.class);
 
     private static IBankRestClient bankClient;
         
@@ -41,17 +41,17 @@ public class ClientObjectFactory {
      * or returns the current one if one exits
      */
     public static IBankRestClient getBankClient(){
-        LOG.debug("getBankClient Called");
+        logger.debug("getBankClient Called");
         if (bankClient == null) {
             synchronized (ClientObjectFactory.class) {
                 if (bankClient == null) {
                     // TODO - creates a single instance of the dao
-                    LOG.debug("ClientObjectFactory created new client");
+                    logger.debug("ClientObjectFactory created new client");
                     bankClient = new BankRestClient(DaoObjectFactory.getPropertiesDao().getProperty("org.solent.oodd.pos.service.apiUrl"));
                 }
             }
         }
-        LOG.debug("ClientObjectFactory returned client");
+        logger.debug("ClientObjectFactory returned client");
         return bankClient;
     }
 }
