@@ -64,5 +64,7 @@ To view JavaDocs, navigate to the project folder within a command prompt and run
 
 Visit https://maven.apache.org/plugins/maven-javadoc-plugin/index.html for more information.
 
+### Error Note
 
+If you recieve errors for unknown reasons please clear your `tomcat\temp` and your `tomcat\logs` directly and try running the application again.
 
