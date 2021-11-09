@@ -181,7 +181,7 @@
                         //Transaction didn't return from API
                         catch(Exception ex){
                             LOG.error(ex);
-                            padText = "Transaction Failed: Please ensure this card number is setup in the banking API and your properties file settings are correct" + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+                            padText = "Transaction Failed: Please ensure this card number is setup in the banking API and your properties file settings are correct" + "\n \n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
                             actionHistory.clear();
                         }
 
