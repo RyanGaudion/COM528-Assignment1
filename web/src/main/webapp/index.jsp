@@ -4,7 +4,6 @@
     Updated on : 02 Nov 2021, 12:40:00
     Authors     : rgaudion, rpriest
 --%>
-<%@page import="jdk.internal.jline.internal.Log"%>
 <%@page import="org.solent.oodd.cardchecker.CardValidationResult"%>
 <%@page import="org.solent.oodd.cardchecker.CardChecker"%>
 <%@page import="com.fasterxml.jackson.databind.exc.InvalidFormatException"%>
