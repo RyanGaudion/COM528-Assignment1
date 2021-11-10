@@ -4,6 +4,7 @@
     Updated on : 02 Nov 2021, 12:40:00
     Authors     : rgaudion, rpriest
 --%>
+<%@page import="jdk.internal.jline.internal.Log"%>
 <%@page import="org.solent.oodd.cardchecker.CardValidationResult"%>
 <%@page import="org.solent.oodd.cardchecker.CardChecker"%>
 <%@page import="com.fasterxml.jackson.databind.exc.InvalidFormatException"%>
@@ -27,21 +28,7 @@
     PropertiesDao propertiesDao = DaoObjectFactory.getPropertiesDao();
     Logger LOG = LogManager.getLogger();    
     LOG.debug("Index page");
-    
-    String url = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUrl");
-    String username = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUsername");
-    String password = propertiesDao.getProperty("org.solent.oodd.pos.service.apiPassword");
-    String shopKeeperCard = propertiesDao.getProperty("org.solent.oodd.pos.service.shopKeeperCard");
-    
-    String[] strArray = {url, username, password, shopKeeperCard};
-    List<String> propList = Arrays.asList(strArray);
-    
-    for(String val : propList){
-        if(val == "" || val.isEmpty()){
-            LOG.debug("One or more value in the properties file is blank");
-        }
-    }
-    
+        
     String userresponse = request.getParameter("userResponse");
     ArrayList<String> actionHistory = (ArrayList<String>)session.getAttribute("actionHistory");
     //actionHistory.clear();
@@ -60,6 +47,26 @@
     
     String padText = "Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
     session.setAttribute("actionHistory", actionHistory);
+    
+    //Check Properties File
+    String url = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUrl");
+    String username = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUsername");
+    String password = propertiesDao.getProperty("org.solent.oodd.pos.service.apiPassword");
+    String shopKeeperCard = propertiesDao.getProperty("org.solent.oodd.pos.service.shopKeeperCard");    
+
+
+    String[] strArray = {url, username, password, shopKeeperCard};
+    List<String> propList = Arrays.asList(strArray);
+
+    for(String val : propList){
+        if(val == null || val == "" || val.isEmpty()){
+            LOG.debug("One or more value in the properties file is blank");
+            padText = "1 or more of your properties is not setup correctly - please delete your properties file or head to the properties page to fix. \n \n" + padText;
+        }
+        else{
+            LOG.debug(val);
+        }
+    }
     
     
     try{
