@@ -25,11 +25,11 @@ The PinPad uses the number buttons to navigate through the menu to either make a
 `Undo` - Removes the last digit inputted  
 `Confirm` - Submits the inputed data to either move menu or submit/refund a transaction  
 
-> Please not this application is built and tested for 1 browser instance per device. Use cases for multiple browser instances open on the same machine have not been tested and may cause error
+> Please note this application is built and tested for 1 browser instance per device. Use cases for multiple browser instances open on the same machine have not been tested and may cause error
 
 ## How to setup
 
-Configure Properties from Web & Location of Properties File & Explanation of Default and non-default proeperties 
+Configure Properties from Web & Location of Properties File & Explanation of Default and non-default properties 
 
 ## Configure Properties
 
@@ -38,11 +38,14 @@ The default properties file can be located at [pointOfSalesDevice-DAO/src/main/r
 From here, the user is able to edit the default properties, upon running the application these will then be used with priority. These properties include the following:
 
 `Username` - Username for logging into the application
+
 `Password` - Users password
+
 `API URL` - Rest endpoint for data to be sent to / received from
+
 `Shopkeepercard` - Card number for transactions
 
-Note - None of these properties are allowed to be blank.
+> Note - None of these properties are allowed to be blank.
 
 The user is able to create a temporary properties file from within the application. To do this, proceed to [http://localhost:8080/pointOfSalesDevice/properties.jsp](http://localhost:8080/pointOfSalesDevice/properties.jsp). 
 
@@ -50,9 +53,6 @@ This page displays a form from which the user is able to change properties. No f
 
 The temporary properties file can be located at [tomcat\apache-tomcat-9.0.53\temp](tomcat\apache-tomcat-9.0.53\temp)
 
-
-
---ToDo---
 
 ## Logging
 Location of normal Logs & Transaction Logs
