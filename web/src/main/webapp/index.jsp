@@ -11,17 +11,36 @@
 <%@page import="org.solent.oodd.pos.model.service.IBankingService"%>
 <%@page import="org.solent.oodd.pos.web.WebObjectFactory"%>
 <%@page import="java.util.Date"%>
+<%@page import="java.util.*"%>;
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.solent.oodd.pos.model.dto.Card"%>
 <%@page import="org.apache.logging.log4j.Logger"%>
 <%@page import="org.apache.logging.log4j.LogManager"%>
+<%@page import="org.solent.oodd.pos.dao.DaoObjectFactory"%>
+<%@page import="org.solent.oodd.pos.dao.PropertiesDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+
+
 <%
-    
+    PropertiesDao propertiesDao = DaoObjectFactory.getPropertiesDao();
     Logger LOG = LogManager.getLogger();    
     LOG.debug("Index page");
+    
+    String url = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUrl");
+    String username = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUsername");
+    String password = propertiesDao.getProperty("org.solent.oodd.pos.service.apiPassword");
+    String shopKeeperCard = propertiesDao.getProperty("org.solent.oodd.pos.service.shopKeeperCard");
+    
+    String[] strArray = {url, username, password, shopKeeperCard};
+    List<String> propList = Arrays.asList(strArray);
+    
+    for(String val : propList){
+        if(val == "" || val.isEmpty()){
+            LOG.debug("One or more value in the properties file is blank");
+        }
+    }
     
     String userresponse = request.getParameter("userResponse");
     ArrayList<String> actionHistory = (ArrayList<String>)session.getAttribute("actionHistory");
