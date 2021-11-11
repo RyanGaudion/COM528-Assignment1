@@ -46,7 +46,7 @@ From here, the user is able to edit the default properties, upon running the app
 
 > Note - None of these properties are allowed to be blank.
 
-The user is able to create a temporary properties file from within the application. To do this, proceed to [http://localhost:8080/pointOfSalesDevice/properties.jsp](http://localhost:8080/pointOfSalesDevice/properties.jsp). 
+The user is able to suggested however to create a temporary properties file from within the application. To do this, proceed to [http://localhost:8080/pointOfSalesDevice/properties.jsp](http://localhost:8080/pointOfSalesDevice/properties.jsp). 
 
 This page displays a form from which the user is able to change properties. No field can be blank. Upon clicking `update properties`, a temporary properties file with be created, or overwritten if one already exists with this new data. 
 
