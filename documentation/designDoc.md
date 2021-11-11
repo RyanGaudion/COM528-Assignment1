@@ -8,7 +8,7 @@
             <a href="#requirements">Requirements</a>
             <ul>
                 <li><a href="#software-design">Software Design</a></li>
-                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#use-cases-and-features">Use Cases</a></li>
             </ul>
         </li>
         <li>
