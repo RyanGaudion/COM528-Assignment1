@@ -199,7 +199,14 @@
                             //Transaction Fail
                             else{
                                 LOG.debug("6th Menu - Transaction Failed: " + transaction.getTransactionResponse().getMessage());
-                                padText = "Transaction Failed: "  + transaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+                                if(transaction.getTransactionResponse().getMessage() == null){
+                                    padText = "Transaction Failed: "  + "Please ensure both the shopkeeper's and the customer's Card are correct" + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+
+                                }
+                                else{
+                                    padText = "Transaction Failed: "  + transaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+
+                                }
                                 actionHistory.clear();
                             }
                         }
