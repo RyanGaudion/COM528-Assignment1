@@ -29,7 +29,6 @@ The PinPad uses the number buttons to navigate through the menu to either make a
 
 ## How to setup
 
-Configure Properties from Web & Location of Properties File & Explanation of Default and non-default properties 
 
 ## Configure Properties
 
