@@ -69,7 +69,7 @@ The following requirements are written from the perspective of what different us
 
 | Use case ID  	| Actor 	| Action | Software Reaction |
 | ----------- 	| ----------| ----------- | ----------- |
-| UC1			| User 		| User enters in the [insert web address](url) for the banking application. | A web page opens, providing a numpad interface that allows the user to navigate the application. |
+| UC1			| User 		| User enters in the [URL](http://localhost:8080/pointOfSalesDevice/) for the banking application. | A web page opens, providing a numpad interface that allows the user to navigate the application. |
 | UC2			| User 		| User selects the option allowing them to pay for their purchase.	|  The application requests the user's card number, name, expiry date, cvv code. <br /> Fields are to only allow input of the correct format, and should use input methods that enforce this. |
 | UC3			| User 		| User fails to enter data. | The app displays a helpful error message informing the user of what went wrong, and allows the user to try again. |
 | UC4			| User 		| User enters incorrect card data. | The web page must tell the user that their input was invalid, and allows them to try again. |
@@ -84,6 +84,12 @@ The following requirements are written from the perspective of what different us
 | UC13			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
 
 ## Project Diagrams
+
+### Use Case Diagrams
+
+A use case diagram provides a high level summary of the program which highlights the scope of application and what systems it interacts with. From the diagram, use cases which go into more detail can be created.
+
+![](/documentation/Images/Use_Case_Diagram.drawio.png)
 
 ### UML Class Diagrams
 
