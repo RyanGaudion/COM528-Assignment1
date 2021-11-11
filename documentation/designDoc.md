@@ -85,6 +85,12 @@ The following requirements are written from the perspective of what different us
 
 ## Project Diagrams
 
+### Use Case Diagrams
+
+A use case diagram provides a high level summary of the program which highlights the scope of application and what systems it interacts with. From the diagram, use cases which go into more detail can be created.
+
+![](/documentation/Images/Use_Case_Diagram.drawio.png)
+
 ### UML Class Diagrams
 
 A class diagram is used to describe classes and their relationships within the application. They corresspond with the classes in the source code. This allows for users and developers to quickly glance at a class, and it's relationships with other classes without having to look into the source code, which is often separated into many locations throughout the application.
