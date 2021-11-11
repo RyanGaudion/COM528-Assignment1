@@ -93,6 +93,7 @@ A class diagram is used to describe classes and their relationships within the a
 
 The above class diagram was designed before development of the project. As you can see via the class diagram below - the models changed during the development of the project. This is okay due to the fact we are using an Agile methodology - our needs changed or we had unforseen issues that required the changes seen below.
 
+![](/documentation/Images/NewPOSClassDiagram.png)
 ![](/documentation/Images/NewSimplePOSClassDiagram.png)
 
 ### UML Robustness Diagram
