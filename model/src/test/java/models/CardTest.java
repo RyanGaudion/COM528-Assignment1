@@ -15,6 +15,9 @@
  */
 package models;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.solent.oodd.pos.model.dto.Card;
@@ -23,7 +26,7 @@ import org.solent.oodd.pos.model.dto.Card;
  * Test Methods for the card class
  * @author rgaud
  */
-public class CardTest {
+public class CardTest {   
     /**
      * Tests the setting and getting of a card number
      */
@@ -108,8 +111,14 @@ public class CardTest {
     public void setExpiryDateTest()
     {
         Card card = new Card();
-        assertEquals(true, card.setEndDate("05/21"));
-        assertEquals("05/21", card.getEndDate());
+        String currentDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MM/yy"));              
+        assertEquals(true, card.setEndDate(currentDate));
+        assertEquals(currentDate, card.getEndDate());
+        
+        String futureDate = "05/60";
+        assertEquals(true, card.setEndDate(futureDate));
+        assertEquals(futureDate, card.getEndDate());
+        
     }
     
     /**
@@ -121,6 +130,7 @@ public class CardTest {
         assertEquals(false, card.setEndDate("abcde123"));        
         assertEquals(false, card.setEndDate("14/-0"));        
         assertEquals(false, card.setEndDate("14/24"));        
+        assertEquals(false, card.setEndDate("04/12")); // Expired Card  
         assertEquals(true, card.setEndDate("11/24"));
     }
     

@@ -87,7 +87,7 @@ The following requirements are written from the perspective of what different us
 
 ### Use Case Diagrams
 
-A use case diagram provides a high level summary of the program which highlights the scope of application and what systems it interacts with. From the diagram, use cases which go into more detail can be created.
+A use case diagram provides a high level summary of the program and highlights the scope of the application and what systems it interacts with. From the diagram, use cases which go into more detail can be created.
 
 ![](/documentation/Images/Use_Case_Diagram.drawio.png)
 

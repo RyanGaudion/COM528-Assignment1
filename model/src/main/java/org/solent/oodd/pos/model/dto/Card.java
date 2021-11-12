@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.time.YearMonth;  
 import java.time.format.DateTimeFormatter;  
 import java.time.DateTimeException;
+import java.time.LocalDate;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -127,6 +128,10 @@ public class Card {
         try{
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/yy");
             YearMonth date = YearMonth.parse(endDate, formatter);
+            YearMonth currentDate = YearMonth.from(LocalDate.now());
+            if (date.isBefore(currentDate)) {
+                throw new DateTimeException("Card already expired");
+            }
             
             if(date.getYear() < 1000){
                 throw new ParseException("invalid date string", 0);
