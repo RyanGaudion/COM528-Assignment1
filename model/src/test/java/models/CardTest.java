@@ -130,7 +130,7 @@ public class CardTest {
         assertEquals(false, card.setEndDate("abcde123"));        
         assertEquals(false, card.setEndDate("14/-0"));        
         assertEquals(false, card.setEndDate("14/24"));        
-        assertEquals(false, card.setEndDate("04/12")); // Expired Card  
+        assertEquals(false, card.setEndDate("01/01")); // Expired Card  
         assertEquals(true, card.setEndDate("11/24"));
     }
     
