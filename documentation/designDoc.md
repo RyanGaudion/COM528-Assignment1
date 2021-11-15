@@ -109,7 +109,7 @@ Robustness diagrams describe the system usage within the context of the object m
 
 As development progressed and our codebase evolved, we realised our original robustness diagram was no longer fit for purpose. As such, a new one was created, ensuring it accurately portrays how the system will be utlised by clients within the context of the overarching object model.
 
-![](/documentation/Images/BankAccountRobustnessMk2.PNG)
+![](/documentation/Images/BankAccountRobustnessMk2.png)
 
 ### UI Wireframes
 
