@@ -15,10 +15,8 @@
  */
 package org.solent.oodd.pos.dao;
 
-import org.solent.oodd.pos.dao.DaoObjectFactory;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,11 +25,10 @@ import java.util.Properties;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-
 public class PropertiesDao {
 
     final static Logger LOG = LogManager.getLogger(PropertiesDao.class);
-    
+
     private File propertiesFile;
 
     private Properties properties = new Properties();
@@ -40,14 +37,14 @@ public class PropertiesDao {
         try {
             propertiesFile = new File(propertiesFileLocation);
             if (!propertiesFile.exists()) {
-                LOG.info("properties file does not exist: loading default ");                
-                //LOG.info("properties file does not exist: creating new file: " + propertiesFile.getAbsolutePath());
-                //propertiesFile.getParentFile().mkdirs();
-                //propertiesFile.createNewFile();
-                //saveProperties();
+                LOG.debug("properties file does not exist: loading default ");
+                LOG.debug(propertiesFileLocation);
                 loadDefaultProperties();
+            } else {
+                LOG.debug("Temp properties file found. Loading...");
+                loadProperties();
             }
-            loadProperties();
+            LOG.debug(propertiesFileLocation);
         } catch (Exception ex) {
             LOG.error("cannot load properties", ex);
         }
@@ -85,6 +82,7 @@ public class PropertiesDao {
     }
 
     private void loadProperties() {
+        
         InputStream input = null;
         try {
             LOG.debug("loading properties from: " + propertiesFile.getAbsolutePath());
@@ -100,22 +98,35 @@ public class PropertiesDao {
             } catch (IOException ex) {
             }
         }
+        
+//        Properties prop = new Properties();
+//        String fileName = System.getProperty("java.io.tmpdir");
+//        
+//        // InputStream input = null;
+//        try {
+//            FileInputStream fis = new FileInputStream(fileName + "/application.properties");
+//            LOG.debug("loading properties from: temp");
+//            // input = new FileInputStream(propertiesFile);
+//            prop.load(fis);
+//        } catch (IOException ex) {
+//            LOG.error("cannot load properties", ex);
+//        }
     }
-    
-    private void loadDefaultProperties(){
+
+    private void loadDefaultProperties() {
         InputStream input = null;
-        try{
-            LOG.debug("loading properties from: default");
+        try {
+            LOG.debug("loading properties from: " + propertiesFile.getAbsolutePath());
             input = PropertiesDao.class.getClassLoader().getResourceAsStream("application.default.properties");
             properties.load(input);
-        } catch(IOException ex){
+        } catch (IOException ex) {
             LOG.error("cannot load properties", ex);
         } finally {
-            try{
-                if(input != null){
+            try {
+                if (input != null) {
                     input.close();
                 }
-            } catch (IOException ex){
+            } catch (IOException ex) {
             }
         }
     }
