@@ -8,7 +8,7 @@ Our Testing Documentation for the app can be found [here](https://github.com/Rya
 
 This project is licensed under the Apache License Version 2.0, which can be found [here](https://github.com/RyanGaudion/COM528-Assignment1/blob/dev/LICENSE).
 
-The developers involved in this project where:
+The developers involved in this project were:
 - [Kain Peacock](https://github.com/kvpeacock)
 - [Lewis Holmes](https://github.com/lewis-holmes-98)
 - [Richard Priest](https://github.com/RPriestUK)
