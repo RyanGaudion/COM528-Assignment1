@@ -27,7 +27,6 @@ The PinPad uses the number buttons to navigate through the menu to either make a
 
 > Please note this application is built and tested for 1 browser instance per device. Use cases for multiple browser instances open on the same machine have not been tested and may cause error
 
-## How to setup
 
 
 ## Configure Properties
