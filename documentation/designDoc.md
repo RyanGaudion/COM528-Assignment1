@@ -65,6 +65,15 @@ This application must be created using the following technologies:
 * Error handling that provides meaningful messages for the user.
 
 ### Use Cases and Features
+The basic features required for this application are:
+* A single Pinpad UI page allowing the user to do the following and provide meaningful responses back to the user:
+    * Enter a new transaction including card number, amount, expiry date and card CVV
+    * Reverse a transaction
+    * Check a credit card Lunn Code
+* A single properties page which allows the configuration of the device (loading details from application properties file)
+* The ability to log all transactions to a single transactions log file
+
+
 The following requirements are written from the perspective of what different users need from the application:
 
 | Use case ID 	| Actor 	| Action | Software Reaction |
