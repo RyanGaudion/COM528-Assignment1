@@ -103,9 +103,13 @@ The above class diagram was designed before development of the project. As you c
 
 ### UML Robustness Diagram
 
-Robustness diagrams describe the system usage in the context of the object model. This allows for a clear and unambiguous explanation on how the model, its classes, and the operational processes work within the application. In order to create a robustness diagram, one must first identify the main classes, abstractions and objects, that will be used. Once identified and the use case is understood, the robustness diagram is created; Creating a technical overview and explanation on the use of the application. 
+Robustness diagrams describe the system usage within the context of the object model. This allows for a clear and unambiguous explanation on how the model, its classes, and the operational processes work within the application. To create a robustness diagram, one must first identify the main classes, abstractions and objects, that will be used. Once identified and the use cases are understood, the robustness diagram can be created; demonstrating a technical overview and explanation on the uses of the application. 
 
 ![](/documentation/Images/BankAccountRobustness.PNG)
+
+As development progressed and our codebaed evolved, we realised our original robustness diagram was no longer fit for purpose. As such, a new one was created, ensuring it accurately portrays how the system will be utlised by clients within the context of the overarching object model.
+
+![](/documentation/Images/BankAccountRobustnessMk2.PNG)
 
 ### UI Wireframes
 
