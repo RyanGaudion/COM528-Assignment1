@@ -47,7 +47,7 @@ public class PropertiesDao {
                 //saveProperties();
                 loadDefaultProperties();
             }
-            loadDefaultProperties();
+            loadProperties();
         } catch (Exception ex) {
             LOG.error("cannot load properties", ex);
         }
