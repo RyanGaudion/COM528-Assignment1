@@ -70,7 +70,7 @@ The following requirements are written from the perspective of what different us
 | Use case ID 	| Actor 	| Action | Software Reaction |
 | ----------- 	| ----------| ----------- | ----------- |
 | UC1			| User 		| User enters in the [URL](http://localhost:8080/pointOfSalesDevice/) for the banking application. | A web page opens, providing a numpad interface that allows the user to navigate the application. |
-| UC2			| User 		| User selects the option allowing them to pay for their purchase.	| The application requests the user's card number, name, expiry date, CCC code. <br /> Fields are to only allow input of the correct format and should use input methods that enforce this. |
+| UC2			| User 		| User selects the option allowing them to pay for their purchase.	| The application requests the user's card number, name, expiry date, CVV code. <br /> Fields are to only allow input of the correct format and should use input methods that enforce this. |
 | UC3			| User 		| User fails to enter data. | The app displays a helpful error message informing the user of what went wrong and allows the user to try again. |
 | UC4			| User 		| User enters incorrect card data. | The web page must tell the user that their input was invalid and allows them to try again. |
 | UC5			| User 		| User enters in all of the credit card data. | The application verifies the validity of the credit card data by using the [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm). <br /> If the data is valid, the system proceeds with the transaction. |
