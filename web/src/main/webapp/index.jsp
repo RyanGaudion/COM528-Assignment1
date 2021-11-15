@@ -27,21 +27,7 @@
     PropertiesDao propertiesDao = DaoObjectFactory.getPropertiesDao();
     Logger LOG = LogManager.getLogger();    
     LOG.debug("Index page");
-    
-    String url = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUrl");
-    String username = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUsername");
-    String password = propertiesDao.getProperty("org.solent.oodd.pos.service.apiPassword");
-    String shopKeeperCard = propertiesDao.getProperty("org.solent.oodd.pos.service.shopKeeperCard");
-    
-    String[] strArray = {url, username, password, shopKeeperCard};
-    List<String> propList = Arrays.asList(strArray);
-    
-    for(String val : propList){
-        if(val == "" || val.isEmpty()){
-            LOG.debug("One or more value in the properties file is blank");
-        }
-    }
-    
+        
     String userresponse = request.getParameter("userResponse");
     ArrayList<String> actionHistory = (ArrayList<String>)session.getAttribute("actionHistory");
     //actionHistory.clear();
@@ -60,6 +46,26 @@
     
     String padText = "Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
     session.setAttribute("actionHistory", actionHistory);
+    
+    //Check Properties File
+    String url = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUrl");
+    String username = propertiesDao.getProperty("org.solent.oodd.pos.service.apiUsername");
+    String password = propertiesDao.getProperty("org.solent.oodd.pos.service.apiPassword");
+    String shopKeeperCard = propertiesDao.getProperty("org.solent.oodd.pos.service.shopKeeperCard");    
+
+
+    String[] strArray = {url, username, password, shopKeeperCard};
+    List<String> propList = Arrays.asList(strArray);
+
+    for(String val : propList){
+        if(val == null || val == "" || val.isEmpty()){
+            LOG.debug("One or more value in the properties file is blank");
+            padText = "1 or more of your properties is not setup correctly - please delete your properties file or head to the properties page to fix. \n \n" + padText;
+        }
+        else{
+            LOG.debug(val);
+        }
+    }
     
     
     try{
@@ -193,7 +199,14 @@
                             //Transaction Fail
                             else{
                                 LOG.debug("6th Menu - Transaction Failed: " + transaction.getTransactionResponse().getMessage());
-                                padText = "Transaction Failed: "  + transaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+                                if(transaction.getTransactionResponse().getMessage() == null){
+                                    padText = "Transaction Failed: "  + "Please ensure both the shopkeeper's and the customer's Card are correct" + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+
+                                }
+                                else{
+                                    padText = "Transaction Failed: "  + transaction.getTransactionResponse().getMessage() + "\n Press 1 for a new Transaction, 2 to refund a transaction or 3 to validate a card";
+
+                                }
                                 actionHistory.clear();
                             }
                         }
