@@ -36,6 +36,7 @@ import org.solent.oodd.pos.model.service.IBankRestClient;
 /**
  *
  * @author rgaudion 
+ * @author kpeacock
  * @author cgallen
  * The Bank REST Client is responsible for all REST calls to the Bank API and for deserialising these responses to Java Objects
  */
