@@ -110,9 +110,11 @@ public class BankingService implements IBankingService{
             TransactionLogger.info("Refund Transaction: " + request.toString() + response.toString());
 
             Transaction refundTransaction = new Transaction(request, response);
-            refundTransaction.setIsRefund(true);
-            transaction.setIsRefund(true);
-            transactions.add(refundTransaction);
+            if(refundTransaction.getTransactionResponse().getStatus().equals("SUCCESS")){
+                refundTransaction.setIsRefund(true);
+                transaction.setIsRefund(true);
+                transactions.add(refundTransaction);
+            }
             return refundTransaction;
         }
         catch(Exception ex){

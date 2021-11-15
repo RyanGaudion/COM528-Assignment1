@@ -23,6 +23,7 @@ import org.solent.oodd.pos.model.dto.TransactionResponse;
 /**
  * A combination of a transaction Request as well as a transaction response
  * @author rgaud
+ * @author kpeacock - suggested 'isRefunded' solution
  */
 public class Transaction {
     private TransactionRequest transactionRequest;
