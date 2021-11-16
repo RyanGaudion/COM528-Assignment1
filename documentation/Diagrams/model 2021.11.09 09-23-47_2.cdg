@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="model">
+  <ClassDiagramComponents>
+    <Class name="Card" package="org.solent.oodd.pos.model.dto" visibility="public" xPosition="376.0" yPosition="723.0">
+      <Fields>
+        <Field name="cardnumber" type="String" visibility="private"/>
+        <Field name="cvv" type="String" visibility="private"/>
+        <Field name="endDate" type="String" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="issueNumber" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getCardnumber" returnType="String" visibility="public"/>
+        <Method name="getCVV" returnType="String" visibility="public"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getEndDate" returnType="String" visibility="public"/>
+        <Method name="setCardnumber" returnType="Boolean" visibility="public">
+          <Argument type="String" name="CardNumber"/>
+        </Method>
+        <Method name="setName" returnType="Boolean" visibility="public">
+          <Argument type="String" name="Name"/>
+        </Method>
+        <Method name="setCVV" returnType="Boolean" visibility="public">
+          <Argument type="String" name="Cvv"/>
+        </Method>
+        <Method name="setEndDate" returnType="Boolean" visibility="public">
+          <Argument type="String" name="endDate"/>
+        </Method>
+        <Method name="getIssueNumber" returnType="String" visibility="public"/>
+        <Method name="setIssueNumber" returnType="boolean" visibility="public">
+          <Argument type="String" name="issueNumber"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TransactionRequest" package="org.solent.oodd.pos.model.dto" visibility="public" xPosition="835.0" yPosition="761.0">
+      <Fields>
+        <Field name="fromCard" type="Card" visibility="private"/>
+        <Field name="toCard" type="Card" visibility="private"/>
+        <Field name="amount" type="Double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Card" name="from"/>
+          <Argument type="Card" name="to"/>
+          <Argument type="Double" name="amount"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="setFromCard" returnType="boolean" visibility="public">
+          <Argument type="Card" name="card"/>
+        </Method>
+        <Method name="setToCard" returnType="boolean" visibility="public">
+          <Argument type="Card" name="card"/>
+        </Method>
+        <Method name="setAmount" returnType="boolean" visibility="public">
+          <Argument type="double" name="amount"/>
+        </Method>
+        <Method name="getFromCard" returnType="Card" visibility="public"/>
+        <Method name="getToCard" returnType="Card" visibility="public"/>
+        <Method name="getAmount" returnType="Double" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TransactionResponse" package="org.solent.oodd.pos.model.dto" visibility="public" xPosition="1528.0" yPosition="280.0">
+      <Fields>
+        <Field name="code" type="int" visibility="private"/>
+        <Field name="message" type="String" visibility="private"/>
+        <Field name="status" type="String" visibility="private"/>
+        <Field name="fromCardNo" type="String" visibility="private"/>
+        <Field name="toCardNo" type="String" visibility="private"/>
+        <Field name="transactionId" type="String" visibility="private"/>
+        <Field name="transactionDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getCode" returnType="int" visibility="public"/>
+        <Method name="getMessage" returnType="String" visibility="public"/>
+        <Method name="getStatus" returnType="String" visibility="public"/>
+        <Method name="getFromCardNo" returnType="String" visibility="public"/>
+        <Method name="getToCardNo" returnType="String" visibility="public"/>
+        <Method name="getTransactionId" returnType="String" visibility="public"/>
+        <Method name="getTransactionDate" returnType="Date" visibility="public"/>
+        <Method name="setCode" returnType="Boolean" visibility="public">
+          <Argument type="int" name="code"/>
+        </Method>
+        <Method name="setMessage" returnType="Boolean" visibility="public">
+          <Argument type="String" name="message"/>
+        </Method>
+        <Method name="setStatus" returnType="Boolean" visibility="public">
+          <Argument type="String" name="status"/>
+        </Method>
+        <Method name="setFromCardNo" returnType="Boolean" visibility="public">
+          <Argument type="String" name="fromCardNo"/>
+        </Method>
+        <Method name="setToCardNo" returnType="Boolean" visibility="public">
+          <Argument type="String" name="toCardNo"/>
+        </Method>
+        <Method name="setTransactionId" returnType="Boolean" visibility="public">
+          <Argument type="String" name="transactionId"/>
+        </Method>
+        <Method name="setTransactionDate" returnType="Boolean" visibility="public">
+          <Argument type="Date" name="date"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Transaction" package="org.solent.oodd.pos.model.service" visibility="public" xPosition="796.0" yPosition="342.0">
+      <Fields>
+        <Field name="transactionRequest" type="TransactionRequest" visibility="private"/>
+        <Field name="transactionResponse" type="TransactionResponse" visibility="private"/>
+        <Field name="isRefund" type="Boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="TransactionRequest" name="req"/>
+          <Argument type="TransactionResponse" name="response"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTransactionRequest" returnType="TransactionRequest" visibility="public"/>
+        <Method name="getTransactionResponse" returnType="TransactionResponse" visibility="public"/>
+        <Method name="getIsRefund" returnType="Boolean" visibility="public"/>
+        <Method name="setTransactionRequest" returnType="boolean" visibility="public">
+          <Argument type="TransactionRequest" name="request"/>
+        </Method>
+        <Method name="setTransactionResponse" returnType="boolean" visibility="public">
+          <Argument type="TransactionResponse" name="response"/>
+        </Method>
+        <Method name="setIsRefund" returnType="Boolean" visibility="public">
+          <Argument type="Boolean" name="refunded"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Interface name="IBankingService" package="org.solent.oodd.pos.model.service" visibility="public" xPosition="335.0" yPosition="414.0">
+      <Methods>
+        <Method name="sendTransaction" returnType="Transaction" visibility="public">
+          <Argument type="Card" name="fromCard"/>
+          <Argument type="Double" name="amount"/>
+        </Method>
+        <Method name="refundTransaction" returnType="Transaction" visibility="public">
+          <Argument type="Transaction" name="transaction"/>
+        </Method>
+        <Method name="getLatestSuccessfulTransactions" returnType="List&lt;Transaction&gt;" visibility="package"/>
+        <Method name="clearTransactions" returnType="Boolean" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="IBankRestClient" package="org.solent.oodd.pos.model.service" visibility="public" xPosition="1275.0" yPosition="861.0">
+      <Methods>
+        <Method name="transferMoney" returnType="TransactionResponse" visibility="public">
+          <Argument type="TransactionRequest" name="request"/>
+        </Method>
+        <Method name="transferMoney" returnType="TransactionResponse" visibility="public">
+          <Argument type="TransactionRequest" name="request"/>
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="password"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="transactionResponse" source="org.solent.oodd.pos.model.service.Transaction" target="org.solent.oodd.pos.model.dto.TransactionResponse" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="Response" source="org.solent.oodd.pos.model.service.IBankRestClient" target="org.solent.oodd.pos.model.dto.TransactionResponse" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="fromCard" source="org.solent.oodd.pos.model.dto.TransactionRequest" target="org.solent.oodd.pos.model.dto.Card" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="transactionRequest" source="org.solent.oodd.pos.model.service.Transaction" target="org.solent.oodd.pos.model.dto.TransactionRequest" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="toCard" source="org.solent.oodd.pos.model.dto.TransactionRequest" target="org.solent.oodd.pos.model.dto.Card" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="org.solent.oodd.pos.model.service.IBankingService" target="org.solent.oodd.pos.model.service.Transaction" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="Request" source="org.solent.oodd.pos.model.service.IBankRestClient" target="org.solent.oodd.pos.model.dto.TransactionRequest" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
