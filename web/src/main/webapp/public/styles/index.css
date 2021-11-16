@@ -9,7 +9,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 
 #div-pininput {
     width: 280px;
-    height: 200px;
+    min-height: 200px;
     text-align: center;
     border: 1px solid black;
     margin: 10px;
@@ -23,7 +23,6 @@ form input {
 
 #div-container {
     display: inline-block;
-    max-height: 500px;
     max-width: 300px;
     overflow: hidden;
     text-align: center;
@@ -38,7 +37,7 @@ form input {
 
 #div-userfeedback {
     width: 278px;
-    height: 160px;    
+    min-height: 160px;    
     margin: 1px;
 }
 

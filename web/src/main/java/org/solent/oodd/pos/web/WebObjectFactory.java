@@ -18,6 +18,8 @@ package org.solent.oodd.pos.web;
 import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.solent.oodd.pos.dao.DaoObjectFactory;
+import org.solent.oodd.pos.dao.PropertiesDao;
 import org.solent.oodd.pos.model.service.IBankingService;
 import org.solent.oodd.pos.service.ServiceObjectFactory;
 
@@ -32,29 +34,14 @@ public class WebObjectFactory {
 
     }
 
-    
     final static Logger logger = LogManager.getLogger(WebObjectFactory.class);
-
-    private static PropertiesDao propertiesDao = null;
-
-    public static PropertiesDao getPropertiesDao() {
-        if (propertiesDao == null) {
-            synchronized (WebObjectFactory.class) {
-                if (propertiesDao == null) {
-                    // creates a single instance of the dao
-                    String TEMP_DIR = System.getProperty("java.io.tmpdir");
-                    File propertiesFile = new File(TEMP_DIR + "/application.properties");
-                    logger.debug("using system temp directory: " + TEMP_DIR);
-                    logger.debug("using application properties file : " + propertiesFile.getAbsolutePath());
-                    propertiesDao = new PropertiesDao(propertiesFile.getAbsolutePath());
-                }
-            }
-        }
-        return propertiesDao;
-    }
 
     public static IBankingService getBankingService() {
         return ServiceObjectFactory.getBankingService();
+    }
+    
+    public static PropertiesDao getPropertiesDao(){
+        return DaoObjectFactory.getPropertiesDao();
     }
 
 }
