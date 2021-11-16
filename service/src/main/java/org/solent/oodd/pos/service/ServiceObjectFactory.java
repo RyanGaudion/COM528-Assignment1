@@ -18,6 +18,7 @@ package org.solent.oodd.pos.service;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.solent.oodd.pos.dao.DaoObjectFactory;
+import org.solent.oodd.pos.dao.PropertiesDao;
 import org.solent.oodd.pos.model.service.IBankingService;
 
 /**
@@ -29,7 +30,7 @@ public class ServiceObjectFactory {
     
     private static IBankingService bankingService;
     
-    final static Logger LOG = LogManager.getLogger(ServiceObjectFactory.class);
+    final static Logger logger = LogManager.getLogger(ServiceObjectFactory.class);
 
     private ServiceObjectFactory(){
         
@@ -42,16 +43,19 @@ public class ServiceObjectFactory {
      * @return the singleton banking service
      */
     public static IBankingService getBankingService(){
-        LOG.debug("getBankingService Called");
+        logger.debug("getBankingService Called");
         if(bankingService == null){
             synchronized (ServiceObjectFactory.class) {
                 if(bankingService == null){
-                    LOG.debug("ServiceObjectFactory created new banking service");
-                    bankingService = new BankingService(DaoObjectFactory.getPropertiesDao());
+                    
+                    PropertiesDao dao = DaoObjectFactory.getPropertiesDao();
+                    logger.debug("ServiceObjectFactory fetched Dao");
+                    bankingService = new BankingService(dao);
+                    logger.debug("ServiceObjectFactory created new banking service");
                 }
             }
         }
-        LOG.debug("ServiceObjectFactory returned banking service");
+        logger.debug("ServiceObjectFactory returned banking service");
         return bankingService;
     }        
 }

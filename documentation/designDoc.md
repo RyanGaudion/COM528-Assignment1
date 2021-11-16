@@ -8,7 +8,7 @@
             <a href="#requirements">Requirements</a>
             <ul>
                 <li><a href="#software-design">Software Design</a></li>
-                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#use-cases-and-features">Use Cases</a></li>
             </ul>
         </li>
         <li>
@@ -20,7 +20,6 @@
                 <li><a href="#menu-system-flow">Menu System Flow</a></li>
             </ul>
         </li>
-        <li><a href="#list-of-features">List of Features</a></li>
         <li>
             <a href="#task-assignment">Task Assignment</a>
             <ul>
@@ -70,7 +69,7 @@ The following requirements are written from the perspective of what different us
 
 | Use case ID  	| Actor 	| Action | Software Reaction |
 | ----------- 	| ----------| ----------- | ----------- |
-| UC1			| User 		| User enters in the [insert web address](url) for the banking application. | A web page opens, providing a numpad interface that allows the user to navigate the application. |
+| UC1			| User 		| User enters in the [URL](http://localhost:8080/pointOfSalesDevice/) for the banking application. | A web page opens, providing a numpad interface that allows the user to navigate the application. |
 | UC2			| User 		| User selects the option allowing them to pay for their purchase.	|  The application requests the user's card number, name, expiry date, cvv code. <br /> Fields are to only allow input of the correct format, and should use input methods that enforce this. |
 | UC3			| User 		| User fails to enter data. | The app displays a helpful error message informing the user of what went wrong, and allows the user to try again. |
 | UC4			| User 		| User enters incorrect card data. | The web page must tell the user that their input was invalid, and allows them to try again. |
@@ -78,19 +77,29 @@ The following requirements are written from the perspective of what different us
 | UC6			| User 		| The user confirms a purchase transaction. | The application transfers money from the users credit card equal to the total amount required by the order. If there is not enough money in the account, the transaction does not complete and the users is shown an error message.  |
 | UC7			| User 		| The user confirms a purchase transaction. | The application stores all transactions locally in a log file. The CVV number must not be stored by the application. |
 | UC8			| User 		| A user visits a page allowing them to reverse their previous transactions. | The application displays their previous transactions, and the gives them the option to reverse (refund) it. |
-| UC9			| Admin		| Admin tries to configure a device. | The application needs to verify the credentials of the admin, so that they can access and modify the configuration settings. |
-| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile, this logfile should be accessible for admins. |
-| UC11			| User		| User requests the app to perform any action. | The program must be able to complete user requests within 1 second. |
-| UC12			| Admin 	| Admin configures the device. | The identify credentials of the device need to be stored securely in a properties file. |
+| UC9			| Admin		| Admin tries to configure a device. | The admin enters the configuration settings URL, and can edit the properties file from there. |
+| UC10			| Admin		| Admin tries to view a log of all transactions. | All transactions, both successful and unsuccessful, undertaken by users must be stored locally in a logfile; this logfile should be accessible for admins and stored locally. |
+| UC11			| User		| User requests the app to  perform any action. | The program must be able to complete user requests within 1 second. |
+| UC12			| Admin 	| Admin configures the device. | The identity credentials of the device need to be stored securely in a local properties file. |
 | UC13			| Admin		| Admin starts up the application.	| The properties file is read on start-up, automatically recognising the device details. |
 
 ## Project Diagrams
+
+### Use Case Diagrams
+
+A use case diagram provides a high level summary of the program and highlights the scope of the application and what systems it interacts with. From the diagram, use cases which go into more detail can be created.
+
+![](/documentation/Images/Use_Case_Diagram.drawio.png)
 
 ### UML Class Diagrams
 
 A class diagram is used to describe classes and their relationships within the application. They corresspond with the classes in the source code. This allows for users and developers to quickly glance at a class, and it's relationships with other classes without having to look into the source code, which is often separated into many locations throughout the application.
 
 ![](/documentation/Images/pos.model.service_classDiagram.PNG)
+
+The above class diagram was designed before development of the project. As you can see via the class diagram below - the models changed during the development of the project. This is okay due to the fact we are using an Agile methodology - our needs changed or we had unforseen issues that required the changes seen below.
+
+![](/documentation/Images/NewPOSClassDiagram.png)
 
 ### UML Robustness Diagram
 
@@ -125,9 +134,6 @@ Menu system flow diagram:
 
 ![](/documentation/Images/MenuSystemFlow.png)
 
-## List of Features
-
-
 ## Task Assignment
 During this project we have split the Software Development Lifecycle (SDLC) into 3 main sections - Design/Documentation, Development/Unit Testing and Testing/Documentation.
 
@@ -153,11 +159,11 @@ Each developer has responsibilities in each of these 3 areas which can be seen b
 | Banking Service | Create an abstraction upon the client as well as the Luhn Algorithm code in order to access all funcitonality through a single banking service class | Ryan Gaudion |
 | Build REST Client    | Code the REST Client and make it use our DTO models | Kain Peacock & Ryan Gaudion |
 | Properties File Reading | Setup the DAO (Data Access Object) to be able to read and write data from the Properties File| Lewis Holmes |
-| Transaction Logging | Develop code that allows all transactions to be logged to their own file | Lewis Holmes |
+| Transaction Logging | Develop code that allows all transactions to be logged to their own file | Ryan Gaudion |
 | Luhn Algorithm | Develop the Luhn Algorithm validation class in order to verify the legitimacy of Card | Steven Hawkins |
 | Pinpad UI | Develop a PinPad UI that displays the entered numbers on the screen | Richard Priest |
-| UI Menu | Develop a menu system to allow all required functionality to be able to be edited via the PinPad | Richard Priest |
-| UI to backend communication | Write code on the JSP frontend that allows each menu action to be processed via the Java JSP backend  | Richard Priest |
+| UI Menu | Develop a menu system to allow all required functionality to be able to be inputed via the PinPad | Richard Priest & Ryan Gaudion |
+| UI to backend communication | Write code on the JSP frontend that allows each menu action to be processed via the Java JSP backend  | Richard Priest & Ryan Gaudion |
 
 ### Testing
 Every developer is responsible for writing tests for the code they implement. For example, the developer who writes a Model class should write the unit tests required to test every Get and Set method inside of that class; as well as any business logic methods the class implements. By making sure that all classes have Unit tests we can ensure our code has a great code coverage. This is especially important and useful when implementing Continous Integration as it allows us to identify breaking changes before they are even pulled into our development branch.
@@ -165,13 +171,14 @@ Every developer is responsible for writing tests for the code they implement. Fo
 There are however additional testing Tasks that need to be complete outside of the inital Unit tests per class which you can see below:
 | Task        | Description | Assigned To |
 | ----------- | ----------- | ----------- |
-| ToDo        | ToDo        | ToDo        |
-
+| Standard Unit Tests       | All methods must have a corresponding unit test. Creators of the method are responsible for the creation of the unit tests for that method.        | Everyone       |
+| Develop Test Plan        | Develop a test plan for the entire scope of the work, including edge cases.        | Kain Peacock        |
+| Carry Out Test Plan        | Carry out all the tests detailed within the Test Plan, and document the results.        | Lewis Holmes        |
 
 ## Coding Standard
 Due to the fact there are 4 developers working on one project our code could look very different if we don't implement a standard for elements of the code such as class naming conventions and variable naming conventions.
 
-We compared both the [Oracle Java Naming Conventions][1] and the [Google Java Naming Conventions here][2] and decided due to many reasons that we'd implement the Google conventions in our code. One of the first reasons was due to the fact that the [Oracle Conventions][1] are now for "Archive Purposes Only" and were last updated in April 1999. This is compared to Google's Java Naming Convention which was last updated May 2018 as seen by the `f9347e1` commit in their [styleguide][3] repository. The other reasons we decided upon the Google style guide was due to the ease of which each standard could be understood. You can see below a simplified wording of this naming convention which the team have agreed to follow.
+We compared both the [Oracle Java Naming Conventions][oracle-naming] and the [Google Java Naming Conventions here][google-naming] and decided due to many reasons that we'd implement the Google conventions in our code. One of the first reasons was due to the fact that the [Oracle Conventions][oracle-naming] are now for "Archive Purposes Only" and were last updated in April 1999. This is compared to Google's Java Naming Convention which was last updated May 2018 as seen by the `f9347e1` commit in their [styleguide][google-naming-github] repository. The other reasons we decided upon the Google style guide was due to the ease of which each standard could be understood. You can see below a simplified wording of this naming convention which the team have agreed to follow.
 
 
 | Type        | Rule      | Examples    |
@@ -196,11 +203,11 @@ We compared both the [Oracle Java Naming Conventions][1] and the [Google Java Na
 
 The purpose of a Git strategy is to make all Developers aware of the process that code changes should go through before they are committed to the `master` branch. When using a well defined Git Strategy, no code should be able to enter the `master` branch without first passing all tests and in some cases be manually reviewed. The purpose of the stategy is to ensure broken code is not in the master branch.  
 
-One of the first Git Strategies to be adopted by the Developer Community was Vincent Driessen's "Git Flow" which was described in "[A successful Git branching model][4]". Out of familiarity, the team would have used this strategy, however a recent addition to the blog post in March 2020 (10 years after it's original release) suggests that GitFlow is not the best solution for applications that don't need to be "explicitly versioned". He also specifically points out "Web Apps" as "not the class of software that I had in mind when I wrote the blog post" and instead suggests a "much simpler workflow".  
+One of the first Git Strategies to be adopted by the Developer Community was Vincent Driessen's "Git Flow" which was described in "[A successful Git branching model][successful-git]". Out of familiarity, the team would have used this strategy, however a recent addition to the blog post in March 2020 (10 years after it's original release) suggests that GitFlow is not the best solution for applications that don't need to be "explicitly versioned". He also specifically points out "Web Apps" as "not the class of software that I had in mind when I wrote the blog post" and instead suggests a "much simpler workflow".  
 
-The workflow that he suggests as an alternative is "[Github Flow][5]" which is a much simpler workflow to follow. [GitHub Flow][5] suggests that the `master` branch should always be deployable meaning it always builds and all tests pass. The strategy also suggests that branches should be branched off of master for any feature or fix. This is the point at which we would need to adapt the Github Flow branching model to meet our needs better. We instead would need a branch called Dev the is branched off of master which all our feature/fix branches branch from. This is due to the fact that the way we are splitting up development between our team means that 1 developer's code might be dependent on the code of another developer. In an ideal situation, each developer would work on a stand alone piece of the project. This may work in the future once the core of the project is built however, to begin with, there will be dependencies between developers. In order to resolve this our dev branch will be the equivalent to the master branch in "Github Flow" without the requirement that the "branch is always deployable".  
+The workflow that he suggests as an alternative is "[Github Flow][github-flow]" which is a much simpler workflow to follow. [GitHub Flow][github-flow] suggests that the `master` branch should always be deployable meaning it always builds and all tests pass. The strategy also suggests that branches should be branched off of master for any feature or fix. This is the point at which we would need to adapt the Github Flow branching model to meet our needs better. We instead would need a branch called Dev the is branched off of master which all our feature/fix branches branch from. This is due to the fact that the way we are splitting up development between our team means that 1 developer's code might be dependent on the code of another developer. In an ideal situation, each developer would work on a stand alone piece of the project. This may work in the future once the core of the project is built however, to begin with, there will be dependencies between developers. In order to resolve this our dev branch will be the equivalent to the master branch in "Github Flow" without the requirement that the "branch is always deployable".  
 
-If this project was to be a Production application then we would use the dev branch for the initial development of the application however, once the initial application was built, we would then use true [Github Flow][5] for any future features or fixes.  
+If this project was to be a Production application then we would use the dev branch for the initial development of the application however, once the initial application was built, we would then use true [Github Flow][github-flow] for any future features or fixes.  
 
 ### Branching, Pull Requests and Approvals
 
@@ -223,7 +230,7 @@ The workflow is setup in order to execute on code pushes to all branches as well
 - All Tests are run on all code for all new pull requests to dev. Due to the fact that within this project code should only enter the dev branch through a pull request - we are able to only accept code where all tests pass. In addition to this we have stated that all developers are responsible for writing tests for their own code, meaning that all pull requests would automatically test every developers code. These automated tests should catch a large majority of the cases where a new feature/fix accidently breaks another developers code.
 
 
-In a 2016 paper named "[Usage, Costs, and Benefits of Continuous Integration in Open-Source Projects][6]" where over 34,500 open source repositories and over 1,500,000 automated builds were studied, it was found that, within Open Source Projects, when a CI pipeline is used the rate of releases was "double the release rate" of a project not using CI pipelines. However, it was also found that projects with CI pipelines are 5% less likely to accept pull requests. The explanation given in the paper is due to the fact that with CI all pull requests provide build information, meaning code that doesn't pass all tests won't be merged; whereas in a project with no CI it is more likely for code that doesn't pass tests to still be merged. The paper also concludes that pull requests on projects that use CI are usually merged over 25% faster than those without CI pipelines.
+In a 2016 paper named "[Usage, Costs, and Benefits of Continuous Integration in Open-Source Projects][ci-usage]" where over 34,500 open source repositories and over 1,500,000 automated builds were studied, it was found that, within Open Source Projects, when a CI pipeline is used the rate of releases was "double the release rate" of a project not using CI pipelines. However, it was also found that projects with CI pipelines are 5% less likely to accept pull requests. The explanation given in the paper is due to the fact that with CI all pull requests provide build information, meaning code that doesn't pass all tests won't be merged; whereas in a project with no CI it is more likely for code that doesn't pass tests to still be merged. The paper also concludes that pull requests on projects that use CI are usually merged over 25% faster than those without CI pipelines.
 
 From this paper, we can conclude that by using a CI pipeline in our code we can expect:
 - A greater release rater of features and fixes
@@ -235,7 +242,7 @@ From this paper, we can conclude that by using a CI pipeline in our code we can 
 
 Order to provide process to the development work we were doing, it was decided as a team that we should implement a software development lifecycle (SDLC) in order to manage the development work that we were completing as a team. We decided that in order to improve collaboration and communication within the development team we would follow an Agile development lifecycle. The improved collaboration this provided would be critical due to the fact that as a team we would be completing development work individually at different times of the day/week.
 
-We decided upon Agile after reading a Whitepaper from "Alon Koch" (the Course Director of "Global Knowledge") named "[12 Advantages of Agile Software Development][7]". Within this paper the main benefits that would relate most to a project of this size were a "Productive Development Team", "Good Quality Software" as well as "On Time" delivery of software.
+We decided upon Agile after reading a Whitepaper from "Alon Koch" (the Course Director of "Global Knowledge") named "[12 Advantages of Agile Software Development][agile-advantages]". Within this paper the main benefits that would relate most to a project of this size were a "Productive Development Team", "Good Quality Software" as well as "On Time" delivery of software.
 
 According to whitepaper, these 3 benefits were to be achieved through:
 - Short iterations of development with a "milestone" at the end of each iteration
@@ -243,7 +250,7 @@ According to whitepaper, these 3 benefits were to be achieved through:
 
 In order to gain these benefits within our development process we have decided to implement a simplified version of a "full-time" Agile framework. The reason we have not implemented a full framework is due to the fact that we are working only a small part of our work week on this project meaning that we want to be able to maximise the development time spent on the project. If we tried to implement a full framework then the majority of our time spent on the project would be working on the Agile process rather than the actual work.  
 
-In order to get the best balance between our framework and our development we have decided to adapt a version of [Scrum][8]. As described by Atlassian, there are 6 events that take part in a scrum cycle. However, we are able to condense these into the following 4 stages:
+In order to get the best balance between our framework and our development we have decided to adapt a version of [Scrum][agile-scrum]. As described by Atlassian, there are 6 events that take part in a scrum cycle. However, we are able to condense these into the following 4 stages:
 
 - Sprint Planning
 - Daily Scrum
@@ -276,11 +283,11 @@ Each week during our planning meeting we will update the state of all tasks, add
 Due to the fact that we have a short timeline for this project our task board is really important in visualising how much work is left to complete as well as the progress of work during a week. It will allow us to see our "burndown rate" - how much work we are going through per week and will also allow us to speed up development if we are falling behind our deadline.
 
 
-[1]: "https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html"
-[2]: "https://google.github.io/styleguide/javaguide.html#s5-naming"
-[3]: "https://github.com/google/styleguide"
-[4]: "https://nvie.com/posts/a-successful-git-branching-model/"
-[5]: "https://guides.github.com/introduction/flow/"
-[6]: "http://cope.eecs.oregonstate.edu/papers/OpenSourceCIUsage.pdf"
-[7]: "https://cs.anu.edu.au/courses/comp3120/public_docs/WP_PM_AdvantagesofAgile.pdf"
-[8]: "https://www.atlassian.com/agile/scrum"
+[oracle-naming]: https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html "Oracle Naming Conventions"
+[google-naming]: https://google.github.io/styleguide/javaguide.html#s5-naming "Google Naming Conventions"
+[google-naming-github]: https://github.com/google/styleguide "Google Styleguide Github"
+[successful-git]: https://nvie.com/posts/a-successful-git-branching-model/ "GitFlow"
+[github-flow]: https://guides.github.com/introduction/flow/ "GitHub Flow"
+[ci-usage]: http://cope.eecs.oregonstate.edu/papers/OpenSourceCIUsage.pdf "Open Source CI Usage"
+[agile-advantages]: https://cs.anu.edu.au/courses/comp3120/public_docs/WP_PM_AdvantagesofAgile.pdf "Advantages of Agile"
+[agile-scrum]: https://www.atlassian.com/agile/scrum "Scrum"

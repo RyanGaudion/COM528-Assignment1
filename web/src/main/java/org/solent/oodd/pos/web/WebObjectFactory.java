@@ -18,6 +18,8 @@ package org.solent.oodd.pos.web;
 import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.solent.oodd.pos.dao.DaoObjectFactory;
+import org.solent.oodd.pos.dao.PropertiesDao;
 import org.solent.oodd.pos.model.service.IBankingService;
 import org.solent.oodd.pos.service.ServiceObjectFactory;
 
@@ -27,18 +29,19 @@ import org.solent.oodd.pos.service.ServiceObjectFactory;
  */
 public class WebObjectFactory {
 
-    final static Logger LOG = LogManager.getLogger(WebObjectFactory.class);
-
-    //Device REST Service here
-    static IBankingService bannkingService = ServiceObjectFactory.getBankingService();
-
     // cannot instantiate
     private WebObjectFactory() {
 
     }
 
+    final static Logger logger = LogManager.getLogger(WebObjectFactory.class);
+
     public static IBankingService getBankingService() {
-        return bannkingService;
+        return ServiceObjectFactory.getBankingService();
+    }
+    
+    public static PropertiesDao getPropertiesDao(){
+        return DaoObjectFactory.getPropertiesDao();
     }
 
 }

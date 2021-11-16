@@ -8,7 +8,7 @@ Our Testing Documentation for the app can be found [here](https://github.com/Rya
 
 This project is licensed under the Apache License Version 2.0, which can be found [here](https://github.com/RyanGaudion/COM528-Assignment1/blob/dev/LICENSE).
 
-The developers involved in this project where:
+The developers involved in this project were:
 - [Kain Peacock](https://github.com/kvpeacock)
 - [Lewis Holmes](https://github.com/lewis-holmes-98)
 - [Richard Priest](https://github.com/RPriestUK)
@@ -34,14 +34,23 @@ Configure Properties from Web & Location of Properties File & Explanation of Def
 --ToDo---
 
 ## Logging
-Location of normal Logs & Transaction Logs   
+Location of normal Logs & Transaction Logs
 
---ToDo--
+Logging is handled by Log4j2 and the log config can be found at `web\src\main\resources\log4j2.xml`
 
-### Unsupported Browsers
-This application has been tested with Microsoft Edge and is approved to work for this browser. Other browsers may also work however the following won't work:
-- Internet Explorer
+2 Log files are created as part of this application - the standard log file containing all logs and a transaction specific log file - more information can be seen in the table below. The `${sys:catalina.base}` variable in the table below relates to your Apache Tomcat installation folder.
 
+| Name      | Level | Location | Description |
+| ----------- | ----------- |----------- | ----------- |
+| POS-appLog      | `DEBUG` | ${sys:catalina.base}/logs/app/POS-appLog.log       | This contains all logs from level Debug and above from all namespaces of the application | 
+| POS-transactionLog   | `INFO` | ${sys:catalina.base}/logs/app/POS-transactionLog.log        | This contains only 5 types of logs. `Sent Transaction` - The transaction and it's response. `Transaction To Refund` the transaction that has been requested to be refunded. `Refund Transaction` the new transaction that refunds the previous transaction. `Transaction Failed` transaction failed due to invalid details (card not found or username & password incorrect). `Refund Failed` refund failed due to invalid details (card not found or username & password incorrect). |
+
+### System Requirements
+This system requirements for this program are:
+- A system running Windows 10 or newer.
+- [Java JDK](https://www.oracle.com/java/technologies/downloads/#java8) version 8 or newer.
+- [Apache Maven](https://maven.apache.org/install.html) 3.8 or newer
+- One of the following web browsers: Google Chrome, Mozilla Firefox or Microsoft Edge. Internet Explorer is unsupported by this application.
 
 # Building/Testing the App
 Running the following command in the project root folder will build the project with Maven and will also run all the tests for the Project Solution:
@@ -49,7 +58,13 @@ Running the following command in the project root folder will build the project 
 `mvn clean install`
 
 ## JavaDoc Creation
----ToDo--
+To view JavaDocs, navigate to the project folder within a command prompt and run:
 
+`mvn javadoc:javadoc`
 
+Visit https://maven.apache.org/plugins/maven-javadoc-plugin/index.html for more information.
+
+### Error Note
+
+If you recieve errors for unknown reasons please clear your `tomcat\temp` and your `tomcat\logs` directly and try running the application again.
 

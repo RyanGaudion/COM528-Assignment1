@@ -34,7 +34,7 @@ import org.junit.Before;
  */
 public class JsonDtoTests {
 
-    private static final Logger LOG = LogManager.getLogger(JsonDtoTests.class);
+    private static final Logger logger = LogManager.getLogger(JsonDtoTests.class);
 
     ObjectMapper objectMapper = null;
 
@@ -65,7 +65,7 @@ public class JsonDtoTests {
         
         String requestString = objectMapper.writeValueAsString(request);
 
-        LOG.debug("Transaction Request String: \n" + requestString);
+        logger.debug("Transaction Request String: \n" + requestString);
 
         TransactionRequest transactionRequestResult = objectMapper.readValue(requestString, TransactionRequest.class);
         

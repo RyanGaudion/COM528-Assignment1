@@ -35,7 +35,7 @@ public class TransactionResponse {
     private String transactionId; //Could be a GUID
     private Date transactionDate;
 
-    final static Logger LOG = LogManager.getLogger(TransactionResponse.class);
+    final static Logger logger = LogManager.getLogger(TransactionResponse.class);
     
     public TransactionResponse(){
         
@@ -84,7 +84,7 @@ public class TransactionResponse {
     }
 
     /**
-     * Get's the transaction unique ID
+     * Gets the transaction unique ID
      * @return Unique Transaction ID as a String 
      */
     public String getTransactionId(){
@@ -108,11 +108,11 @@ public class TransactionResponse {
     public Boolean setCode(int code){
         //Check Code is 3 digits
         if(String.valueOf(code).length() == 3){
-            LOG.info("Set Code Validation - Success: " + code);
+            logger.debug(TransactionResponse.class + "Set Code Validation - Success: " + code);
             this.code = code;
             return true;
         }
-        LOG.info("Set Code Validation - Failed: " + code);
+        logger.debug(TransactionResponse.class + "Set Code Validation - Failed: " + code);
         return false;
     }
     
@@ -175,4 +175,13 @@ public class TransactionResponse {
         this.transactionDate = date;
         return true;
     } 
+    
+    
+    /**
+     * Returns a custom JSON representation of the TransactionResponse Object
+     */
+    @Override
+    public String toString() {
+        return "TransactionResponse{" + "transactionId="+ transactionId + ", transactionDate="+ transactionDate.toString() +", message=" + message + ", status=" + status + '}';
+    }
 }

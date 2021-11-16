@@ -32,7 +32,7 @@ import org.solent.oodd.password.PasswordUtils;
  */
 public class PasswordUtilsTest {
 
-    final static Logger LOG = LogManager.getLogger(PasswordUtilsTest.class);
+    final static Logger logger = LogManager.getLogger(PasswordUtilsTest.class);
     
     /**
      * This test will create a password hash and then check multiple passwords
@@ -45,21 +45,21 @@ public class PasswordUtilsTest {
         String WRONG_PASSWORD="abcd";
         
         String hashed = PasswordUtils.hashPassword(TEST_PASSWORD);
-        LOG.debug("password=" + TEST_PASSWORD + " hashedpw=" + hashed);
+        logger.debug("password=" + TEST_PASSWORD + " hashedpw=" + hashed);
 
         // Check that an unencrypted password matches one that has
         // previously been hashed
         if (PasswordUtils.checkPassword(TEST_PASSWORD, hashed)) {
-            LOG.debug("password " + TEST_PASSWORD + " matches");
+            logger.debug("password " + TEST_PASSWORD + " matches");
         } else {
-            LOG.debug("password " + TEST_PASSWORD + " does not match");
+            logger.debug("password " + TEST_PASSWORD + " does not match");
         }
         assertTrue(PasswordUtils.checkPassword(TEST_PASSWORD, hashed));
         
         if (PasswordUtils.checkPassword(WRONG_PASSWORD, hashed)) {
-            LOG.debug("password " + TEST_PASSWORD + " matches");
+            logger.debug("password " + TEST_PASSWORD + " matches");
         } else {
-            LOG.debug("password " + TEST_PASSWORD + " does not match");
+            logger.debug("password " + TEST_PASSWORD + " does not match");
         }
         assertFalse(PasswordUtils.checkPassword(WRONG_PASSWORD, hashed));
 
