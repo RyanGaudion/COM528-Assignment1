@@ -11,7 +11,7 @@
 <%@page import="org.solent.oodd.pos.model.service.IBankingService"%>
 <%@page import="org.solent.oodd.pos.web.WebObjectFactory"%>
 <%@page import="java.util.Date"%>
-<%@page import="java.util.*"%>;
+<%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="org.solent.oodd.pos.model.dto.Card"%>
 <%@page import="org.apache.logging.log4j.Logger"%>
