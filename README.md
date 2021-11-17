@@ -69,6 +69,7 @@ This system requirements for this program are:
 - A system running Windows 10 or newer.
 - [Java JDK](https://www.oracle.com/java/technologies/downloads/#java8) version 8 or newer.
 - [Apache Maven](https://maven.apache.org/install.html) 3.8 or newer
+- [Apache Tomcat 9](https://tomcat.apache.org/download-90.cgi)
 - One of the following web browsers: Google Chrome, Mozilla Firefox or Microsoft Edge. Internet Explorer is unsupported by this application.
 
 # Building/Testing the App
